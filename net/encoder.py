@@ -4,13 +4,6 @@ import torch.nn as nn
 from .hyper_sa import HyperSABlock
 
 class TeacherEncoder(nn.Module):
-    """
-    Teacher Encoder: Xếp chồng 3 khối HyperSABlock.
-    Input: (B, C=3, T=64, V=48)
-    Output:
-      - latent_tensor: (B, C_h=256, T, V)
-      - context: (B, C_h=256, V=48) sau khi average pooling chỉ theo chiều T
-    """
     def __init__(self, in_channels=3, latent_dim=256, num_joints=48, num_layers=3):
         super(TeacherEncoder, self).__init__()
         layers = []
@@ -33,15 +26,7 @@ class TeacherEncoder(nn.Module):
         context = torch.mean(latent_tensor, dim=2)  # (B, 256, V)
         return latent_tensor, context
 
-
 class StudentEncoder(nn.Module):
-    """
-    Student Encoder: Xếp chồng 2 khối HyperSABlock.
-    Nhận chuỗi quan sát dở dang (20% - 80% frames).
-    Output:
-      - latent_tensor: (B, C_h=256, T, V)
-      - context: (B, C_h=256, V=48)
-    """
     def __init__(self, in_channels=3, latent_dim=256, num_joints=48, num_layers=2):
         super(StudentEncoder, self).__init__()
         layers = []
@@ -66,10 +51,6 @@ class StudentEncoder(nn.Module):
 
 
 class ActionClassifier(nn.Module):
-    """
-    Classifier nhận Context (B, C_h, V).
-    Làm phẳng (Flatten) hoặc pooling trước khi đưa qua Linear layer.
-    """
     def __init__(self, latent_dim=256, num_joints=48, num_classes=16):
         super(ActionClassifier, self).__init__()
         # Flatten (C_h * V) -> num_classes hoặc Linear trên toàn bộ đặc trưng

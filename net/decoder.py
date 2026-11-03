@@ -1,32 +1,59 @@
-# net/decoder.py
 import torch
 import torch.nn as nn
 
 class SkeletonDecoder(nn.Module):
     """
-    Decoder nhận context đã nén thời gian (B, C_h=256, 1, V) hoặc (B, C_h=256, V)
-    và tái tạo trực tiếp tọa độ không gian 3D với T = 1: (B, 3, 1, V).
+    SkeletonDecoder cho bài toán Early Action Prediction (EAP).
+    
+    Thiết kế giữ nguyên chiều thời gian T = 1 qua toàn bộ các tầng:
+      - Đầu vào: Context tensor dạng (B, latent_dim, 1, V) hoặc (B, latent_dim, V)
+      - Đầu ra: Tọa độ khung xương tái tạo dạng (B, out_channels=3, 1, V)
     """
-    def __init__(self, latent_dim=256, out_channels=3):
+    def __init__(self, latent_dim=256, out_channels=3, num_joints=48):
         super(SkeletonDecoder, self).__init__()
+        self.latent_dim = latent_dim
+        self.out_channels = out_channels
+        self.num_joints = num_joints
+
+        # Chuỗi các khối Conv2d (kernel_size=1) giải nén kênh đặc trưng
+        # Toàn bộ quá trình duy trì kích thước không-thời gian (1, V)
         self.deconv = nn.Sequential(
-            nn.Conv2d(latent_dim, 128, kernel_size=1),
+            # Khối 1: 256 -> 128
+            nn.Conv2d(latent_dim, 128, kernel_size=1, bias=False),
             nn.BatchNorm2d(128),
             nn.ReLU(inplace=True),
-            nn.Conv2d(128, 64, kernel_size=1),
+
+            # Khối 2: 128 -> 64
+            nn.Conv2d(128, 64, kernel_size=1, bias=False),
             nn.BatchNorm2d(64),
             nn.ReLU(inplace=True),
-            nn.Conv2d(64, out_channels, kernel_size=1)
+
+            # Khối 3: Chiếu về 3 tọa độ không gian (x, y, z)
+            nn.Conv2d(64, out_channels, kernel_size=1, bias=True)
         )
 
     def forward(self, context):
-        # Đảm bảo context có 4 chiều: (B, C_h, 1, V)
+        """
+        Tham số context:
+            - Dạng 3D: (B, latent_dim, V) -> tự động bổ sung trục thời gian thành (B, latent_dim, 1, V)
+            - Dạng 4D: (B, latent_dim, 1, V) -> giữ nguyên T = 1
+            - Dạng 2D: (B, latent_dim) -> mở rộng đều cho các khớp thành (B, latent_dim, 1, V)
+        
+        Trả về:
+            reconstructed: Tensor tọa độ (B, 3, 1, V)
+        """
         if context.dim() == 3:
-            # (B, C_h, V) -> (B, C_h, 1, V)
+            # (B, latent_dim, V) -> (B, latent_dim, 1, V)
             x = context.unsqueeze(2)
-        else:
+        elif context.dim() == 2:
+            # (B, latent_dim) -> (B, latent_dim, 1, num_joints)
+            x = context.unsqueeze(-1).unsqueeze(-1).expand(-1, -1, 1, self.num_joints).contiguous()
+        elif context.dim() == 4:
+            # Đảm bảo trục thời gian đúng T = 1
             x = context
-            
-        # Tái tạo tọa độ: (B, 3, 1, V)
-        reconstructed = self.deconv(x)
+        else:
+            raise ValueError(f"Kích thước context không hợp lệ: {context.shape}")
+
+        # Cho tensor đi qua các khối Conv2d (giữ nguyên T = 1)
+        reconstructed = self.deconv(x)  # Kích thước: (B, 3, 1, V)
         return reconstructed
