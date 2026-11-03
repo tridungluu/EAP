@@ -1,0 +1,24 @@
+# Môi trường ảo Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Dữ liệu nặng
+datacobot_v2/
+data/
+*.npy
+*.pkl
+*.zip
+
+# Trọng số mô hình đã train (rất nặng)
+work_dir/
+checkpoints/
+*.pth
+*.pt
+
+# Thư mục tạm và kết quả chạy
+results/
+.vscode/
+.idea/
