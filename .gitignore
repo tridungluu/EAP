@@ -1,24 +1,74 @@
-# Môi trường ảo Python
+# ==========================================
+# 1. Thư mục cài đặt Python & C Cache (Tránh lỗi push thư mục C)
+# ==========================================
+Python-*/
+Python-3.12.16/
+*.c
+*.h
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# ==========================================
+# 2. Python Cache & Build Artifacts
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# ==========================================
+# 3. Môi trường ảo (Virtual Environments)
+# ==========================================
 .venv/
 venv/
 env/
-__pycache__/
-*.pyc
+ENV/
+env.bak/
+venv.bak/
 
-# Dữ liệu nặng
-datacobot_v2/
-data/
-*.npy
-*.pkl
-*.zip
-
-# Trọng số mô hình đã train (rất nặng)
+# ==========================================
+# 4. Trọng số mô hình & Checkpoints (Dung lượng lớn)
+# ==========================================
 work_dir/
 checkpoints/
 *.pth
 *.pt
+*.onnx
+*.pkl
+*.npy
 
-# Thư mục tạm và kết quả chạy
-results/
+# ==========================================
+# 5. Dữ liệu tập mẫu (Datasets)
+# ==========================================
+datacobot_v2/
+data/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# ==========================================
+# 6. IDEs & Thư mục tạm hệ thống
+# ==========================================
 .vscode/
 .idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# 7. Kết quả chạy thử nghiệm (Giữ lại ảnh biểu đồ nếu muốn)
+# ==========================================
+results/*.npy
+results/*.pkl

@@ -1,168 +1,136 @@
 import os
-import sys
+import argparse
 import numpy as np
 import torch
+import torch.nn as nn
 from torch.utils.data import DataLoader
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.metrics import confusion_matrix
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
+# Import các kiến trúc mạng
 from net.encoder import StudentEncoder, ActionClassifier
+# Import Feeder nạp dữ liệu kiểm thử
 from feeder.feeder_eap import FeederEAP
 
-def evaluate_single_ratio(
-    ratio,
-    val_data_path,
-    val_label_path,
-    device,
-    in_channels=3,
-    latent_dim=256,
-    num_joints=48,
-    num_classes=16,
-    batch_size=64,
-):
-    ckpt_path = f"work_dir/student_ratio_{int(ratio*100)}/student_best.pth"
-    if not os.path.exists(ckpt_path):
-        print(f"⚠️  Chưa tìm thấy checkpoint mốc {int(ratio*100)}% ({ckpt_path}). Bỏ qua.")
-        return None, None, None
 
-    # Khởi tạo mô hình gọn nhẹ chỉ gồm Encoder + Classifier
+def parse_args():
+    parser = argparse.ArgumentParser(description="Đánh giá mô hình EAP Student trên tập CoboGesture qua các tỷ lệ quan sát")
+    parser.add_argument("--val_data", type=str, default="datacobot_v2/xsub/val_position.npy", help="Đường dẫn dữ liệu kiểm thử")
+    parser.add_argument("--val_label", type=str, default="datacobot_v2/xsub/val_label.pkl", help="Đường dẫn nhãn kiểm thử")
+    parser.add_argument("--work_dir", type=str, default="work_dir", help="Thư mục chứa các checkpoint huấn luyện")
+    parser.add_argument("--batch_size", type=int, default=64, help="Kích thước batch")
+    parser.add_argument("--target_time", type=int, default=96, help="Số khung hình chuẩn hóa")
+    parser.add_argument("--num_joints", type=int, default=48, help="Số lượng khớp xương")
+    parser.add_argument("--num_classes", type=int, default=16, help="Số lượng lớp cử chỉ")
+    parser.add_argument("--latent_dim", type=int, default=256, help="Kích thước vector đặc trưng ẩn")
+    return parser.parse_args()
+
+
+def evaluate_single_ratio(args, ratio, device):
+    """
+    Hàm đánh giá độ chính xác tại một tỷ lệ quan sát (ratio) cụ thể.
+    """
+    ratio_percent = int(ratio * 100)
+    ckpt_path = os.path.join(args.work_dir, f"student_ratio_{ratio_percent}", "student_best.pth")
+
+    if not os.path.exists(ckpt_path):
+        print(f"⚠️  [Bỏ qua {ratio_percent}%] Không tìm thấy file checkpoint: {ckpt_path}")
+        return None
+
+    # 1. Khởi tạo Feeder với tỷ lệ ratio tương ứng
+    val_dataset = FeederEAP(
+        args.val_data,
+        args.val_label,
+        ratio=ratio,
+        target_time=args.target_time
+    )
+    val_loader = DataLoader(
+        val_dataset,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=2,
+        pin_memory=True
+    )
+
+    # 2. Khởi tạo kiến trúc Student Encoder và Classifier
     student_enc = StudentEncoder(
-        in_channels=in_channels,
-        latent_dim=latent_dim,
-        num_joints=num_joints,
-        num_layers=2,
+        in_channels=3,
+        latent_dim=args.latent_dim,
+        num_joints=args.num_joints,
+        num_layers=2
     ).to(device)
 
     classifier = ActionClassifier(
-        latent_dim=latent_dim,
-        num_joints=num_joints,
-        num_classes=num_classes,
+        latent_dim=args.latent_dim,
+        num_joints=args.num_joints,
+        num_classes=args.num_classes
     ).to(device)
 
-    # Nạp checkpoint đã huấn luyện
-    ckpt = torch.load(ckpt_path, map_location=device, weights_only=True)
-    student_enc.load_state_dict(ckpt["student_enc"])
-    classifier.load_state_dict(ckpt["classifier"])
+    # 3. Nạp trọng số checkpoint đã huấn luyện
+    checkpoint = torch.load(ckpt_path, map_location=device, weights_only=True)
+    student_enc.load_state_dict(checkpoint["student_enc"])
+    classifier.load_state_dict(checkpoint["classifier"])
 
     student_enc.eval()
     classifier.eval()
 
-    # Dùng đúng FeederEAP chuẩn 96 frames
-    val_dataset = FeederEAP(val_data_path, val_label_path, ratio=ratio, target_time=96)
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+    val_correct = 0
+    val_total = 0
 
-    all_preds = []
-    all_gts = []
-
+    # 4. Tiến hành suy luận trên tập kiểm thử
     with torch.no_grad():
         for partial_data, _, labels in val_loader:
             partial_data = partial_data.to(device)
             labels = labels.to(device)
 
-            # Suy luận nhanh chỉ qua Student Encoder & Classifier
-            out = student_enc(partial_data)
-            v_student = out[1] if isinstance(out, (tuple, list)) else out
+            out_s = student_enc(partial_data)
+            student_context = out_s[1] if isinstance(out_s, (tuple, list)) else out_s
+            logits = classifier(student_context)
 
-            logits = classifier(v_student)
             preds = torch.argmax(logits, dim=1)
+            val_correct += (preds == labels).sum().item()
+            val_total += labels.size(0)
 
-            all_preds.extend(preds.cpu().numpy())
-            all_gts.extend(labels.cpu().numpy())
+    acc = (val_correct / val_total) * 100.0 if val_total > 0 else 0.0
+    return acc
 
-    all_preds = np.array(all_preds)
-    all_gts = np.array(all_gts)
-    acc = np.mean(all_preds == all_gts) * 100.0
-
-    return acc, all_preds, all_gts
 
 def main():
+    args = parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print("=" * 60)
-    print("🚀 ĐÁNH GIÁ MÔ HÌNH NHẬN DẠNG SỚM (EAP) TRÊN CHUẨN 96 FRAMES")
-    print(f"Thiết bị tính toán: {device}")
-    print("=" * 60 + "\n")
 
-    val_data_path = r"datacobot_v2/xsub/val_position.npy"
-    val_label_path = r"datacobot_v2/xsub/val_label.pkl"
-    os.makedirs("results", exist_ok=True)
+    print("\n" + "=" * 65)
+    print("📊 BẮT ĐẦU ĐÁNH GIÁ TỔNG HỢP EARLY ACTION PREDICTION (EAP)")
+    print(f"Thiết bị: {device} | Chuẩn độ dài: {args.target_time} frames")
+    print(f"Dữ liệu kiểm thử: {args.val_data}")
+    print("=" * 65 + "\n")
 
     ratios = [0.2, 0.4, 0.6, 0.8, 1.0]
-    evaluated_ratios = []
-    accuracies = []
-    preds_dict = {}
-
-    print(f"{'Tỷ lệ quan sát':<20} | {'Độ chính xác (Val Acc)':<25}")
-    print("-" * 50)
+    results = {}
 
     for r in ratios:
-        acc, preds, gts = evaluate_single_ratio(r, val_data_path, val_label_path, device)
+        acc = evaluate_single_ratio(args, r, device)
         if acc is not None:
-            evaluated_ratios.append(r)
-            accuracies.append(acc)
-            preds_dict[r] = (preds, gts)
-            print(f"{f'{int(r*100)}% frames':<20} | {acc:.2f}%")
+            results[r] = acc
+            print(f"✅ Tỷ lệ {int(r * 100):3d}% video: Top-1 Acc = {acc:.2f}%")
 
-    print("-" * 50)
+    # In bảng tổng hợp kết quả
+    print("\n" + "=" * 65)
+    print("📈 BẢNG TỔNG KẾT HIỆU NĂNG DỰ ĐOÁN SỚM (EARLY ACTION PREDICTION)")
+    print("=" * 65)
+    print(f"{'Tỷ lệ quan sát (%)':<25} | {'Độ chính xác Top-1 (%)':<25}")
+    print("-" * 53)
 
-    if len(accuracies) == 0:
-        print("❌ Không tìm thấy checkpoint nào. Vui lòng kiểm tra lại work_dir!")
-        return
+    for r in ratios:
+        if r in results:
+            print(f"{int(r * 100):<25} | {results[r]:.2f}%")
+        else:
+            print(f"{int(r * 100):<25} | N/A (Chưa huấn luyện)")
 
-    # Tính chỉ số AUC (tương thích NumPy 1.x và 2.x)
-    if len(evaluated_ratios) >= 2:
-        x = np.array(evaluated_ratios)
-        y = np.array(accuracies)
-        trapz_func = getattr(np, "trapezoid", getattr(np, "trapz", None))
-        auc_score = trapz_func(y, x) / (x[-1] - x[0])
-        print(f"\n🏆 CHỈ SỐ AUC (Area Under Curve): {auc_score:.2f}%\n")
-    else:
-        auc_score = accuracies[0]
-        print(f"\nℹ️ Có ít hơn 2 mốc quan sát, chưa đủ điểm dữ liệu tính AUC.\n")
+    print("-" * 53)
+    if len(results) > 0:
+        avg_acc = sum(results.values()) / len(results)
+        print(f"{'Độ chính xác trung bình (Avg)':<25} | {avg_acc:.2f}%")
+    print("=" * 65 + "\n")
 
-    # Xuất biểu đồ đường cong nhận dạng sớm EAP
-    plt.figure(figsize=(8, 6), dpi=300)
-    plt.plot(
-        [r * 100 for r in evaluated_ratios],
-        accuracies,
-        marker="o",
-        linewidth=2.5,
-        color="#1f77b4",
-        label=f"Student (AUC: {auc_score:.2f}%)",
-    )
-    plt.axhline(y=89.10, color="crimson", linestyle="--", label="Teacher (Full 100%: 89.10%)")
-    plt.axhline(y=6.25, color="gray", linestyle=":", label="Random Guess (16 classes: 6.25%)")
-
-    plt.title("Early Action Prediction Curve (CoboGesture - 96 Frames)", fontsize=13, fontweight="bold", pad=15)
-    plt.xlabel("Observation Ratio (%)", fontsize=11)
-    plt.ylabel("Accuracy (%)", fontsize=11)
-    plt.xticks([20, 40, 60, 80, 100])
-    plt.ylim(0, 100)
-    plt.grid(True, linestyle="--", alpha=0.5)
-    plt.legend(loc="lower right", fontsize=10)
-
-    curve_path = "results/eap_curve.png"
-    plt.savefig(curve_path, bbox_inches="tight")
-    plt.close()
-    print(f"📊 Đã lưu biểu đồ EAP Curve tại: {curve_path}")
-
-    # Xuất Confusion Matrix tại mốc 20%
-    if 0.2 in preds_dict:
-        preds_20, gts_20 = preds_dict[0.2]
-        cm = confusion_matrix(gts_20, preds_20, normalize="true") * 100
-        plt.figure(figsize=(10, 8), dpi=300)
-        sns.heatmap(cm, annot=False, cmap="Blues", cbar=True)
-        plt.title("Confusion Matrix @ 20% Observation (Student)", fontsize=13, fontweight="bold", pad=15)
-        plt.xlabel("Predicted Class", fontsize=11)
-        plt.ylabel("True Class", fontsize=11)
-        cm_path = "results/confusion_matrix_ratio_20.png"
-        plt.savefig(cm_path, bbox_inches="tight")
-        plt.close()
-        print(f"📊 Đã lưu Confusion Matrix (20%) tại: {cm_path}")
-
-    print("\n🎉 HOÀN TẤT ĐÁNH GIÁ THÀNH CÔNG!")
 
 if __name__ == "__main__":
     main()

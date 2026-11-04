@@ -19,11 +19,6 @@ class ReconstructionLoss(nn.Module):
 
 
 class STALoss(nn.Module):
-    """
-    Spatio-Temporal Angular (STA) Loss trên chuỗi khớp xương.
-    Đo sai số biến thiên góc chuyển động giữa các bước nhảy thời gian lambda=2
-    quanh khớp gốc (root_joint=0).
-    """
     def __init__(self, time_step=2, root_joint=0, eps=1e-7):
         super(STALoss, self).__init__()
         self.time_step = time_step
@@ -32,10 +27,13 @@ class STALoss(nn.Module):
 
     def compute_angles(self, skeleton):
         # skeleton: (B, 3, T, V)
-        root = skeleton[:, :, :, self.root_joint:self.root_joint+1]  # (B, 3, T, 1)
+        # 1. Lấy mỏ neo tại Cổ tay (index 0): (B, 3, T, 1)
+        root = skeleton[:, :, :, self.root_joint:self.root_joint+1]
+        
+        # 2. Vector tương đối từ Cổ tay tới các khớp ngón tay / khớp còn lại
         rel_vec = skeleton - root  # (B, 3, T, V)
         
-        # Vector chuyển động giữa 2 frame cách nhau time_step
+        # 3. Chuyển động góc qua time_step (lambda)
         v1 = rel_vec[:, :, :-self.time_step, :]
         v2 = rel_vec[:, :, self.time_step:, :]
         
@@ -46,7 +44,6 @@ class STALoss(nn.Module):
         return torch.acos(cos_sim)
 
     def forward(self, pred_skeleton, gt_skeleton):
-        # Nếu pred_skeleton ở dạng (B, 3, 1, V), ta dùng Reconstruction MSE để tạo s_sta
         if pred_skeleton.shape[2] == 1:
             gt_target = torch.mean(gt_skeleton, dim=2, keepdim=True)
             loss_sta = F.l1_loss(pred_skeleton, gt_target)
@@ -62,30 +59,21 @@ class STALoss(nn.Module):
 
 
 class DCLLoss(nn.Module):
-    """
-    Dynamic Contrastive Learning (DCL) Loss.
-    Phân loại tự động TP, FP, FN từ kết quả Classifier và nhãn Ground-Truth,
-    sau đó điều chế tương phản động trên từng nhánh C_s và C_t.
-    """
-    def __init__(self, num_classes=16, temperature=0.07, momentum=0.9):
+    def __init__(self, num_classes=16, temperature=0.125, momentum=0.9):
         super(DCLLoss, self).__init__()
         self.num_classes = num_classes
         self.temperature = temperature
         self.momentum = momentum
         
+        # Biểu diễn toàn cục G_k cho từng nhánh
         self.register_buffer("G_spatial", torch.zeros(num_classes, 128))
         self.register_buffer("G_temporal", torch.zeros(num_classes, 128))
-        self.register_buffer("initialized", torch.zeros(num_classes, dtype=torch.bool))
+        
+        # Tách riêng 2 cờ khởi tạo cho 2 nhánh tránh xung đột
+        self.register_buffer("init_spatial", torch.zeros(num_classes, dtype=torch.bool))
+        self.register_buffer("init_temporal", torch.zeros(num_classes, dtype=torch.bool))
 
-    def _dcl_branch(self, feats, logits, labels, G_bank, s_sta):
-        """
-        feats: (B, 128) - C_s hoặc C_t
-        logits: (B, num_classes)
-        labels: (B,)
-        G_bank: (num_classes, 128)
-        s_sta: hệ số điều chế góc từ STA Loss
-        """
-        # Đảm bảo đặc trưng luôn được L2-normalize
+    def _dcl_branch(self, feats, logits, labels, G_bank, init_flags, s_sta):
         feats = F.normalize(feats, dim=-1)
         preds = torch.argmax(logits, dim=-1)
         total_loss = torch.tensor(0.0, device=feats.device)
@@ -107,9 +95,9 @@ class DCLLoss(nn.Module):
             mean_tp = torch.mean(tp_feats, dim=0)
 
             # Cập nhật biểu diễn toàn cục G_k bằng EMA
-            if not self.initialized[k]:
+            if not init_flags[k]:
                 G_bank[k] = mean_tp.detach()
-                self.initialized[k] = True
+                init_flags[k] = True
             else:
                 G_bank[k] = self.momentum * G_bank[k] + (1 - self.momentum) * mean_tp.detach()
             G_k = F.normalize(G_bank[k].unsqueeze(0), dim=-1) # (1, 128)
@@ -130,26 +118,23 @@ class DCLLoss(nn.Module):
                 d_p = 0.5
             psi = float(torch.clamp(torch.tensor((1.0 + d_p) * s_sta), 0.0, 5.0))
 
-            # Tính độ tương đồng cosin an toàn (kẹp trong khoảng [-1, 1])
+            # Tính độ tương đồng cosin an toàn
             pos_sim = torch.clamp(torch.sum(tp_feats * G_k, dim=-1), -1.0, 1.0) / self.temperature
-            # Giới hạn giá trị mũ tránh tràn số (max = 50)
-            pos_sim = torch.clamp(pos_sim, max=50.0)
+            pos_sim = torch.clamp(pos_sim, max=25.0)
             exp_pos = torch.exp(pos_sim) * (1.0 + phi)
 
-            # Đẩy các mẫu lớp khác ra xa (đặc biệt phạt FP bằng psi)
+            # Phạt các mẫu âm tính
             neg_mask = (labels != k)
             if torch.any(neg_mask):
                 neg_feats = feats[neg_mask]
                 neg_sim = torch.clamp(torch.matmul(tp_feats, neg_feats.T), -1.0, 1.0) / self.temperature
-                neg_sim = torch.clamp(neg_sim, max=50.0)
+                neg_sim = torch.clamp(neg_sim, max=25.0)
                 exp_neg = torch.sum(torch.exp(neg_sim), dim=-1) * (1.0 + psi)
             else:
                 exp_neg = torch.zeros_like(exp_pos)
 
-            # Ổn định số học: cộng epsilon 1e-8 để không bao giờ bị log(0) hay chia cho 0
             denom = exp_pos + exp_neg + 1e-8
             loss_k = -torch.mean(torch.log(torch.clamp(exp_pos / denom, min=1e-8, max=1.0)))
-            
             if not torch.isnan(loss_k) and not torch.isinf(loss_k):
                 total_loss += loss_k
                 valid_classes += 1
@@ -159,8 +144,8 @@ class DCLLoss(nn.Module):
         return total_loss
 
     def forward(self, C_s, C_t, logits, labels, s_sta):
-        loss_s = self._dcl_branch(C_s, logits, labels, self.G_spatial, s_sta)
-        loss_t = self._dcl_branch(C_t, logits, labels, self.G_temporal, s_sta)
+        loss_s = self._dcl_branch(C_s, logits, labels, self.G_spatial, self.init_spatial, s_sta)
+        loss_t = self._dcl_branch(C_t, logits, labels, self.G_temporal, self.init_temporal, s_sta)
         return loss_s + loss_t
 
 

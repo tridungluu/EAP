@@ -2,13 +2,6 @@ import torch
 import torch.nn as nn
 
 class SkeletonDecoder(nn.Module):
-    """
-    SkeletonDecoder cho bài toán Early Action Prediction (EAP).
-    
-    Thiết kế giữ nguyên chiều thời gian T = 1 qua toàn bộ các tầng:
-      - Đầu vào: Context tensor dạng (B, latent_dim, 1, V) hoặc (B, latent_dim, V)
-      - Đầu ra: Tọa độ khung xương tái tạo dạng (B, out_channels=3, 1, V)
-    """
     def __init__(self, latent_dim=256, out_channels=3, num_joints=48):
         super(SkeletonDecoder, self).__init__()
         self.latent_dim = latent_dim
@@ -33,15 +26,6 @@ class SkeletonDecoder(nn.Module):
         )
 
     def forward(self, context):
-        """
-        Tham số context:
-            - Dạng 3D: (B, latent_dim, V) -> tự động bổ sung trục thời gian thành (B, latent_dim, 1, V)
-            - Dạng 4D: (B, latent_dim, 1, V) -> giữ nguyên T = 1
-            - Dạng 2D: (B, latent_dim) -> mở rộng đều cho các khớp thành (B, latent_dim, 1, V)
-        
-        Trả về:
-            reconstructed: Tensor tọa độ (B, 3, 1, V)
-        """
         if context.dim() == 3:
             # (B, latent_dim, V) -> (B, latent_dim, 1, V)
             x = context.unsqueeze(2)

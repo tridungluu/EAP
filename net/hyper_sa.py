@@ -4,10 +4,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class HypergraphSelfAttention(nn.Module):
-    """
-    Khối Hypergraph Self-Attention (HyperSA).
-    Tự động học mối quan hệ bậc cao giữa các nhóm khớp mà không bị ràng buộc bởi tô-pô cố định.
-    """
     def __init__(self, in_channels, out_channels, num_joints=48, num_hyperedges=16):
         super(HypergraphSelfAttention, self).__init__()
         self.in_channels = in_channels
@@ -44,24 +40,25 @@ class HypergraphSelfAttention(nn.Module):
         
         # 1. Tự chú ý giữa các khớp xương (Node-to-Node Attention)
         attn_scores = torch.matmul(Q, K.transpose(-1, -2)) / (self.out_channels ** 0.5)
-        attn_weights = F.softmax(attn_scores, dim=-1) # (B*T, V, V)
+        attn_weights = F.softmax(attn_scores, dim=-1)         # (B*T, V, V)
+        node_feats = torch.matmul(attn_weights, V_val)        # (B*T, V, C')
         
         # 2. Truyền tin qua Siêu đồ thị: Nodes -> Hyperedges -> Nodes
-        H_norm = F.softmax(self.H, dim=0) # (V, E)
-        node_feats = torch.matmul(attn_weights, V_val)        # (B*T, V, C')
-        hyperedge_feats = torch.matmul(H_norm.T, node_feats)   # (B*T, E, C')
-        out_nodes = torch.matmul(H_norm, hyperedge_feats)      # (B*T, V, C')
+        # Chuẩn hóa mềm theo hai hướng:
+        H_edge = F.softmax(self.H, dim=0)                     # (V, E): Node -> Hyperedge
+        H_node = F.softmax(self.H, dim=1)                     # (V, E): Hyperedge -> Node
+        
+        hyperedge_feats = torch.matmul(H_edge.T, node_feats)  # (B*T, E, C')
+        out_nodes = torch.matmul(H_node, hyperedge_feats)     # (B*T, V, C')
+        
+        # Thêm kết nối tắt nội bộ để bảo toàn đặc trưng nút
+        out_nodes = out_nodes + node_feats
         
         # Đưa về Tensor 4D gốc: (B, C', T, V)
         out = out_nodes.view(B, T, V, self.out_channels).permute(0, 3, 1, 2)
         out = F.relu(self.bn(out) + residual)
         return out
-
-
 class TemporalConv(nn.Module):
-    """
-    Khối Temporal Convolution quét dọc theo chiều thời gian T.
-    """
     def __init__(self, in_channels, out_channels, kernel_size=9, stride=1, padding=4):
         super(TemporalConv, self).__init__()
         self.t_conv = nn.Conv2d(
@@ -88,9 +85,6 @@ class TemporalConv(nn.Module):
 
 
 class HyperSABlock(nn.Module):
-    """
-    Khối tích hợp hoàn chỉnh gồm [HyperSA + Temporal Conv].
-    """
     def __init__(self, in_channels, out_channels, num_joints=48, kernel_size=9):
         super(HyperSABlock, self).__init__()
         self.hyper_sa = HypergraphSelfAttention(in_channels, out_channels, num_joints=num_joints)
