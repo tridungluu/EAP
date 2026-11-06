@@ -1,0 +1,56 @@
+work_dir: ./work_dir/teacher/hypersa_fcce_dstcl_v1
+
+# feeder (teacher sees the full sequence, do NOT set obs_ratio)
+feeder: feeder.feeder_clr.Feeder
+train_feeder_args:
+  data_path: ./datacobot_v2_full_gcn/xsub/train_position.npy
+  label_path: ./datacobot_v2_full_gcn/xsub/train_label.pkl
+  text_path: text_prompts.json     # still required by Feeder.__init__, not used for training
+  data_ratio: 1.0
+  bone: False
+test_feeder_args:
+  data_path: ./datacobot_v2_full_gcn/xsub/val_position.npy
+  label_path:  ./datacobot_v2_full_gcn/xsub/val_label.pkl
+  text_path: text_prompts.json
+  bone: False
+
+# teacher model: 3-block HyperSA encoder, 2-block HyperSA decoder, FC classifier (CE)
+model: net.teacher.TeacherModel
+model_args:
+  base_encoder: net.hypersa_ae.HyperSAEncoder
+  num_class: 16
+  num_point: 48
+  num_person: 1
+  drop_out: 0.5
+  graph: graph.cobot.Graph
+  graph_args:
+    labeling_mode: 'distance'
+  channels: [64, 128, 256]
+  strides: [1, 2, 2]
+  heads: 8
+  num_hyperedges: 5     # learned partition (Eq. 8-9); paper Fig. 3 uses ~5 body-part groups on NTU
+  # partition_groups: [0,0,1,...]   # optional: fixed empirical partition, one group id per joint (len = num_point)
+  # hop_edges: [[0,1],[1,2]]        # optional: bone list (0-indexed) if the graph has no A_binary/neighbor_link
+  root_joint: 0        # TODO: set the real root/hip joint index of the cobot graph
+  sta_stride: 2        # lambda in Eq. 9
+  tau: 0.125           # temperature in Eq. 8
+  rho: 0.9             # EMA momentum in Eq. 2
+  ctx_ch: 384          # C_h, must be divisible by num_point (48)
+  t_len: 24            # T/4 when T = 96
+
+# loss weights, Eq. 13
+w_sta: 1.0
+w_ce: 1.0
+w_cl: 0.1
+
+# optim
+weight_decay: 0.0001
+base_lr: 0.025          # paper (NTU)
+step: [150, 225]       # NOT specified in paper: my choice
+
+
+# training
+device: [0]
+batch_size: 32
+test_batch_size: 32
+num_epoch: 300           # paper

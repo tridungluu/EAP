@@ -1,0 +1,34 @@
+weights: ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt
+
+# feeder
+feeder: feeder.feeder_clr.Feeder
+test_feeder_args:
+  data_path: ./datacobot_v2_full_gcn/xsub/val_position.npy
+  label_path: ./datacobot_v2_full_gcn/xsub/val_label.pkl
+  text_path: text_prompts.json
+  bone: False
+
+# teacher model
+model: net.teacher.TeacherModel
+model_args:
+  base_encoder: net.ctr_gcn.Model
+  num_class: 16 
+  num_point: 48
+  num_person: 1
+  drop_out: 0.5
+  graph: graph.cobot.Graph
+  graph_args:
+    labeling_mode: 'distance'
+    
+
+  
+# clip
+text_encoder: net.text.TextEncoder
+text_args:
+  run_name: 'RN50x4'
+  temperature: 0.1
+
+# test 
+phase: test
+device: 3
+test_batch_size: 32

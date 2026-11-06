@@ -1,0 +1,1750 @@
+[11.04.26|14:11:46] Parameters:
+{'work_dir': './work_dir/teacher/ctr_fcce_dstcl_v1', 'config': 'config/cobot/train_clr.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 300, 'use_gpu': True, 'device': [0], 'log_interval': 100, 'save_interval': 10, 'eval_interval': 5, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_clr.Feeder', 'num_worker': 4, 'train_feeder_args': {'data_path': './data/datacobot_v2_full_gcn/xsub/train_position.npy', 'label_path': './data/datacobot_v2_full_gcn/xsub/train_label.pkl', 'text_path': 'text_prompts.json', 'data_ratio': 1.0, 'bone': False, 'debug': False}, 'test_feeder_args': {'data_path': './data/datacobot_v2_full_gcn/xsub/val_position.npy', 'label_path': './data/datacobot_v2_full_gcn/xsub/val_label.pkl', 'text_path': 'text_prompts.json', 'bone': False}, 'batch_size': 32, 'test_batch_size': 32, 'debug': False, 'model': 'net.teacher.TeacherModel', 'model_args': {'base_encoder': 'net.ctr_ae.CTREncoder', 'num_class': 16, 'num_point': 48, 'num_person': 1, 'drop_out': 0.5, 'graph': 'graph.cobot.Graph', 'graph_args': {'labeling_mode': 'distance'}, 'channels': [64, 128, 256], 'strides': [1, 2, 2], 'root_joint': 0, 'sta_stride': 2, 'tau': 0.125, 'rho': 0.9, 'ctx_ch': 384, 't_len': 24}, 'weights': None, 'ignore_weights': [], 'text_encoder': None, 'text_args': {}, 'teacher_model': None, 'teacher_model_args': {}, 'teacher_weights': None, 'alpha': None, 'feature_distillation': {'cosine': 0, 'align': 0, 'spatial': 1}, 'logits_distillation': {'kd': 0.5, 'hardkd': 0, 'dkd': 0, 'ctkd': 0}, 'kd_T': 1, 'show_topk': [1, 5], 'base_lr': 0.025, 'step': [150, 225], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0001, 'lr_decay_rate': 0.1, 'warm_up_epoch': 0, 'w_sta': 1.0, 'w_ce': 1.0, 'w_cl': 0.1}
+
+[11.04.26|14:11:46] ---------- Networks initialized -------------
+[11.04.26|14:11:46] [Network] Total number of parameters : 0.616 M
+[11.04.26|14:11:46] -----------------------------------------------
+[11.04.26|14:11:46] Training epoch: 0
+[11.04.26|14:12:30] 	Iter 0 Done. | loss: 9.7905 | sta: 0.2570 | ce: 8.4245 | dstcl: 11.0904 | lr: 0.025000
+[11.04.26|14:13:11] 	mean_loss: 5.0778014527426825
+[11.04.26|14:13:12] Time consumption:
+[11.04.26|14:13:12] Done.
+[11.04.26|14:13:12] Training epoch: 1
+[11.04.26|14:14:49] 	mean_loss: 3.2961519757906594
+[11.04.26|14:14:49] Time consumption:
+[11.04.26|14:14:49] Done.
+[11.04.26|14:14:49] Training epoch: 2
+[11.04.26|14:15:51] 	Iter 100 Done. | loss: 2.6736 | sta: 0.1850 | ce: 1.7142 | dstcl: 7.7441 | lr: 0.025000
+[11.04.26|14:15:58] 	mean_loss: 2.7260514431529574
+[11.04.26|14:15:58] Time consumption:
+[11.04.26|14:15:58] Done.
+[11.04.26|14:15:58] Training epoch: 3
+[11.04.26|14:17:17] 	mean_loss: 2.1955781512790256
+[11.04.26|14:17:17] Time consumption:
+[11.04.26|14:17:17] Done.
+[11.04.26|14:17:17] Training epoch: 4
+[11.04.26|14:18:23] 	mean_loss: 1.6560183200571272
+[11.04.26|14:18:23] Time consumption:
+[11.04.26|14:18:23] Done.
+[11.04.26|14:18:23] Eval epoch: 4
+[11.04.26|14:19:09] 	mean_loss: 1.6560183200571272
+[11.04.26|14:19:09] 	Top1: 72.27%
+[11.04.26|14:19:09] 	Top5: 97.63%
+[11.04.26|14:19:09] 	Best Top1: 72.27%
+[11.04.26|14:19:09] current 72.27%, best 72.27%
+[11.04.26|14:19:11] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch005_acc72.27_model.pt.
+[11.04.26|14:19:12] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|14:19:12] Training epoch: 5
+[11.04.26|14:20:03] 	Iter 200 Done. | loss: 1.2762 | sta: 0.1940 | ce: 0.6699 | dstcl: 4.1231 | lr: 0.025000
+[11.04.26|14:20:22] 	mean_loss: 1.3509713510672252
+[11.04.26|14:20:22] Time consumption:
+[11.04.26|14:20:22] Done.
+[11.04.26|14:20:22] Training epoch: 6
+[11.04.26|14:21:30] 	mean_loss: 1.069133655892478
+[11.04.26|14:21:30] Time consumption:
+[11.04.26|14:21:30] Done.
+[11.04.26|14:21:30] Training epoch: 7
+[11.04.26|14:22:55] 	mean_loss: 0.8607991172207726
+[11.04.26|14:22:55] Time consumption:
+[11.04.26|14:22:55] Done.
+[11.04.26|14:22:55] Training epoch: 8
+[11.04.26|14:23:47] 	Iter 300 Done. | loss: 1.0640 | sta: 0.1615 | ce: 0.6279 | dstcl: 2.7451 | lr: 0.025000
+[11.04.26|14:24:10] 	mean_loss: 0.8176710704962412
+[11.04.26|14:24:10] Time consumption:
+[11.04.26|14:24:10] Done.
+[11.04.26|14:24:10] Training epoch: 9
+[11.04.26|14:25:28] 	mean_loss: 0.6564623978402879
+[11.04.26|14:25:28] Time consumption:
+[11.04.26|14:25:28] Done.
+[11.04.26|14:25:28] Eval epoch: 9
+[11.04.26|14:26:43] 	mean_loss: 0.6564623978402879
+[11.04.26|14:26:43] 	Top1: 87.32%
+[11.04.26|14:26:43] 	Top5: 99.58%
+[11.04.26|14:26:43] 	Best Top1: 87.32%
+[11.04.26|14:26:43] current 87.32%, best 87.32%
+[11.04.26|14:26:43] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch010_acc87.32_model.pt.
+[11.04.26|14:26:43] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|14:26:43] Training epoch: 10
+[11.04.26|14:27:53] 	mean_loss: 0.5923652168777254
+[11.04.26|14:27:53] Time consumption:
+[11.04.26|14:27:53] Done.
+[11.04.26|14:27:53] Training epoch: 11
+[11.04.26|14:28:32] 	Iter 400 Done. | loss: 0.3721 | sta: 0.1699 | ce: 0.0633 | dstcl: 1.3883 | lr: 0.025000
+[11.04.26|14:29:01] 	mean_loss: 0.6336703399817148
+[11.04.26|14:29:01] Time consumption:
+[11.04.26|14:29:01] Done.
+[11.04.26|14:29:01] Training epoch: 12
+[11.04.26|14:30:14] 	mean_loss: 0.49610013763109845
+[11.04.26|14:30:14] Time consumption:
+[11.04.26|14:30:14] Done.
+[11.04.26|14:30:14] Training epoch: 13
+[11.04.26|14:31:29] 	Iter 500 Done. | loss: 0.3526 | sta: 0.1378 | ce: 0.0903 | dstcl: 1.2452 | lr: 0.025000
+[11.04.26|14:31:33] 	mean_loss: 0.5512643191549513
+[11.04.26|14:31:33] Time consumption:
+[11.04.26|14:31:33] Done.
+[11.04.26|14:31:33] Training epoch: 14
+[11.04.26|14:32:57] 	mean_loss: 0.3905307460162375
+[11.04.26|14:32:57] Time consumption:
+[11.04.26|14:32:57] Done.
+[11.04.26|14:32:57] Eval epoch: 14
+[11.04.26|14:33:46] 	mean_loss: 0.3905307460162375
+[11.04.26|14:33:46] 	Top1: 92.56%
+[11.04.26|14:33:46] 	Top5: 99.75%
+[11.04.26|14:33:46] 	Best Top1: 92.56%
+[11.04.26|14:33:46] current 92.56%, best 92.56%
+[11.04.26|14:33:46] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch015_acc92.56_model.pt.
+[11.04.26|14:33:48] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|14:33:48] Training epoch: 15
+[11.04.26|14:34:57] 	mean_loss: 0.3385225203302171
+[11.04.26|14:34:57] Time consumption:
+[11.04.26|14:34:57] Done.
+[11.04.26|14:34:57] Training epoch: 16
+[11.04.26|14:35:55] 	Iter 600 Done. | loss: 0.4342 | sta: 0.1320 | ce: 0.1825 | dstcl: 1.1978 | lr: 0.025000
+[11.04.26|14:36:07] 	mean_loss: 0.3234821769098441
+[11.04.26|14:36:07] Time consumption:
+[11.04.26|14:36:07] Done.
+[11.04.26|14:36:07] Training epoch: 17
+[11.04.26|14:37:19] 	mean_loss: 0.3145644851028919
+[11.04.26|14:37:19] Time consumption:
+[11.04.26|14:37:19] Done.
+[11.04.26|14:37:19] Training epoch: 18
+[11.04.26|14:38:27] 	mean_loss: 0.30314338786734474
+[11.04.26|14:38:27] Time consumption:
+[11.04.26|14:38:27] Done.
+[11.04.26|14:38:27] Training epoch: 19
+[11.04.26|14:39:19] 	Iter 700 Done. | loss: 0.2142 | sta: 0.0941 | ce: 0.0363 | dstcl: 0.8378 | lr: 0.025000
+[11.04.26|14:39:47] 	mean_loss: 0.26059341182311374
+[11.04.26|14:39:47] Time consumption:
+[11.04.26|14:39:47] Done.
+[11.04.26|14:39:47] Eval epoch: 19
+[11.04.26|14:40:33] 	mean_loss: 0.26059341182311374
+[11.04.26|14:40:33] 	Top1: 94.93%
+[11.04.26|14:40:33] 	Top5: 99.92%
+[11.04.26|14:40:33] 	Best Top1: 94.93%
+[11.04.26|14:40:33] current 94.93%, best 94.93%
+[11.04.26|14:40:33] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch020_acc94.93_model.pt.
+[11.04.26|14:40:33] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|14:40:33] Training epoch: 20
+[11.04.26|14:41:43] 	mean_loss: 0.25841273160444367
+[11.04.26|14:41:43] Time consumption:
+[11.04.26|14:41:43] Done.
+[11.04.26|14:41:43] Training epoch: 21
+[11.04.26|14:42:52] 	mean_loss: 0.31853923325737316
+[11.04.26|14:42:52] Time consumption:
+[11.04.26|14:42:52] Done.
+[11.04.26|14:42:52] Training epoch: 22
+[11.04.26|14:44:01] 	Iter 800 Done. | loss: 0.1764 | sta: 0.0872 | ce: 0.0232 | dstcl: 0.6595 | lr: 0.025000
+[11.04.26|14:44:27] 	mean_loss: 0.22461705282330513
+[11.04.26|14:44:27] Time consumption:
+[11.04.26|14:44:27] Done.
+[11.04.26|14:44:27] Training epoch: 23
+[11.04.26|14:45:41] 	mean_loss: 0.20494221109482977
+[11.04.26|14:45:41] Time consumption:
+[11.04.26|14:45:41] Done.
+[11.04.26|14:45:41] Training epoch: 24
+[11.04.26|14:46:54] 	mean_loss: 0.2093287660843796
+[11.04.26|14:46:54] Time consumption:
+[11.04.26|14:46:54] Done.
+[11.04.26|14:46:54] Eval epoch: 24
+[11.04.26|14:47:50] 	mean_loss: 0.2093287660843796
+[11.04.26|14:47:50] 	Top1: 96.03%
+[11.04.26|14:47:50] 	Top5: 99.92%
+[11.04.26|14:47:50] 	Best Top1: 96.03%
+[11.04.26|14:47:50] current 96.03%, best 96.03%
+[11.04.26|14:47:50] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch025_acc96.03_model.pt.
+[11.04.26|14:47:50] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|14:47:50] Training epoch: 25
+[11.04.26|14:48:30] 	Iter 900 Done. | loss: 0.1699 | sta: 0.0801 | ce: 0.0268 | dstcl: 0.6294 | lr: 0.025000
+[11.04.26|14:49:09] 	mean_loss: 0.21773956302139494
+[11.04.26|14:49:09] Time consumption:
+[11.04.26|14:49:09] Done.
+[11.04.26|14:49:09] Training epoch: 26
+[11.04.26|14:50:17] 	mean_loss: 0.19991502207186487
+[11.04.26|14:50:17] Time consumption:
+[11.04.26|14:50:17] Done.
+[11.04.26|14:50:17] Training epoch: 27
+[11.04.26|14:51:23] 	Iter 1000 Done. | loss: 0.1286 | sta: 0.0721 | ce: 0.0089 | dstcl: 0.4757 | lr: 0.025000
+[11.04.26|14:51:31] 	mean_loss: 0.18121469165715906
+[11.04.26|14:51:31] Time consumption:
+[11.04.26|14:51:31] Done.
+[11.04.26|14:51:31] Training epoch: 28
+[11.04.26|14:52:58] 	mean_loss: 0.21476143246723545
+[11.04.26|14:52:58] Time consumption:
+[11.04.26|14:52:58] Done.
+[11.04.26|14:52:58] Training epoch: 29
+[11.04.26|14:54:08] 	mean_loss: 0.1859152480545971
+[11.04.26|14:54:08] Time consumption:
+[11.04.26|14:54:08] Done.
+[11.04.26|14:54:08] Eval epoch: 29
+[11.04.26|14:55:12] 	mean_loss: 0.1859152480545971
+[11.04.26|14:55:12] 	Top1: 95.69%
+[11.04.26|14:55:12] 	Top5: 99.92%
+[11.04.26|14:55:12] 	Best Top1: 96.03%
+[11.04.26|14:55:12] current 95.69%, best 96.03%
+[11.04.26|14:55:12] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch030_acc95.69_model.pt.
+[11.04.26|14:55:12] Training epoch: 30
+[11.04.26|14:56:03] 	Iter 1100 Done. | loss: 0.1563 | sta: 0.0824 | ce: 0.0121 | dstcl: 0.6181 | lr: 0.025000
+[11.04.26|14:56:17] 	mean_loss: 0.23712027052210438
+[11.04.26|14:56:17] Time consumption:
+[11.04.26|14:56:17] Done.
+[11.04.26|14:56:17] Training epoch: 31
+[11.04.26|14:57:43] 	mean_loss: 0.16576296235952112
+[11.04.26|14:57:43] Time consumption:
+[11.04.26|14:57:43] Done.
+[11.04.26|14:57:43] Training epoch: 32
+[11.04.26|14:59:01] 	mean_loss: 0.19457057780689663
+[11.04.26|14:59:01] Time consumption:
+[11.04.26|14:59:01] Done.
+[11.04.26|14:59:01] Training epoch: 33
+[11.04.26|14:59:49] 	Iter 1200 Done. | loss: 0.1120 | sta: 0.0781 | ce: 0.0048 | dstcl: 0.2911 | lr: 0.025000
+[11.04.26|15:00:20] 	mean_loss: 0.1779478738705317
+[11.04.26|15:00:20] Time consumption:
+[11.04.26|15:00:20] Done.
+[11.04.26|15:00:20] Training epoch: 34
+[11.04.26|15:02:05] 	mean_loss: 0.1676542531285021
+[11.04.26|15:02:05] Time consumption:
+[11.04.26|15:02:05] Done.
+[11.04.26|15:02:05] Eval epoch: 34
+[11.04.26|15:03:03] 	mean_loss: 0.1676542531285021
+[11.04.26|15:03:03] 	Top1: 95.01%
+[11.04.26|15:03:03] 	Top5: 99.83%
+[11.04.26|15:03:03] 	Best Top1: 96.03%
+[11.04.26|15:03:03] current 95.01%, best 96.03%
+[11.04.26|15:03:03] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch035_acc95.01_model.pt.
+[11.04.26|15:03:03] Training epoch: 35
+[11.04.26|15:04:29] 	mean_loss: 0.17423524976604515
+[11.04.26|15:04:29] Time consumption:
+[11.04.26|15:04:29] Done.
+[11.04.26|15:04:29] Training epoch: 36
+[11.04.26|15:05:19] 	Iter 1300 Done. | loss: 0.1580 | sta: 0.0793 | ce: 0.0122 | dstcl: 0.6658 | lr: 0.025000
+[11.04.26|15:05:51] 	mean_loss: 0.17651400922073257
+[11.04.26|15:05:51] Time consumption:
+[11.04.26|15:05:51] Done.
+[11.04.26|15:05:51] Training epoch: 37
+[11.04.26|15:07:06] 	mean_loss: 0.15657744577361477
+[11.04.26|15:07:06] Time consumption:
+[11.04.26|15:07:06] Done.
+[11.04.26|15:07:06] Training epoch: 38
+[11.04.26|15:08:05] 	Iter 1400 Done. | loss: 0.1491 | sta: 0.0752 | ce: 0.0253 | dstcl: 0.4858 | lr: 0.025000
+[11.04.26|15:08:09] 	mean_loss: 0.2179925414837069
+[11.04.26|15:08:09] Time consumption:
+[11.04.26|15:08:09] Done.
+[11.04.26|15:08:09] Training epoch: 39
+[11.04.26|15:09:12] 	mean_loss: 0.16294637281033728
+[11.04.26|15:09:12] Time consumption:
+[11.04.26|15:09:12] Done.
+[11.04.26|15:09:12] Eval epoch: 39
+[11.04.26|15:09:54] 	mean_loss: 0.16294637281033728
+[11.04.26|15:09:54] 	Top1: 96.11%
+[11.04.26|15:09:54] 	Top5: 99.92%
+[11.04.26|15:09:54] 	Best Top1: 96.11%
+[11.04.26|15:09:54] current 96.11%, best 96.11%
+[11.04.26|15:09:54] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch040_acc96.11_model.pt.
+[11.04.26|15:09:54] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|15:09:54] Training epoch: 40
+[11.04.26|15:10:57] 	mean_loss: 0.15358685909046066
+[11.04.26|15:10:57] Time consumption:
+[11.04.26|15:10:57] Done.
+[11.04.26|15:10:57] Training epoch: 41
+[11.04.26|15:11:59] 	Iter 1500 Done. | loss: 0.1371 | sta: 0.0838 | ce: 0.0180 | dstcl: 0.3535 | lr: 0.025000
+[11.04.26|15:12:12] 	mean_loss: 0.17488490728040537
+[11.04.26|15:12:12] Time consumption:
+[11.04.26|15:12:12] Done.
+[11.04.26|15:12:12] Training epoch: 42
+[11.04.26|15:13:40] 	mean_loss: 0.1456324447774225
+[11.04.26|15:13:40] Time consumption:
+[11.04.26|15:13:40] Done.
+[11.04.26|15:13:40] Training epoch: 43
+[11.04.26|15:15:05] 	mean_loss: 0.13197405201693377
+[11.04.26|15:15:05] Time consumption:
+[11.04.26|15:15:05] Done.
+[11.04.26|15:15:05] Training epoch: 44
+[11.04.26|15:16:00] 	Iter 1600 Done. | loss: 0.1225 | sta: 0.0726 | ce: 0.0065 | dstcl: 0.4331 | lr: 0.025000
+[11.04.26|15:16:34] 	mean_loss: 0.1304614490105046
+[11.04.26|15:16:34] Time consumption:
+[11.04.26|15:16:34] Done.
+[11.04.26|15:16:34] Eval epoch: 44
+[11.04.26|15:17:31] 	mean_loss: 0.1304614490105046
+[11.04.26|15:17:31] 	Top1: 94.76%
+[11.04.26|15:17:31] 	Top5: 99.83%
+[11.04.26|15:17:31] 	Best Top1: 96.11%
+[11.04.26|15:17:31] current 94.76%, best 96.11%
+[11.04.26|15:17:31] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch045_acc94.76_model.pt.
+[11.04.26|15:17:31] Training epoch: 45
+[11.04.26|15:18:38] 	mean_loss: 0.14503917284309864
+[11.04.26|15:18:38] Time consumption:
+[11.04.26|15:18:38] Done.
+[11.04.26|15:18:38] Training epoch: 46
+[11.04.26|15:19:58] 	mean_loss: 0.13522466272115707
+[11.04.26|15:19:58] Time consumption:
+[11.04.26|15:19:58] Done.
+[11.04.26|15:19:58] Training epoch: 47
+[11.04.26|15:20:41] 	Iter 1700 Done. | loss: 0.0941 | sta: 0.0639 | ce: 0.0022 | dstcl: 0.2806 | lr: 0.025000
+[11.04.26|15:21:06] 	mean_loss: 0.15439916215837002
+[11.04.26|15:21:06] Time consumption:
+[11.04.26|15:21:06] Done.
+[11.04.26|15:21:06] Training epoch: 48
+[11.04.26|15:22:12] 	mean_loss: 0.15281949792471197
+[11.04.26|15:22:12] Time consumption:
+[11.04.26|15:22:12] Done.
+[11.04.26|15:22:12] Training epoch: 49
+[11.04.26|15:23:23] 	mean_loss: 0.16335611355801424
+[11.04.26|15:23:23] Time consumption:
+[11.04.26|15:23:23] Done.
+[11.04.26|15:23:23] Eval epoch: 49
+[11.04.26|15:24:06] 	mean_loss: 0.16335611355801424
+[11.04.26|15:24:07] 	Top1: 94.76%
+[11.04.26|15:24:07] 	Top5: 99.75%
+[11.04.26|15:24:07] 	Best Top1: 96.11%
+[11.04.26|15:24:07] current 94.76%, best 96.11%
+[11.04.26|15:24:07] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch050_acc94.76_model.pt.
+[11.04.26|15:24:07] Training epoch: 50
+[11.04.26|15:24:41] 	Iter 1800 Done. | loss: 0.1116 | sta: 0.0640 | ce: 0.0138 | dstcl: 0.3378 | lr: 0.025000
+[11.04.26|15:25:20] 	mean_loss: 0.14823093741304344
+[11.04.26|15:25:20] Time consumption:
+[11.04.26|15:25:20] Done.
+[11.04.26|15:25:20] Training epoch: 51
+[11.04.26|15:26:27] 	mean_loss: 0.12420014519658354
+[11.04.26|15:26:27] Time consumption:
+[11.04.26|15:26:27] Done.
+[11.04.26|15:26:27] Training epoch: 52
+[11.04.26|15:27:24] 	Iter 1900 Done. | loss: 0.1102 | sta: 0.0750 | ce: 0.0046 | dstcl: 0.3059 | lr: 0.025000
+[11.04.26|15:27:32] 	mean_loss: 0.12676125640670458
+[11.04.26|15:27:32] Time consumption:
+[11.04.26|15:27:33] Done.
+[11.04.26|15:27:33] Training epoch: 53
+[11.04.26|15:28:52] 	mean_loss: 0.14732534003754458
+[11.04.26|15:28:52] Time consumption:
+[11.04.26|15:28:52] Done.
+[11.04.26|15:28:52] Training epoch: 54
+[11.04.26|15:30:04] 	mean_loss: 0.13068152508801884
+[11.04.26|15:30:04] Time consumption:
+[11.04.26|15:30:04] Done.
+[11.04.26|15:30:04] Eval epoch: 54
+[11.04.26|15:30:56] 	mean_loss: 0.13068152508801884
+[11.04.26|15:30:56] 	Top1: 94.59%
+[11.04.26|15:30:56] 	Top5: 99.75%
+[11.04.26|15:30:56] 	Best Top1: 96.11%
+[11.04.26|15:30:56] current 94.59%, best 96.11%
+[11.04.26|15:30:57] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch055_acc94.59_model.pt.
+[11.04.26|15:30:57] Training epoch: 55
+[11.04.26|15:31:48] 	Iter 2000 Done. | loss: 0.1070 | sta: 0.0697 | ce: 0.0109 | dstcl: 0.2636 | lr: 0.025000
+[11.04.26|15:32:03] 	mean_loss: 0.12285442981455061
+[11.04.26|15:32:03] Time consumption:
+[11.04.26|15:32:03] Done.
+[11.04.26|15:32:03] Training epoch: 56
+[11.04.26|15:33:16] 	mean_loss: 0.11945451009604666
+[11.04.26|15:33:16] Time consumption:
+[11.04.26|15:33:16] Done.
+[11.04.26|15:33:16] Training epoch: 57
+[11.04.26|15:34:31] 	mean_loss: 0.11233004182577133
+[11.04.26|15:34:31] Time consumption:
+[11.04.26|15:34:31] Done.
+[11.04.26|15:34:31] Training epoch: 58
+[11.04.26|15:35:24] 	Iter 2100 Done. | loss: 0.1549 | sta: 0.0677 | ce: 0.0686 | dstcl: 0.1859 | lr: 0.025000
+[11.04.26|15:35:45] 	mean_loss: 0.10747599146432346
+[11.04.26|15:35:45] Time consumption:
+[11.04.26|15:35:45] Done.
+[11.04.26|15:35:45] Training epoch: 59
+[11.04.26|15:36:52] 	mean_loss: 0.11732568840185802
+[11.04.26|15:36:52] Time consumption:
+[11.04.26|15:36:52] Done.
+[11.04.26|15:36:52] Eval epoch: 59
+[11.04.26|15:37:45] 	mean_loss: 0.11732568840185802
+[11.04.26|15:37:45] 	Top1: 96.11%
+[11.04.26|15:37:45] 	Top5: 99.92%
+[11.04.26|15:37:45] 	Best Top1: 96.11%
+[11.04.26|15:37:45] current 96.11%, best 96.11%
+[11.04.26|15:37:46] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch060_acc96.11_model.pt.
+[11.04.26|15:37:46] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|15:37:46] Training epoch: 60
+[11.04.26|15:38:57] 	mean_loss: 0.10843878839578894
+[11.04.26|15:38:57] Time consumption:
+[11.04.26|15:38:57] Done.
+[11.04.26|15:38:57] Training epoch: 61
+[11.04.26|15:39:35] 	Iter 2200 Done. | loss: 0.3016 | sta: 0.0502 | ce: 0.1855 | dstcl: 0.6597 | lr: 0.025000
+[11.04.26|15:40:03] 	mean_loss: 0.10877620180447896
+[11.04.26|15:40:03] Time consumption:
+[11.04.26|15:40:03] Done.
+[11.04.26|15:40:03] Training epoch: 62
+[11.04.26|15:41:09] 	mean_loss: 0.10234200747476684
+[11.04.26|15:41:09] Time consumption:
+[11.04.26|15:41:09] Done.
+[11.04.26|15:41:09] Training epoch: 63
+[11.04.26|15:42:17] 	Iter 2300 Done. | loss: 0.0782 | sta: 0.0596 | ce: 0.0018 | dstcl: 0.1678 | lr: 0.025000
+[11.04.26|15:42:26] 	mean_loss: 0.10851026843819353
+[11.04.26|15:42:26] Time consumption:
+[11.04.26|15:42:26] Done.
+[11.04.26|15:42:26] Training epoch: 64
+[11.04.26|15:43:39] 	mean_loss: 0.09520627641015583
+[11.04.26|15:43:39] Time consumption:
+[11.04.26|15:43:39] Done.
+[11.04.26|15:43:39] Eval epoch: 64
+[11.04.26|15:44:31] 	mean_loss: 0.09520627641015583
+[11.04.26|15:44:31] 	Top1: 96.11%
+[11.04.26|15:44:31] 	Top5: 99.92%
+[11.04.26|15:44:31] 	Best Top1: 96.11%
+[11.04.26|15:44:31] current 96.11%, best 96.11%
+[11.04.26|15:44:31] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch065_acc96.11_model.pt.
+[11.04.26|15:44:31] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|15:44:31] Training epoch: 65
+[11.04.26|15:45:45] 	mean_loss: 0.1123068676226669
+[11.04.26|15:45:45] Time consumption:
+[11.04.26|15:45:45] Done.
+[11.04.26|15:45:45] Training epoch: 66
+[11.04.26|15:46:57] 	Iter 2400 Done. | loss: 0.0786 | sta: 0.0543 | ce: 0.0025 | dstcl: 0.2169 | lr: 0.025000
+[11.04.26|15:47:15] 	mean_loss: 0.10601742938160896
+[11.04.26|15:47:15] Time consumption:
+[11.04.26|15:47:15] Done.
+[11.04.26|15:47:15] Training epoch: 67
+[11.04.26|15:48:25] 	mean_loss: 0.10653113470309311
+[11.04.26|15:48:25] Time consumption:
+[11.04.26|15:48:25] Done.
+[11.04.26|15:48:25] Training epoch: 68
+[11.04.26|15:49:44] 	mean_loss: 0.10699817683133814
+[11.04.26|15:49:44] Time consumption:
+[11.04.26|15:49:44] Done.
+[11.04.26|15:49:44] Training epoch: 69
+[11.04.26|15:50:42] 	Iter 2500 Done. | loss: 0.0915 | sta: 0.0613 | ce: 0.0093 | dstcl: 0.2098 | lr: 0.025000
+[11.04.26|15:51:02] 	mean_loss: 0.09622793851627244
+[11.04.26|15:51:02] Time consumption:
+[11.04.26|15:51:02] Done.
+[11.04.26|15:51:02] Eval epoch: 69
+[11.04.26|15:51:56] 	mean_loss: 0.09622793851627244
+[11.04.26|15:51:56] 	Top1: 96.11%
+[11.04.26|15:51:56] 	Top5: 99.83%
+[11.04.26|15:51:56] 	Best Top1: 96.11%
+[11.04.26|15:51:56] current 96.11%, best 96.11%
+[11.04.26|15:51:56] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch070_acc96.11_model.pt.
+[11.04.26|15:51:57] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.04.26|15:51:57] Training epoch: 70
+[11.04.26|15:53:14] 	mean_loss: 0.09399990323517057
+[11.04.26|15:53:14] Time consumption:
+[11.04.26|15:53:14] Done.
+[11.04.26|15:53:14] Training epoch: 71
+[11.04.26|15:54:30] 	mean_loss: 0.08935448113414976
+[11.04.26|15:54:30] Time consumption:
+[11.04.26|15:54:30] Done.
+[11.04.26|15:54:30] Training epoch: 72
+[11.04.26|15:55:14] 	Iter 2600 Done. | loss: 0.0748 | sta: 0.0587 | ce: 0.0015 | dstcl: 0.1465 | lr: 0.025000
+[11.04.26|15:55:53] 	mean_loss: 0.09206237809525596
+[11.04.26|15:55:53] Time consumption:
+[11.04.26|15:55:53] Done.
+[11.04.26|15:55:53] Training epoch: 73
+[11.04.26|15:57:05] 	mean_loss: 0.10229089297354221
+[11.04.26|15:57:05] Time consumption:
+[11.04.26|15:57:05] Done.
+[11.04.26|15:57:05] Training epoch: 74
+[11.04.26|15:58:15] 	mean_loss: 0.12512925184435314
+[11.04.26|15:58:15] Time consumption:
+[11.04.26|15:58:15] Done.
+[11.04.26|15:58:15] Eval epoch: 74
+[11.04.26|15:59:09] 	mean_loss: 0.12512925184435314
+[11.04.26|15:59:09] 	Top1: 95.27%
+[11.04.26|15:59:09] 	Top5: 99.92%
+[11.04.26|15:59:09] 	Best Top1: 96.11%
+[11.04.26|15:59:09] current 95.27%, best 96.11%
+[11.04.26|15:59:09] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch075_acc95.27_model.pt.
+[11.04.26|15:59:09] Training epoch: 75
+[11.04.26|15:59:50] 	Iter 2700 Done. | loss: 0.0750 | sta: 0.0561 | ce: 0.0006 | dstcl: 0.1831 | lr: 0.025000
+[11.04.26|16:00:30] 	mean_loss: 0.11357375399933921
+[11.04.26|16:00:30] Time consumption:
+[11.04.26|16:00:30] Done.
+[11.04.26|16:00:30] Training epoch: 76
+[11.04.26|16:01:54] 	mean_loss: 0.07954080051018132
+[11.04.26|16:01:54] Time consumption:
+[11.04.26|16:01:54] Done.
+[11.04.26|16:01:54] Training epoch: 77
+[11.04.26|16:02:53] 	Iter 2800 Done. | loss: 0.0842 | sta: 0.0475 | ce: 0.0236 | dstcl: 0.1310 | lr: 0.025000
+[11.04.26|16:03:01] 	mean_loss: 0.09520105738192797
+[11.04.26|16:03:01] Time consumption:
+[11.04.26|16:03:01] Done.
+[11.04.26|16:03:01] Training epoch: 78
+[11.04.26|16:04:10] 	mean_loss: 0.07752466698487599
+[11.04.26|16:04:10] Time consumption:
+[11.04.26|16:04:10] Done.
+[11.04.26|16:04:10] Training epoch: 79
+[11.04.26|16:05:23] 	mean_loss: 0.07031774376001623
+[11.04.26|16:05:23] Time consumption:
+[11.04.26|16:05:23] Done.
+[11.04.26|16:05:23] Eval epoch: 79
+[11.04.26|16:06:08] 	mean_loss: 0.07031774376001623
+[11.04.26|16:06:08] 	Top1: 95.44%
+[11.04.26|16:06:08] 	Top5: 99.92%
+[11.04.26|16:06:08] 	Best Top1: 96.11%
+[11.04.26|16:06:08] current 95.44%, best 96.11%
+[11.04.26|16:06:08] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch080_acc95.44_model.pt.
+[11.04.26|16:06:08] Training epoch: 80
+[11.04.26|16:07:00] 	Iter 2900 Done. | loss: 0.0609 | sta: 0.0423 | ce: 0.0016 | dstcl: 0.1705 | lr: 0.025000
+[11.04.26|16:07:15] 	mean_loss: 0.06775726191699505
+[11.04.26|16:07:15] Time consumption:
+[11.04.26|16:07:15] Done.
+[11.04.26|16:07:15] Training epoch: 81
+[11.04.26|16:08:51] 	mean_loss: 0.09063269280725056
+[11.04.26|16:08:51] Time consumption:
+[11.04.26|16:08:51] Done.
+[11.04.26|16:08:51] Training epoch: 82
+[11.04.26|16:09:59] 	mean_loss: 0.08423623980747329
+[11.04.26|16:09:59] Time consumption:
+[11.04.26|16:09:59] Done.
+[11.04.26|16:09:59] Training epoch: 83
+[11.04.26|16:10:46] 	Iter 3000 Done. | loss: 0.0753 | sta: 0.0378 | ce: 0.0062 | dstcl: 0.3125 | lr: 0.025000
+[11.04.26|16:11:14] 	mean_loss: 0.08326975204464462
+[11.04.26|16:11:14] Time consumption:
+[11.04.26|16:11:14] Done.
+[11.04.26|16:11:14] Training epoch: 84
+[11.04.26|16:12:23] 	mean_loss: 0.08525143894884321
+[11.04.26|16:12:23] Time consumption:
+[11.04.26|16:12:23] Done.
+[11.04.26|16:12:23] Eval epoch: 84
+[11.04.26|16:13:07] 	mean_loss: 0.08525143894884321
+[11.04.26|16:13:07] 	Top1: 95.52%
+[11.04.26|16:13:07] 	Top5: 99.83%
+[11.04.26|16:13:07] 	Best Top1: 96.11%
+[11.04.26|16:13:07] current 95.52%, best 96.11%
+[11.04.26|16:13:07] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch085_acc95.52_model.pt.
+[11.04.26|16:13:07] Training epoch: 85
+[11.04.26|16:14:19] 	mean_loss: 0.10547852557566431
+[11.04.26|16:14:19] Time consumption:
+[11.04.26|16:14:19] Done.
+[11.04.26|16:14:19] Training epoch: 86
+[11.04.26|16:15:05] 	Iter 3100 Done. | loss: 0.0914 | sta: 0.0360 | ce: 0.0304 | dstcl: 0.2500 | lr: 0.025000
+[11.04.26|16:15:33] 	mean_loss: 0.16647491780006224
+[11.04.26|16:15:33] Time consumption:
+[11.04.26|16:15:33] Done.
+[11.04.26|16:15:33] Training epoch: 87
+[11.04.26|16:16:47] 	mean_loss: 0.09023192297253343
+[11.04.26|16:16:47] Time consumption:
+[11.04.26|16:16:47] Done.
+[11.04.26|16:16:47] Training epoch: 88
+[11.04.26|16:18:06] 	Iter 3200 Done. | loss: 0.1023 | sta: 0.0312 | ce: 0.0353 | dstcl: 0.3567 | lr: 0.025000
+[11.04.26|16:18:10] 	mean_loss: 0.09584260949244101
+[11.04.26|16:18:10] Time consumption:
+[11.04.26|16:18:10] Done.
+[11.04.26|16:18:10] Training epoch: 89
+[11.04.26|16:19:25] 	mean_loss: 0.11156813417457873
+[11.04.26|16:19:25] Time consumption:
+[11.04.26|16:19:25] Done.
+[11.04.26|16:19:25] Eval epoch: 89
+[11.04.26|16:20:15] 	mean_loss: 0.11156813417457873
+[11.04.26|16:20:15] 	Top1: 95.01%
+[11.04.26|16:20:15] 	Top5: 99.66%
+[11.04.26|16:20:15] 	Best Top1: 96.11%
+[11.04.26|16:20:15] current 95.01%, best 96.11%
+[11.04.26|16:20:16] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch090_acc95.01_model.pt.
+[11.04.26|16:20:16] Training epoch: 90
+[11.04.26|16:21:42] 	mean_loss: 0.07633616951190764
+[11.04.26|16:21:42] Time consumption:
+[11.04.26|16:21:42] Done.
+[11.04.26|16:21:42] Training epoch: 91
+[11.04.26|16:22:47] 	Iter 3300 Done. | loss: 0.0574 | sta: 0.0401 | ce: 0.0017 | dstcl: 0.1566 | lr: 0.025000
+[11.04.26|16:22:59] 	mean_loss: 0.061398632617460355
+[11.04.26|16:22:59] Time consumption:
+[11.04.26|16:22:59] Done.
+[11.04.26|16:22:59] Training epoch: 92
+[11.04.26|16:24:14] 	mean_loss: 0.07998005352500412
+[11.04.26|16:24:14] Time consumption:
+[11.04.26|16:24:14] Done.
+[11.04.26|16:24:14] Training epoch: 93
+[11.04.26|16:25:30] 	mean_loss: 0.07915900699380371
+[11.04.26|16:25:30] Time consumption:
+[11.04.26|16:25:30] Done.
+[11.04.26|16:25:30] Training epoch: 94
+[11.04.26|16:26:25] 	Iter 3400 Done. | loss: 0.0722 | sta: 0.0313 | ce: 0.0091 | dstcl: 0.3182 | lr: 0.025000
+[11.04.26|16:26:44] 	mean_loss: 0.10543807989193334
+[11.04.26|16:26:44] Time consumption:
+[11.04.26|16:26:44] Done.
+[11.04.26|16:26:44] Eval epoch: 94
+[11.04.26|16:27:26] 	mean_loss: 0.10543807989193334
+[11.04.26|16:27:26] 	Top1: 93.41%
+[11.04.26|16:27:26] 	Top5: 99.92%
+[11.04.26|16:27:26] 	Best Top1: 96.11%
+[11.04.26|16:27:26] current 93.41%, best 96.11%
+[11.04.26|16:27:27] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch095_acc93.41_model.pt.
+[11.04.26|16:27:27] Training epoch: 95
+[11.04.26|16:28:35] 	mean_loss: 0.08389357042809327
+[11.04.26|16:28:35] Time consumption:
+[11.04.26|16:28:35] Done.
+[11.04.26|16:28:35] Training epoch: 96
+[11.04.26|16:29:47] 	mean_loss: 0.07476909706989925
+[11.04.26|16:29:47] Time consumption:
+[11.04.26|16:29:47] Done.
+[11.04.26|16:29:47] Training epoch: 97
+[11.04.26|16:30:27] 	Iter 3500 Done. | loss: 0.0525 | sta: 0.0365 | ce: 0.0026 | dstcl: 0.1334 | lr: 0.025000
+[11.04.26|16:30:52] 	mean_loss: 0.07183278155409628
+[11.04.26|16:30:52] Time consumption:
+[11.04.26|16:30:52] Done.
+[11.04.26|16:30:52] Training epoch: 98
+[11.04.26|16:31:59] 	mean_loss: 0.061270258906814784
+[11.04.26|16:31:59] Time consumption:
+[11.04.26|16:31:59] Done.
+[11.04.26|16:31:59] Training epoch: 99
+[11.04.26|16:33:39] 	mean_loss: 0.06371645401749346
+[11.04.26|16:33:39] Time consumption:
+[11.04.26|16:33:39] Done.
+[11.04.26|16:33:39] Eval epoch: 99
+[11.04.26|16:35:08] 	mean_loss: 0.06371645401749346
+[11.04.26|16:35:08] 	Top1: 95.77%
+[11.04.26|16:35:08] 	Top5: 99.92%
+[11.04.26|16:35:08] 	Best Top1: 96.11%
+[11.04.26|16:35:08] current 95.77%, best 96.11%
+[11.04.26|16:35:08] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch100_acc95.77_model.pt.
+[11.04.26|16:35:08] Training epoch: 100
+[11.04.26|16:35:55] 	Iter 3600 Done. | loss: 0.0478 | sta: 0.0319 | ce: 0.0046 | dstcl: 0.1133 | lr: 0.025000
+[11.04.26|16:36:41] 	mean_loss: 0.05959863826218578
+[11.04.26|16:36:41] Time consumption:
+[11.04.26|16:36:41] Done.
+[11.04.26|16:36:41] Training epoch: 101
+[11.04.26|16:37:55] 	mean_loss: 0.060694025829434395
+[11.04.26|16:37:55] Time consumption:
+[11.04.26|16:37:55] Done.
+[11.04.26|16:37:55] Training epoch: 102
+[11.04.26|16:39:29] 	Iter 3700 Done. | loss: 0.0529 | sta: 0.0359 | ce: 0.0014 | dstcl: 0.1567 | lr: 0.025000
+[11.04.26|16:39:38] 	mean_loss: 0.07514787216981252
+[11.04.26|16:39:38] Time consumption:
+[11.04.26|16:39:38] Done.
+[11.04.26|16:39:38] Training epoch: 103
+[11.04.26|16:41:10] 	mean_loss: 0.06857350437591474
+[11.04.26|16:41:10] Time consumption:
+[11.04.26|16:41:10] Done.
+[11.04.26|16:41:10] Training epoch: 104
+[11.04.26|16:42:23] 	mean_loss: 0.07301409201075633
+[11.04.26|16:42:23] Time consumption:
+[11.04.26|16:42:23] Done.
+[11.04.26|16:42:23] Eval epoch: 104
+[11.04.26|16:43:09] 	mean_loss: 0.07301409201075633
+[11.04.26|16:43:09] 	Top1: 95.18%
+[11.04.26|16:43:09] 	Top5: 99.75%
+[11.04.26|16:43:09] 	Best Top1: 96.11%
+[11.04.26|16:43:09] current 95.18%, best 96.11%
+[11.04.26|16:43:09] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch105_acc95.18_model.pt.
+[11.04.26|16:43:09] Training epoch: 105
+[11.04.26|16:44:14] 	Iter 3800 Done. | loss: 0.0479 | sta: 0.0329 | ce: 0.0011 | dstcl: 0.1395 | lr: 0.025000
+[11.04.26|16:44:32] 	mean_loss: 0.0825114565797978
+[11.04.26|16:44:32] Time consumption:
+[11.04.26|16:44:32] Done.
+[11.04.26|16:44:32] Training epoch: 106
+[11.04.26|16:45:41] 	mean_loss: 0.05640634728802575
+[11.04.26|16:45:41] Time consumption:
+[11.04.26|16:45:41] Done.
+[11.04.26|16:45:41] Training epoch: 107
+[11.04.26|16:47:35] 	mean_loss: 0.05997866309351391
+[11.04.26|16:47:35] Time consumption:
+[11.04.26|16:47:35] Done.
+[11.04.26|16:47:35] Training epoch: 108
+[11.04.26|16:48:32] 	Iter 3900 Done. | loss: 0.0746 | sta: 0.0340 | ce: 0.0202 | dstcl: 0.2038 | lr: 0.025000
+[11.04.26|16:49:08] 	mean_loss: 0.06117494859629207
+[11.04.26|16:49:08] Time consumption:
+[11.04.26|16:49:08] Done.
+[11.04.26|16:49:08] Training epoch: 109
+[11.04.26|16:51:01] 	mean_loss: 0.05510185927980476
+[11.04.26|16:51:01] Time consumption:
+[11.04.26|16:51:01] Done.
+[11.04.26|16:51:01] Eval epoch: 109
+[11.04.26|16:52:02] 	mean_loss: 0.05510185927980476
+[11.04.26|16:52:02] 	Top1: 95.77%
+[11.04.26|16:52:02] 	Top5: 100.00%
+[11.04.26|16:52:02] 	Best Top1: 96.11%
+[11.04.26|16:52:02] current 95.77%, best 96.11%
+[11.04.26|16:52:07] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch110_acc95.77_model.pt.
+[11.04.26|16:52:07] Training epoch: 110
+[11.04.26|16:53:46] 	mean_loss: 0.04605246614664793
+[11.04.26|16:53:46] Time consumption:
+[11.04.26|16:53:46] Done.
+[11.04.26|16:53:46] Training epoch: 111
+[11.04.26|16:54:43] 	Iter 4000 Done. | loss: 0.0381 | sta: 0.0288 | ce: 0.0006 | dstcl: 0.0865 | lr: 0.025000
+[11.04.26|16:55:33] 	mean_loss: 0.04763521585199568
+[11.04.26|16:55:33] Time consumption:
+[11.04.26|16:55:33] Done.
+[11.04.26|16:55:33] Training epoch: 112
+[11.04.26|16:57:00] 	mean_loss: 0.04869200506558021
+[11.04.26|16:57:00] Time consumption:
+[11.04.26|16:57:00] Done.
+[11.04.26|16:57:00] Training epoch: 113
+[11.04.26|16:58:09] 	Iter 4100 Done. | loss: 0.1459 | sta: 0.0275 | ce: 0.0759 | dstcl: 0.4248 | lr: 0.025000
+[11.04.26|16:58:13] 	mean_loss: 0.10726573701120085
+[11.04.26|16:58:13] Time consumption:
+[11.04.26|16:58:13] Done.
+[11.04.26|16:58:13] Training epoch: 114
+[11.04.26|16:59:23] 	mean_loss: 0.0815340629261401
+[11.04.26|16:59:23] Time consumption:
+[11.04.26|16:59:23] Done.
+[11.04.26|16:59:23] Eval epoch: 114
+[11.04.26|17:00:06] 	mean_loss: 0.0815340629261401
+[11.04.26|17:00:06] 	Top1: 94.42%
+[11.04.26|17:00:06] 	Top5: 99.92%
+[11.04.26|17:00:06] 	Best Top1: 96.11%
+[11.04.26|17:00:06] current 94.42%, best 96.11%
+[11.04.26|17:00:06] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch115_acc94.42_model.pt.
+[11.04.26|17:00:06] Training epoch: 115
+[11.04.26|17:01:29] 	mean_loss: 0.05257916616068946
+[11.04.26|17:01:29] Time consumption:
+[11.04.26|17:01:29] Done.
+[11.04.26|17:01:29] Training epoch: 116
+[11.05.26|08:31:19] 	Iter 4200 Done. | loss: 0.0487 | sta: 0.0348 | ce: 0.0021 | dstcl: 0.1183 | lr: 0.025000
+[11.05.26|08:31:33] 	mean_loss: 0.046864806260499686
+[11.05.26|08:31:34] Time consumption:
+[11.05.26|08:31:34] Done.
+[11.05.26|08:31:34] Training epoch: 117
+[11.05.26|08:32:50] 	mean_loss: 0.05263447409702672
+[11.05.26|08:32:50] Time consumption:
+[11.05.26|08:32:50] Done.
+[11.05.26|08:32:50] Training epoch: 118
+[11.05.26|08:34:12] 	mean_loss: 0.11210501949406332
+[11.05.26|08:34:12] Time consumption:
+[11.05.26|08:34:12] Done.
+[11.05.26|08:34:12] Training epoch: 119
+[11.05.26|08:35:15] 	Iter 4300 Done. | loss: 0.0573 | sta: 0.0267 | ce: 0.0148 | dstcl: 0.1591 | lr: 0.025000
+[11.05.26|08:35:37] 	mean_loss: 0.0726164560765028
+[11.05.26|08:35:37] Time consumption:
+[11.05.26|08:35:37] Done.
+[11.05.26|08:35:37] Eval epoch: 119
+[11.05.26|08:36:36] 	mean_loss: 0.0726164560765028
+[11.05.26|08:36:36] 	Top1: 95.27%
+[11.05.26|08:36:36] 	Top5: 100.00%
+[11.05.26|08:36:36] 	Best Top1: 96.11%
+[11.05.26|08:36:36] current 95.27%, best 96.11%
+[11.05.26|08:36:36] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch120_acc95.27_model.pt.
+[11.05.26|08:36:36] Training epoch: 120
+[11.05.26|08:37:54] 	mean_loss: 0.05503997392952442
+[11.05.26|08:37:54] Time consumption:
+[11.05.26|08:37:54] Done.
+[11.05.26|08:37:54] Training epoch: 121
+[11.05.26|08:39:09] 	mean_loss: 0.061216495310266815
+[11.05.26|08:39:09] Time consumption:
+[11.05.26|08:39:09] Done.
+[11.05.26|08:39:09] Training epoch: 122
+[11.05.26|08:39:53] 	Iter 4400 Done. | loss: 0.0449 | sta: 0.0262 | ce: 0.0051 | dstcl: 0.1366 | lr: 0.025000
+[11.05.26|08:40:25] 	mean_loss: 0.0697593084639973
+[11.05.26|08:40:25] Time consumption:
+[11.05.26|08:40:25] Done.
+[11.05.26|08:40:25] Training epoch: 123
+[11.05.26|08:41:38] 	mean_loss: 0.06405759871833855
+[11.05.26|08:41:38] Time consumption:
+[11.05.26|08:41:38] Done.
+[11.05.26|08:41:38] Training epoch: 124
+[11.05.26|08:42:54] 	mean_loss: 0.05035752751347092
+[11.05.26|08:42:54] Time consumption:
+[11.05.26|08:42:54] Done.
+[11.05.26|08:42:54] Eval epoch: 124
+[11.05.26|08:44:01] 	mean_loss: 0.05035752751347092
+[11.05.26|08:44:02] 	Top1: 95.60%
+[11.05.26|08:44:02] 	Top5: 100.00%
+[11.05.26|08:44:02] 	Best Top1: 96.11%
+[11.05.26|08:44:02] current 95.60%, best 96.11%
+[11.05.26|08:44:02] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch125_acc95.60_model.pt.
+[11.05.26|08:44:02] Training epoch: 125
+[11.05.26|08:44:39] 	Iter 4500 Done. | loss: 0.0392 | sta: 0.0282 | ce: 0.0005 | dstcl: 0.1038 | lr: 0.025000
+[11.05.26|08:45:14] 	mean_loss: 0.046456151745385595
+[11.05.26|08:45:14] Time consumption:
+[11.05.26|08:45:14] Done.
+[11.05.26|08:45:14] Training epoch: 126
+[11.05.26|08:46:18] 	mean_loss: 0.04237291899820169
+[11.05.26|08:46:18] Time consumption:
+[11.05.26|08:46:18] Done.
+[11.05.26|08:46:18] Training epoch: 127
+[11.05.26|08:47:19] 	Iter 4600 Done. | loss: 0.0370 | sta: 0.0222 | ce: 0.0007 | dstcl: 0.1410 | lr: 0.025000
+[11.05.26|08:47:26] 	mean_loss: 0.042967580517547
+[11.05.26|08:47:26] Time consumption:
+[11.05.26|08:47:26] Done.
+[11.05.26|08:47:26] Training epoch: 128
+[11.05.26|08:48:29] 	mean_loss: 0.04122035231234299
+[11.05.26|08:48:29] Time consumption:
+[11.05.26|08:48:29] Done.
+[11.05.26|08:48:29] Training epoch: 129
+[11.05.26|08:49:32] 	mean_loss: 0.0417895887254013
+[11.05.26|08:49:32] Time consumption:
+[11.05.26|08:49:32] Done.
+[11.05.26|08:49:32] Eval epoch: 129
+[11.05.26|08:50:15] 	mean_loss: 0.0417895887254013
+[11.05.26|08:50:15] 	Top1: 96.11%
+[11.05.26|08:50:15] 	Top5: 100.00%
+[11.05.26|08:50:15] 	Best Top1: 96.11%
+[11.05.26|08:50:15] current 96.11%, best 96.11%
+[11.05.26|08:50:15] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch130_acc96.11_model.pt.
+[11.05.26|08:50:15] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.05.26|08:50:15] Training epoch: 130
+[11.05.26|08:51:07] 	Iter 4700 Done. | loss: 0.0393 | sta: 0.0287 | ce: 0.0009 | dstcl: 0.0976 | lr: 0.025000
+[11.05.26|08:51:24] 	mean_loss: 0.04119535018172529
+[11.05.26|08:51:24] Time consumption:
+[11.05.26|08:51:24] Done.
+[11.05.26|08:51:24] Training epoch: 131
+[11.05.26|08:53:01] 	mean_loss: 0.04193331404692597
+[11.05.26|08:53:01] Time consumption:
+[11.05.26|08:53:01] Done.
+[11.05.26|08:53:01] Training epoch: 132
+[11.05.26|08:54:14] 	mean_loss: 0.03938877261761162
+[11.05.26|08:54:14] Time consumption:
+[11.05.26|08:54:14] Done.
+[11.05.26|08:54:14] Training epoch: 133
+[11.05.26|08:55:03] 	Iter 4800 Done. | loss: 0.0852 | sta: 0.0222 | ce: 0.0411 | dstcl: 0.2186 | lr: 0.025000
+[11.05.26|08:55:25] 	mean_loss: 0.04383646520889468
+[11.05.26|08:55:25] Time consumption:
+[11.05.26|08:55:25] Done.
+[11.05.26|08:55:25] Training epoch: 134
+[11.05.26|08:56:41] 	mean_loss: 0.041819551752673254
+[11.05.26|08:56:41] Time consumption:
+[11.05.26|08:56:41] Done.
+[11.05.26|08:56:41] Eval epoch: 134
+[11.05.26|08:57:26] 	mean_loss: 0.041819551752673254
+[11.05.26|08:57:26] 	Top1: 96.03%
+[11.05.26|08:57:26] 	Top5: 100.00%
+[11.05.26|08:57:26] 	Best Top1: 96.11%
+[11.05.26|08:57:26] current 96.03%, best 96.11%
+[11.05.26|08:57:26] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch135_acc96.03_model.pt.
+[11.05.26|08:57:26] Training epoch: 135
+[11.05.26|08:58:35] 	mean_loss: 0.037245449092653066
+[11.05.26|08:58:35] Time consumption:
+[11.05.26|08:58:35] Done.
+[11.05.26|08:58:35] Training epoch: 136
+[11.05.26|08:59:10] 	Iter 4900 Done. | loss: 0.0491 | sta: 0.0276 | ce: 0.0109 | dstcl: 0.1059 | lr: 0.025000
+[11.05.26|08:59:38] 	mean_loss: 0.048451925420926675
+[11.05.26|08:59:38] Time consumption:
+[11.05.26|08:59:38] Done.
+[11.05.26|08:59:38] Training epoch: 137
+[11.05.26|09:00:53] 	mean_loss: 0.054931632346577115
+[11.05.26|09:00:53] Time consumption:
+[11.05.26|09:00:53] Done.
+[11.05.26|09:00:53] Training epoch: 138
+[11.05.26|09:01:56] 	Iter 5000 Done. | loss: 0.0392 | sta: 0.0282 | ce: 0.0023 | dstcl: 0.0871 | lr: 0.025000
+[11.05.26|09:02:02] 	mean_loss: 0.0491350827117761
+[11.05.26|09:02:02] Time consumption:
+[11.05.26|09:02:02] Done.
+[11.05.26|09:02:02] Training epoch: 139
+[11.05.26|09:03:38] 	mean_loss: 0.04265849090491732
+[11.05.26|09:03:38] Time consumption:
+[11.05.26|09:03:38] Done.
+[11.05.26|09:03:38] Eval epoch: 139
+[11.05.26|09:04:21] 	mean_loss: 0.04265849090491732
+[11.05.26|09:04:21] 	Top1: 95.10%
+[11.05.26|09:04:21] 	Top5: 100.00%
+[11.05.26|09:04:21] 	Best Top1: 96.11%
+[11.05.26|09:04:21] current 95.10%, best 96.11%
+[11.05.26|09:04:21] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch140_acc95.10_model.pt.
+[11.05.26|09:04:21] Training epoch: 140
+[11.05.26|09:05:32] 	mean_loss: 0.04195887160797914
+[11.05.26|09:05:32] Time consumption:
+[11.05.26|09:05:32] Done.
+[11.05.26|09:05:32] Training epoch: 141
+[11.05.26|09:06:32] 	Iter 5100 Done. | loss: 0.0290 | sta: 0.0217 | ce: 0.0002 | dstcl: 0.0705 | lr: 0.025000
+[11.05.26|09:06:43] 	mean_loss: 0.04022905509918928
+[11.05.26|09:06:43] Time consumption:
+[11.05.26|09:06:43] Done.
+[11.05.26|09:06:43] Training epoch: 142
+[11.05.26|09:07:47] 	mean_loss: 0.04657210264768866
+[11.05.26|09:07:47] Time consumption:
+[11.05.26|09:07:47] Done.
+[11.05.26|09:07:47] Training epoch: 143
+[11.05.26|09:08:59] 	mean_loss: 0.040360101705624
+[11.05.26|09:08:59] Time consumption:
+[11.05.26|09:08:59] Done.
+[11.05.26|09:08:59] Training epoch: 144
+[11.05.26|09:09:56] 	Iter 5200 Done. | loss: 0.0338 | sta: 0.0264 | ce: 0.0002 | dstcl: 0.0730 | lr: 0.025000
+[11.05.26|09:10:15] 	mean_loss: 0.057362645554045834
+[11.05.26|09:10:15] Time consumption:
+[11.05.26|09:10:15] Done.
+[11.05.26|09:10:15] Eval epoch: 144
+[11.05.26|09:10:59] 	mean_loss: 0.057362645554045834
+[11.05.26|09:10:59] 	Top1: 95.44%
+[11.05.26|09:10:59] 	Top5: 99.92%
+[11.05.26|09:10:59] 	Best Top1: 96.11%
+[11.05.26|09:10:59] current 95.44%, best 96.11%
+[11.05.26|09:10:59] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch145_acc95.44_model.pt.
+[11.05.26|09:10:59] Training epoch: 145
+[11.05.26|09:12:29] 	mean_loss: 0.049719271922691
+[11.05.26|09:12:29] Time consumption:
+[11.05.26|09:12:29] Done.
+[11.05.26|09:12:29] Training epoch: 146
+[11.05.26|09:14:08] 	mean_loss: 0.04018246237602499
+[11.05.26|09:14:08] Time consumption:
+[11.05.26|09:14:08] Done.
+[11.05.26|09:14:08] Training epoch: 147
+[11.05.26|09:14:53] 	Iter 5300 Done. | loss: 0.0597 | sta: 0.0252 | ce: 0.0199 | dstcl: 0.1458 | lr: 0.025000
+[11.05.26|09:15:31] 	mean_loss: 0.055833049687660403
+[11.05.26|09:15:31] Time consumption:
+[11.05.26|09:15:31] Done.
+[11.05.26|09:15:31] Training epoch: 148
+[11.05.26|09:16:42] 	mean_loss: 0.04417305895023876
+[11.05.26|09:16:42] Time consumption:
+[11.05.26|09:16:42] Done.
+[11.05.26|09:16:42] Training epoch: 149
+[11.05.26|09:17:49] 	mean_loss: 0.042775029575245246
+[11.05.26|09:17:49] Time consumption:
+[11.05.26|09:17:49] Done.
+[11.05.26|09:17:49] Eval epoch: 149
+[11.05.26|09:18:40] 	mean_loss: 0.042775029575245246
+[11.05.26|09:18:40] 	Top1: 95.44%
+[11.05.26|09:18:40] 	Top5: 99.92%
+[11.05.26|09:18:40] 	Best Top1: 96.11%
+[11.05.26|09:18:40] current 95.44%, best 96.11%
+[11.05.26|09:18:40] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch150_acc95.44_model.pt.
+[11.05.26|09:18:40] Training epoch: 150
+[11.05.26|09:19:18] 	Iter 5400 Done. | loss: 0.0270 | sta: 0.0181 | ce: 0.0007 | dstcl: 0.0813 | lr: 0.002500
+[11.05.26|09:19:52] 	mean_loss: 0.03876823393834962
+[11.05.26|09:19:52] Time consumption:
+[11.05.26|09:19:52] Done.
+[11.05.26|09:19:52] Training epoch: 151
+[11.05.26|09:21:01] 	mean_loss: 0.039203396170503564
+[11.05.26|09:21:01] Time consumption:
+[11.05.26|09:21:01] Done.
+[11.05.26|09:21:01] Training epoch: 152
+[11.05.26|09:22:11] 	Iter 5500 Done. | loss: 0.0336 | sta: 0.0230 | ce: 0.0017 | dstcl: 0.0897 | lr: 0.002500
+[11.05.26|09:22:19] 	mean_loss: 0.03508284931174583
+[11.05.26|09:22:19] Time consumption:
+[11.05.26|09:22:19] Done.
+[11.05.26|09:22:19] Training epoch: 153
+[11.05.26|09:23:24] 	mean_loss: 0.03970481243191494
+[11.05.26|09:23:24] Time consumption:
+[11.05.26|09:23:24] Done.
+[11.05.26|09:23:24] Training epoch: 154
+[11.05.26|09:24:57] 	mean_loss: 0.03262536641624239
+[11.05.26|09:24:57] Time consumption:
+[11.05.26|09:24:57] Done.
+[11.05.26|09:24:57] Eval epoch: 154
+[11.05.26|09:25:45] 	mean_loss: 0.03262536641624239
+[11.05.26|09:25:45] 	Top1: 95.94%
+[11.05.26|09:25:45] 	Top5: 99.92%
+[11.05.26|09:25:45] 	Best Top1: 96.11%
+[11.05.26|09:25:45] current 95.94%, best 96.11%
+[11.05.26|09:25:45] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch155_acc95.94_model.pt.
+[11.05.26|09:25:45] Training epoch: 155
+[11.05.26|09:26:49] 	Iter 5600 Done. | loss: 0.0351 | sta: 0.0263 | ce: 0.0008 | dstcl: 0.0801 | lr: 0.002500
+[11.05.26|09:27:04] 	mean_loss: 0.03516297621859445
+[11.05.26|09:27:04] Time consumption:
+[11.05.26|09:27:04] Done.
+[11.05.26|09:27:04] Training epoch: 156
+[11.05.26|09:28:17] 	mean_loss: 0.03581593723760711
+[11.05.26|09:28:17] Time consumption:
+[11.05.26|09:28:17] Done.
+[11.05.26|09:28:17] Training epoch: 157
+[11.05.26|09:29:26] 	mean_loss: 0.0323387275242971
+[11.05.26|09:29:26] Time consumption:
+[11.05.26|09:29:26] Done.
+[11.05.26|09:29:26] Training epoch: 158
+[11.05.26|09:30:12] 	Iter 5700 Done. | loss: 0.0314 | sta: 0.0224 | ce: 0.0014 | dstcl: 0.0757 | lr: 0.002500
+[11.05.26|09:30:33] 	mean_loss: 0.032071995134982795
+[11.05.26|09:30:33] Time consumption:
+[11.05.26|09:30:33] Done.
+[11.05.26|09:30:33] Training epoch: 159
+[11.05.26|09:31:37] 	mean_loss: 0.034591629169881344
+[11.05.26|09:31:37] Time consumption:
+[11.05.26|09:31:37] Done.
+[11.05.26|09:31:37] Eval epoch: 159
+[11.05.26|09:32:25] 	mean_loss: 0.034591629169881344
+[11.05.26|09:32:25] 	Top1: 96.53%
+[11.05.26|09:32:25] 	Top5: 99.92%
+[11.05.26|09:32:25] 	Best Top1: 96.53%
+[11.05.26|09:32:25] current 96.53%, best 96.53%
+[11.05.26|09:32:25] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch160_acc96.53_model.pt.
+[11.05.26|09:32:25] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.05.26|09:32:25] Training epoch: 160
+[11.05.26|09:33:29] 	mean_loss: 0.03419747638205687
+[11.05.26|09:33:29] Time consumption:
+[11.05.26|09:33:29] Done.
+[11.05.26|09:33:29] Training epoch: 161
+[11.05.26|09:34:04] 	Iter 5800 Done. | loss: 0.0302 | sta: 0.0232 | ce: 0.0004 | dstcl: 0.0656 | lr: 0.002500
+[11.05.26|09:34:32] 	mean_loss: 0.03504173079919484
+[11.05.26|09:34:32] Time consumption:
+[11.05.26|09:34:32] Done.
+[11.05.26|09:34:32] Training epoch: 162
+[11.05.26|09:35:49] 	mean_loss: 0.03233022734315859
+[11.05.26|09:35:49] Time consumption:
+[11.05.26|09:35:49] Done.
+[11.05.26|09:35:49] Training epoch: 163
+[11.05.26|09:37:06] 	Iter 5900 Done. | loss: 0.0322 | sta: 0.0232 | ce: 0.0012 | dstcl: 0.0775 | lr: 0.002500
+[11.05.26|09:37:11] 	mean_loss: 0.034361815752668515
+[11.05.26|09:37:11] Time consumption:
+[11.05.26|09:37:11] Done.
+[11.05.26|09:37:11] Training epoch: 164
+[11.05.26|09:38:21] 	mean_loss: 0.034854499260998435
+[11.05.26|09:38:21] Time consumption:
+[11.05.26|09:38:21] Done.
+[11.05.26|09:38:21] Eval epoch: 164
+[11.05.26|09:39:13] 	mean_loss: 0.034854499260998435
+[11.05.26|09:39:13] 	Top1: 96.45%
+[11.05.26|09:39:13] 	Top5: 99.92%
+[11.05.26|09:39:13] 	Best Top1: 96.53%
+[11.05.26|09:39:13] current 96.45%, best 96.53%
+[11.05.26|09:39:14] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch165_acc96.45_model.pt.
+[11.05.26|09:39:14] Training epoch: 165
+[11.05.26|09:40:32] 	mean_loss: 0.03225207137357858
+[11.05.26|09:40:32] Time consumption:
+[11.05.26|09:40:32] Done.
+[11.05.26|09:40:32] Training epoch: 166
+[11.05.26|09:41:35] 	Iter 6000 Done. | loss: 0.0328 | sta: 0.0232 | ce: 0.0011 | dstcl: 0.0851 | lr: 0.002500
+[11.05.26|09:41:47] 	mean_loss: 0.03181356331333518
+[11.05.26|09:41:47] Time consumption:
+[11.05.26|09:41:47] Done.
+[11.05.26|09:41:47] Training epoch: 167
+[11.05.26|09:42:56] 	mean_loss: 0.03143808292225003
+[11.05.26|09:42:56] Time consumption:
+[11.05.26|09:42:56] Done.
+[11.05.26|09:42:56] Training epoch: 168
+[11.05.26|09:44:10] 	mean_loss: 0.03176396547092332
+[11.05.26|09:44:10] Time consumption:
+[11.05.26|09:44:10] Done.
+[11.05.26|09:44:10] Training epoch: 169
+[11.05.26|09:44:57] 	Iter 6100 Done. | loss: 0.0308 | sta: 0.0224 | ce: 0.0005 | dstcl: 0.0791 | lr: 0.002500
+[11.05.26|09:45:14] 	mean_loss: 0.03129931140898003
+[11.05.26|09:45:14] Time consumption:
+[11.05.26|09:45:14] Done.
+[11.05.26|09:45:14] Eval epoch: 169
+[11.05.26|09:45:59] 	mean_loss: 0.03129931140898003
+[11.05.26|09:45:59] 	Top1: 96.62%
+[11.05.26|09:45:59] 	Top5: 99.92%
+[11.05.26|09:45:59] 	Best Top1: 96.62%
+[11.05.26|09:45:59] current 96.62%, best 96.62%
+[11.05.26|09:45:59] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch170_acc96.62_model.pt.
+[11.05.26|09:45:59] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.05.26|09:45:59] Training epoch: 170
+[11.05.26|09:47:13] 	mean_loss: 0.03528416301641199
+[11.05.26|09:47:13] Time consumption:
+[11.05.26|09:47:13] Done.
+[11.05.26|09:47:13] Training epoch: 171
+[11.05.26|09:48:24] 	mean_loss: 0.03152527266906367
+[11.05.26|09:48:24] Time consumption:
+[11.05.26|09:48:24] Done.
+[11.05.26|09:48:24] Training epoch: 172
+[11.05.26|09:49:05] 	Iter 6200 Done. | loss: 0.0377 | sta: 0.0269 | ce: 0.0021 | dstcl: 0.0865 | lr: 0.002500
+[11.05.26|09:49:30] 	mean_loss: 0.032081007647017636
+[11.05.26|09:49:30] Time consumption:
+[11.05.26|09:49:30] Done.
+[11.05.26|09:49:30] Training epoch: 173
+[11.05.26|09:50:33] 	mean_loss: 0.03216022967050473
+[11.05.26|09:50:33] Time consumption:
+[11.05.26|09:50:33] Done.
+[11.05.26|09:50:33] Training epoch: 174
+[11.05.26|09:51:36] 	mean_loss: 0.0333981234062877
+[11.05.26|09:51:36] Time consumption:
+[11.05.26|09:51:36] Done.
+[11.05.26|09:51:36] Eval epoch: 174
+[11.05.26|09:52:16] 	mean_loss: 0.0333981234062877
+[11.05.26|09:52:16] 	Top1: 96.03%
+[11.05.26|09:52:16] 	Top5: 100.00%
+[11.05.26|09:52:16] 	Best Top1: 96.62%
+[11.05.26|09:52:16] current 96.03%, best 96.62%
+[11.05.26|09:52:16] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch175_acc96.03_model.pt.
+[11.05.26|09:52:16] Training epoch: 175
+[11.05.26|09:52:48] 	Iter 6300 Done. | loss: 0.0279 | sta: 0.0209 | ce: 0.0007 | dstcl: 0.0637 | lr: 0.002500
+[11.05.26|09:53:19] 	mean_loss: 0.030928781670000818
+[11.05.26|09:53:19] Time consumption:
+[11.05.26|09:53:19] Done.
+[11.05.26|09:53:19] Training epoch: 176
+[11.05.26|09:54:21] 	mean_loss: 0.03151717337055339
+[11.05.26|09:54:21] Time consumption:
+[11.05.26|09:54:21] Done.
+[11.05.26|09:54:21] Training epoch: 177
+[11.05.26|09:55:22] 	Iter 6400 Done. | loss: 0.0294 | sta: 0.0219 | ce: 0.0004 | dstcl: 0.0713 | lr: 0.002500
+[11.05.26|09:55:29] 	mean_loss: 0.03175161054564847
+[11.05.26|09:55:29] Time consumption:
+[11.05.26|09:55:29] Done.
+[11.05.26|09:55:29] Training epoch: 178
+[11.05.26|09:56:32] 	mean_loss: 0.03299905644315812
+[11.05.26|09:56:32] Time consumption:
+[11.05.26|09:56:32] Done.
+[11.05.26|09:56:32] Training epoch: 179
+[11.05.26|09:57:34] 	mean_loss: 0.030899018463161256
+[11.05.26|09:57:34] Time consumption:
+[11.05.26|09:57:34] Done.
+[11.05.26|09:57:34] Eval epoch: 179
+[11.05.26|09:58:15] 	mean_loss: 0.030899018463161256
+[11.05.26|09:58:15] 	Top1: 96.37%
+[11.05.26|09:58:15] 	Top5: 99.92%
+[11.05.26|09:58:15] 	Best Top1: 96.62%
+[11.05.26|09:58:15] current 96.37%, best 96.62%
+[11.05.26|09:58:15] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch180_acc96.37_model.pt.
+[11.05.26|09:58:15] Training epoch: 180
+[11.05.26|09:59:03] 	Iter 6500 Done. | loss: 0.0304 | sta: 0.0228 | ce: 0.0006 | dstcl: 0.0701 | lr: 0.002500
+[11.05.26|09:59:17] 	mean_loss: 0.03459084913548496
+[11.05.26|09:59:17] Time consumption:
+[11.05.26|09:59:17] Done.
+[11.05.26|09:59:17] Training epoch: 181
+[11.05.26|10:00:20] 	mean_loss: 0.031017881869855855
+[11.05.26|10:00:20] Time consumption:
+[11.05.26|10:00:20] Done.
+[11.05.26|10:00:20] Training epoch: 182
+[11.05.26|10:01:22] 	mean_loss: 0.033400270311782755
+[11.05.26|10:01:22] Time consumption:
+[11.05.26|10:01:22] Done.
+[11.05.26|10:01:22] Training epoch: 183
+[11.05.26|10:02:04] 	Iter 6600 Done. | loss: 0.0315 | sta: 0.0241 | ce: 0.0009 | dstcl: 0.0652 | lr: 0.002500
+[11.05.26|10:02:25] 	mean_loss: 0.030807891032762
+[11.05.26|10:02:25] Time consumption:
+[11.05.26|10:02:25] Done.
+[11.05.26|10:02:25] Training epoch: 184
+[11.05.26|10:03:27] 	mean_loss: 0.03219915243486563
+[11.05.26|10:03:27] Time consumption:
+[11.05.26|10:03:27] Done.
+[11.05.26|10:03:27] Eval epoch: 184
+[11.05.26|10:04:08] 	mean_loss: 0.03219915243486563
+[11.05.26|10:04:08] 	Top1: 96.20%
+[11.05.26|10:04:08] 	Top5: 100.00%
+[11.05.26|10:04:08] 	Best Top1: 96.62%
+[11.05.26|10:04:08] current 96.20%, best 96.62%
+[11.05.26|10:04:08] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch185_acc96.20_model.pt.
+[11.05.26|10:04:08] Training epoch: 185
+[11.05.26|10:05:11] 	mean_loss: 0.03372346092429426
+[11.05.26|10:05:11] Time consumption:
+[11.05.26|10:05:11] Done.
+[11.05.26|10:05:11] Training epoch: 186
+[11.05.26|10:05:53] 	Iter 6700 Done. | loss: 0.0305 | sta: 0.0236 | ce: 0.0002 | dstcl: 0.0666 | lr: 0.002500
+[11.05.26|10:06:20] 	mean_loss: 0.03414188651368022
+[11.05.26|10:06:20] Time consumption:
+[11.05.26|10:06:20] Done.
+[11.05.26|10:06:20] Training epoch: 187
+[11.05.26|10:07:23] 	mean_loss: 0.032129146779576935
+[11.05.26|10:07:23] Time consumption:
+[11.05.26|10:07:23] Done.
+[11.05.26|10:07:23] Training epoch: 188
+[11.05.26|10:08:22] 	Iter 6800 Done. | loss: 0.0346 | sta: 0.0240 | ce: 0.0019 | dstcl: 0.0875 | lr: 0.002500
+[11.05.26|10:08:26] 	mean_loss: 0.03258648463007477
+[11.05.26|10:08:26] Time consumption:
+[11.05.26|10:08:26] Done.
+[11.05.26|10:08:26] Training epoch: 189
+[11.05.26|10:09:30] 	mean_loss: 0.029981005367719464
+[11.05.26|10:09:30] Time consumption:
+[11.05.26|10:09:30] Done.
+[11.05.26|10:09:30] Eval epoch: 189
+[11.05.26|10:10:10] 	mean_loss: 0.029981005367719464
+[11.05.26|10:10:10] 	Top1: 96.53%
+[11.05.26|10:10:10] 	Top5: 100.00%
+[11.05.26|10:10:10] 	Best Top1: 96.62%
+[11.05.26|10:10:10] current 96.53%, best 96.62%
+[11.05.26|10:10:10] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch190_acc96.53_model.pt.
+[11.05.26|10:10:10] Training epoch: 190
+[11.05.26|10:11:12] 	mean_loss: 0.02978498147179683
+[11.05.26|10:11:12] Time consumption:
+[11.05.26|10:11:12] Done.
+[11.05.26|10:11:12] Training epoch: 191
+[11.05.26|10:12:05] 	Iter 6900 Done. | loss: 0.0374 | sta: 0.0221 | ce: 0.0038 | dstcl: 0.1144 | lr: 0.002500
+[11.05.26|10:12:15] 	mean_loss: 0.0312445603000621
+[11.05.26|10:12:15] Time consumption:
+[11.05.26|10:12:15] Done.
+[11.05.26|10:12:15] Training epoch: 192
+[11.05.26|10:13:18] 	mean_loss: 0.03094930538079805
+[11.05.26|10:13:18] Time consumption:
+[11.05.26|10:13:18] Done.
+[11.05.26|10:13:18] Training epoch: 193
+[11.05.26|10:14:26] 	mean_loss: 0.030415113704899948
+[11.05.26|10:14:26] Time consumption:
+[11.05.26|10:14:26] Done.
+[11.05.26|10:14:26] Training epoch: 194
+[11.05.26|10:15:11] 	Iter 7000 Done. | loss: 0.0299 | sta: 0.0225 | ce: 0.0006 | dstcl: 0.0685 | lr: 0.002500
+[11.05.26|10:15:28] 	mean_loss: 0.03252295854811867
+[11.05.26|10:15:28] Time consumption:
+[11.05.26|10:15:28] Done.
+[11.05.26|10:15:28] Eval epoch: 194
+[11.05.26|10:16:09] 	mean_loss: 0.03252295854811867
+[11.05.26|10:16:09] 	Top1: 96.37%
+[11.05.26|10:16:09] 	Top5: 100.00%
+[11.05.26|10:16:09] 	Best Top1: 96.62%
+[11.05.26|10:16:09] current 96.37%, best 96.62%
+[11.05.26|10:16:09] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch195_acc96.37_model.pt.
+[11.05.26|10:16:09] Training epoch: 195
+[11.05.26|10:17:11] 	mean_loss: 0.03128030182172855
+[11.05.26|10:17:11] Time consumption:
+[11.05.26|10:17:11] Done.
+[11.05.26|10:17:11] Training epoch: 196
+[11.05.26|10:18:21] 	mean_loss: 0.032900660298764706
+[11.05.26|10:18:21] Time consumption:
+[11.05.26|10:18:21] Done.
+[11.05.26|10:18:21] Training epoch: 197
+[11.05.26|10:19:05] 	Iter 7100 Done. | loss: 0.0333 | sta: 0.0219 | ce: 0.0023 | dstcl: 0.0905 | lr: 0.002500
+[11.05.26|10:19:29] 	mean_loss: 0.029904295535137255
+[11.05.26|10:19:29] Time consumption:
+[11.05.26|10:19:29] Done.
+[11.05.26|10:19:29] Training epoch: 198
+[11.05.26|10:20:37] 	mean_loss: 0.030333308709992304
+[11.05.26|10:20:37] Time consumption:
+[11.05.26|10:20:37] Done.
+[11.05.26|10:20:37] Training epoch: 199
+[11.05.26|10:21:45] 	mean_loss: 0.029295493486440845
+[11.05.26|10:21:45] Time consumption:
+[11.05.26|10:21:45] Done.
+[11.05.26|10:21:45] Eval epoch: 199
+[11.05.26|10:22:25] 	mean_loss: 0.029295493486440845
+[11.05.26|10:22:25] 	Top1: 96.53%
+[11.05.26|10:22:25] 	Top5: 99.92%
+[11.05.26|10:22:25] 	Best Top1: 96.62%
+[11.05.26|10:22:25] current 96.53%, best 96.62%
+[11.05.26|10:22:25] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch200_acc96.53_model.pt.
+[11.05.26|10:22:25] Training epoch: 200
+[11.05.26|10:22:59] 	Iter 7200 Done. | loss: 0.0276 | sta: 0.0186 | ce: 0.0020 | dstcl: 0.0703 | lr: 0.002500
+[11.05.26|10:23:34] 	mean_loss: 0.029835102407054767
+[11.05.26|10:23:34] Time consumption:
+[11.05.26|10:23:34] Done.
+[11.05.26|10:23:34] Training epoch: 201
+[11.05.26|10:24:57] 	mean_loss: 0.03165988054954343
+[11.05.26|10:24:57] Time consumption:
+[11.05.26|10:24:57] Done.
+[11.05.26|10:24:57] Training epoch: 202
+[11.05.26|10:26:10] 	Iter 7300 Done. | loss: 0.0270 | sta: 0.0201 | ce: 0.0001 | dstcl: 0.0682 | lr: 0.002500
+[11.05.26|10:26:19] 	mean_loss: 0.03134392879696356
+[11.05.26|10:26:19] Time consumption:
+[11.05.26|10:26:19] Done.
+[11.05.26|10:26:19] Training epoch: 203
+[11.05.26|10:27:22] 	mean_loss: 0.03075132550050815
+[11.05.26|10:27:22] Time consumption:
+[11.05.26|10:27:22] Done.
+[11.05.26|10:27:22] Training epoch: 204
+[11.05.26|10:28:25] 	mean_loss: 0.02946419408544898
+[11.05.26|10:28:25] Time consumption:
+[11.05.26|10:28:25] Done.
+[11.05.26|10:28:25] Eval epoch: 204
+[11.05.26|10:29:12] 	mean_loss: 0.02946419408544898
+[11.05.26|10:29:12] 	Top1: 96.62%
+[11.05.26|10:29:12] 	Top5: 100.00%
+[11.05.26|10:29:12] 	Best Top1: 96.62%
+[11.05.26|10:29:12] current 96.62%, best 96.62%
+[11.05.26|10:29:12] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch205_acc96.62_model.pt.
+[11.05.26|10:29:12] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.05.26|10:29:12] Training epoch: 205
+[11.05.26|10:30:09] 	Iter 7400 Done. | loss: 0.0273 | sta: 0.0185 | ce: 0.0003 | dstcl: 0.0849 | lr: 0.002500
+[11.05.26|10:30:23] 	mean_loss: 0.03028758516949084
+[11.05.26|10:30:23] Time consumption:
+[11.05.26|10:30:23] Done.
+[11.05.26|10:30:23] Training epoch: 206
+[11.05.26|10:31:25] 	mean_loss: 0.029279429827713303
+[11.05.26|10:31:25] Time consumption:
+[11.05.26|10:31:25] Done.
+[11.05.26|10:31:25] Training epoch: 207
+[11.05.26|10:32:30] 	mean_loss: 0.03448325597370664
+[11.05.26|10:32:30] Time consumption:
+[11.05.26|10:32:30] Done.
+[11.05.26|10:32:30] Training epoch: 208
+[11.05.26|10:33:12] 	Iter 7500 Done. | loss: 0.0285 | sta: 0.0202 | ce: 0.0005 | dstcl: 0.0786 | lr: 0.002500
+[11.05.26|10:33:33] 	mean_loss: 0.03191497906421622
+[11.05.26|10:33:33] Time consumption:
+[11.05.26|10:33:33] Done.
+[11.05.26|10:33:33] Training epoch: 209
+[11.05.26|10:34:36] 	mean_loss: 0.030531177245494392
+[11.05.26|10:34:36] Time consumption:
+[11.05.26|10:34:36] Done.
+[11.05.26|10:34:37] Eval epoch: 209
+[11.05.26|10:35:17] 	mean_loss: 0.030531177245494392
+[11.05.26|10:35:17] 	Top1: 96.53%
+[11.05.26|10:35:17] 	Top5: 100.00%
+[11.05.26|10:35:17] 	Best Top1: 96.62%
+[11.05.26|10:35:17] current 96.53%, best 96.62%
+[11.05.26|10:35:25] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch210_acc96.53_model.pt.
+[11.05.26|10:35:25] Training epoch: 210
+[11.05.26|10:36:27] 	mean_loss: 0.030501205784579117
+[11.05.26|10:36:27] Time consumption:
+[11.05.26|10:36:27] Done.
+[11.05.26|10:36:27] Training epoch: 211
+[11.05.26|10:37:02] 	Iter 7600 Done. | loss: 0.0403 | sta: 0.0238 | ce: 0.0037 | dstcl: 0.1273 | lr: 0.002500
+[11.05.26|10:37:29] 	mean_loss: 0.030523308656281896
+[11.05.26|10:37:29] Time consumption:
+[11.05.26|10:37:29] Done.
+[11.05.26|10:37:29] Training epoch: 212
+[11.05.26|10:38:32] 	mean_loss: 0.029867511604809098
+[11.05.26|10:38:32] Time consumption:
+[11.05.26|10:38:32] Done.
+[11.05.26|10:38:32] Training epoch: 213
+[11.05.26|10:39:30] 	Iter 7700 Done. | loss: 0.0382 | sta: 0.0285 | ce: 0.0020 | dstcl: 0.0759 | lr: 0.002500
+[11.05.26|10:39:34] 	mean_loss: 0.03085795883089304
+[11.05.26|10:39:34] Time consumption:
+[11.05.26|10:39:34] Done.
+[11.05.26|10:39:34] Training epoch: 214
+[11.05.26|10:40:36] 	mean_loss: 0.030225756629887555
+[11.05.26|10:40:36] Time consumption:
+[11.05.26|10:40:36] Done.
+[11.05.26|10:40:36] Eval epoch: 214
+[11.05.26|10:41:22] 	mean_loss: 0.030225756629887555
+[11.05.26|10:41:22] 	Top1: 96.20%
+[11.05.26|10:41:22] 	Top5: 100.00%
+[11.05.26|10:41:22] 	Best Top1: 96.62%
+[11.05.26|10:41:22] current 96.20%, best 96.62%
+[11.05.26|10:41:22] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch215_acc96.20_model.pt.
+[11.05.26|10:41:22] Training epoch: 215
+[11.05.26|10:42:25] 	mean_loss: 0.03508884568388263
+[11.05.26|10:42:25] Time consumption:
+[11.05.26|10:42:25] Done.
+[11.05.26|10:42:25] Training epoch: 216
+[11.05.26|10:43:23] 	Iter 7800 Done. | loss: 0.0228 | sta: 0.0151 | ce: 0.0002 | dstcl: 0.0750 | lr: 0.002500
+[11.05.26|10:43:33] 	mean_loss: 0.029318858351972368
+[11.05.26|10:43:33] Time consumption:
+[11.05.26|10:43:33] Done.
+[11.05.26|10:43:33] Training epoch: 217
+[11.05.26|10:44:36] 	mean_loss: 0.030611634616636567
+[11.05.26|10:44:36] Time consumption:
+[11.05.26|10:44:36] Done.
+[11.05.26|10:44:36] Training epoch: 218
+[11.05.26|10:45:44] 	mean_loss: 0.028835013870977692
+[11.05.26|10:45:44] Time consumption:
+[11.05.26|10:45:44] Done.
+[11.05.26|10:45:44] Training epoch: 219
+[11.05.26|10:46:29] 	Iter 7900 Done. | loss: 0.0312 | sta: 0.0198 | ce: 0.0011 | dstcl: 0.1038 | lr: 0.002500
+[11.05.26|10:46:46] 	mean_loss: 0.031178100189814966
+[11.05.26|10:46:46] Time consumption:
+[11.05.26|10:46:46] Done.
+[11.05.26|10:46:46] Eval epoch: 219
+[11.05.26|10:47:26] 	mean_loss: 0.031178100189814966
+[11.05.26|10:47:26] 	Top1: 96.53%
+[11.05.26|10:47:26] 	Top5: 100.00%
+[11.05.26|10:47:26] 	Best Top1: 96.62%
+[11.05.26|10:47:26] current 96.53%, best 96.62%
+[11.05.26|10:47:27] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch220_acc96.53_model.pt.
+[11.05.26|10:47:27] Training epoch: 220
+[11.05.26|10:48:29] 	mean_loss: 0.029404131643888023
+[11.05.26|10:48:29] Time consumption:
+[11.05.26|10:48:29] Done.
+[11.05.26|10:48:29] Training epoch: 221
+[11.05.26|10:49:36] 	mean_loss: 0.029795747250318527
+[11.05.26|10:49:36] Time consumption:
+[11.05.26|10:49:36] Done.
+[11.05.26|10:49:36] Training epoch: 222
+[11.05.26|10:50:15] 	Iter 8000 Done. | loss: 0.0306 | sta: 0.0213 | ce: 0.0013 | dstcl: 0.0804 | lr: 0.002500
+[11.05.26|10:50:39] 	mean_loss: 0.030183100193325017
+[11.05.26|10:50:39] Time consumption:
+[11.05.26|10:50:39] Done.
+[11.05.26|10:50:39] Training epoch: 223
+[11.05.26|10:51:41] 	mean_loss: 0.028523944990916386
+[11.05.26|10:51:41] Time consumption:
+[11.05.26|10:51:41] Done.
+[11.05.26|10:51:41] Training epoch: 224
+[11.05.26|10:52:49] 	mean_loss: 0.02874930052914553
+[11.05.26|10:52:49] Time consumption:
+[11.05.26|10:52:49] Done.
+[11.05.26|10:52:49] Eval epoch: 224
+[11.05.26|10:53:29] 	mean_loss: 0.02874930052914553
+[11.05.26|10:53:29] 	Top1: 96.37%
+[11.05.26|10:53:29] 	Top5: 99.92%
+[11.05.26|10:53:30] 	Best Top1: 96.62%
+[11.05.26|10:53:30] current 96.37%, best 96.62%
+[11.05.26|10:53:30] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch225_acc96.37_model.pt.
+[11.05.26|10:53:30] Training epoch: 225
+[11.05.26|10:54:01] 	Iter 8100 Done. | loss: 0.0275 | sta: 0.0168 | ce: 0.0022 | dstcl: 0.0855 | lr: 0.000250
+[11.05.26|10:54:32] 	mean_loss: 0.029511957429349422
+[11.05.26|10:54:32] Time consumption:
+[11.05.26|10:54:32] Done.
+[11.05.26|10:54:32] Training epoch: 226
+[11.05.26|10:55:40] 	mean_loss: 0.030511690355423424
+[11.05.26|10:55:40] Time consumption:
+[11.05.26|10:55:40] Done.
+[11.05.26|10:55:40] Training epoch: 227
+[11.05.26|10:56:40] 	Iter 8200 Done. | loss: 0.0267 | sta: 0.0193 | ce: 0.0009 | dstcl: 0.0652 | lr: 0.000250
+[11.05.26|10:56:48] 	mean_loss: 0.028160779167794518
+[11.05.26|10:56:48] Time consumption:
+[11.05.26|10:56:48] Done.
+[11.05.26|10:56:48] Training epoch: 228
+[11.05.26|10:57:50] 	mean_loss: 0.028985846735950973
+[11.05.26|10:57:50] Time consumption:
+[11.05.26|10:57:50] Done.
+[11.05.26|10:57:50] Training epoch: 229
+[11.05.26|10:58:58] 	mean_loss: 0.028906225382039945
+[11.05.26|10:58:58] Time consumption:
+[11.05.26|10:58:58] Done.
+[11.05.26|10:58:58] Eval epoch: 229
+[11.05.26|10:59:39] 	mean_loss: 0.028906225382039945
+[11.05.26|10:59:39] 	Top1: 96.28%
+[11.05.26|10:59:39] 	Top5: 100.00%
+[11.05.26|10:59:39] 	Best Top1: 96.62%
+[11.05.26|10:59:39] current 96.28%, best 96.62%
+[11.05.26|10:59:39] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch230_acc96.28_model.pt.
+[11.05.26|10:59:39] Training epoch: 230
+[11.05.26|11:00:27] 	Iter 8300 Done. | loss: 0.0288 | sta: 0.0220 | ce: 0.0002 | dstcl: 0.0654 | lr: 0.000250
+[11.05.26|11:00:41] 	mean_loss: 0.028791081936409075
+[11.05.26|11:00:41] Time consumption:
+[11.05.26|11:00:41] Done.
+[11.05.26|11:00:41] Training epoch: 231
+[11.05.26|11:01:44] 	mean_loss: 0.029749479093071487
+[11.05.26|11:01:44] Time consumption:
+[11.05.26|11:01:44] Done.
+[11.05.26|11:01:44] Training epoch: 232
+[11.05.26|11:02:47] 	mean_loss: 0.028953417152580287
+[11.05.26|11:02:47] Time consumption:
+[11.05.26|11:02:47] Done.
+[11.05.26|11:02:47] Training epoch: 233
+[11.05.26|11:03:28] 	Iter 8400 Done. | loss: 0.0330 | sta: 0.0235 | ce: 0.0003 | dstcl: 0.0927 | lr: 0.000250
+[11.05.26|11:03:49] 	mean_loss: 0.02894746558740735
+[11.05.26|11:03:49] Time consumption:
+[11.05.26|11:03:49] Done.
+[11.05.26|11:03:49] Training epoch: 234
+[11.05.26|11:04:52] 	mean_loss: 0.029224344736172095
+[11.05.26|11:04:52] Time consumption:
+[11.05.26|11:04:52] Done.
+[11.05.26|11:04:52] Eval epoch: 234
+[11.05.26|11:05:34] 	mean_loss: 0.029224344736172095
+[11.05.26|11:05:34] 	Top1: 96.62%
+[11.05.26|11:05:34] 	Top5: 100.00%
+[11.05.26|11:05:34] 	Best Top1: 96.62%
+[11.05.26|11:05:34] current 96.62%, best 96.62%
+[11.05.26|11:05:34] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch235_acc96.62_model.pt.
+[11.05.26|11:05:34] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.05.26|11:05:34] Training epoch: 235
+[11.05.26|11:06:37] 	mean_loss: 0.02876818138692114
+[11.05.26|11:06:37] Time consumption:
+[11.05.26|11:06:37] Done.
+[11.05.26|11:06:37] Training epoch: 236
+[11.05.26|11:07:17] 	Iter 8500 Done. | loss: 0.0243 | sta: 0.0174 | ce: 0.0008 | dstcl: 0.0605 | lr: 0.000250
+[11.05.26|11:07:45] 	mean_loss: 0.028319810879313283
+[11.05.26|11:07:45] Time consumption:
+[11.05.26|11:07:45] Done.
+[11.05.26|11:07:45] Training epoch: 237
+[11.05.26|11:08:47] 	mean_loss: 0.02840969737412201
+[11.05.26|11:08:47] Time consumption:
+[11.05.26|11:08:47] Done.
+[11.05.26|11:08:47] Training epoch: 238
+[11.05.26|11:09:46] 	Iter 8600 Done. | loss: 0.0284 | sta: 0.0210 | ce: 0.0008 | dstcl: 0.0670 | lr: 0.000250
+[11.05.26|11:09:49] 	mean_loss: 0.028986917498211067
+[11.05.26|11:09:49] Time consumption:
+[11.05.26|11:09:49] Done.
+[11.05.26|11:09:49] Training epoch: 239
+[11.05.26|11:10:52] 	mean_loss: 0.02791840826264686
+[11.05.26|11:10:52] Time consumption:
+[11.05.26|11:10:52] Done.
+[11.05.26|11:10:52] Eval epoch: 239
+[11.05.26|11:11:33] 	mean_loss: 0.02791840826264686
+[11.05.26|11:11:33] 	Top1: 96.53%
+[11.05.26|11:11:33] 	Top5: 100.00%
+[11.05.26|11:11:33] 	Best Top1: 96.62%
+[11.05.26|11:11:33] current 96.53%, best 96.62%
+[11.05.26|11:11:33] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch240_acc96.53_model.pt.
+[11.05.26|11:11:33] Training epoch: 240
+[11.05.26|11:12:36] 	mean_loss: 0.02933537359866831
+[11.05.26|11:12:36] Time consumption:
+[11.05.26|11:12:36] Done.
+[11.05.26|11:12:36] Training epoch: 241
+[11.05.26|11:13:28] 	Iter 8700 Done. | loss: 0.0277 | sta: 0.0193 | ce: 0.0006 | dstcl: 0.0779 | lr: 0.000250
+[11.05.26|11:13:38] 	mean_loss: 0.029237506807678275
+[11.05.26|11:13:38] Time consumption:
+[11.05.26|11:13:38] Done.
+[11.05.26|11:13:38] Training epoch: 242
+[11.05.26|11:14:53] 	mean_loss: 0.02899795775819156
+[11.05.26|11:14:53] Time consumption:
+[11.05.26|11:14:53] Done.
+[11.05.26|11:14:53] Training epoch: 243
+[11.05.26|11:16:02] 	mean_loss: 0.02914886802641882
+[11.05.26|11:16:02] Time consumption:
+[11.05.26|11:16:02] Done.
+[11.05.26|11:16:02] Training epoch: 244
+[11.05.26|11:16:47] 	Iter 8800 Done. | loss: 0.0231 | sta: 0.0135 | ce: 0.0012 | dstcl: 0.0838 | lr: 0.000250
+[11.05.26|11:17:05] 	mean_loss: 0.029530761039091483
+[11.05.26|11:17:05] Time consumption:
+[11.05.26|11:17:05] Done.
+[11.05.26|11:17:05] Eval epoch: 244
+[11.05.26|11:17:45] 	mean_loss: 0.029530761039091483
+[11.05.26|11:17:45] 	Top1: 96.20%
+[11.05.26|11:17:45] 	Top5: 100.00%
+[11.05.26|11:17:45] 	Best Top1: 96.62%
+[11.05.26|11:17:45] current 96.20%, best 96.62%
+[11.05.26|11:17:46] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch245_acc96.20_model.pt.
+[11.05.26|11:17:46] Training epoch: 245
+[11.05.26|11:18:53] 	mean_loss: 0.033424475902898446
+[11.05.26|11:18:53] Time consumption:
+[11.05.26|11:18:53] Done.
+[11.05.26|11:18:53] Training epoch: 246
+[11.05.26|11:19:56] 	mean_loss: 0.030200563992063206
+[11.05.26|11:19:56] Time consumption:
+[11.05.26|11:19:56] Done.
+[11.05.26|11:19:56] Training epoch: 247
+[11.05.26|11:20:34] 	Iter 8900 Done. | loss: 0.0268 | sta: 0.0197 | ce: 0.0002 | dstcl: 0.0688 | lr: 0.000250
+[11.05.26|11:20:58] 	mean_loss: 0.02897850429225299
+[11.05.26|11:20:58] Time consumption:
+[11.05.26|11:20:58] Done.
+[11.05.26|11:20:58] Training epoch: 248
+[11.05.26|11:22:13] 	mean_loss: 0.029506211634725332
+[11.05.26|11:22:13] Time consumption:
+[11.05.26|11:22:13] Done.
+[11.05.26|11:22:13] Training epoch: 249
+[11.05.26|11:23:15] 	mean_loss: 0.029051792704396777
+[11.05.26|11:23:15] Time consumption:
+[11.05.26|11:23:15] Done.
+[11.05.26|11:23:15] Eval epoch: 249
+[11.05.26|11:23:56] 	mean_loss: 0.029051792704396777
+[11.05.26|11:23:56] 	Top1: 96.37%
+[11.05.26|11:23:57] 	Top5: 100.00%
+[11.05.26|11:23:57] 	Best Top1: 96.62%
+[11.05.26|11:23:57] current 96.37%, best 96.62%
+[11.05.26|11:23:57] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch250_acc96.37_model.pt.
+[11.05.26|11:23:57] Training epoch: 250
+[11.05.26|11:24:29] 	Iter 9000 Done. | loss: 0.0308 | sta: 0.0233 | ce: 0.0004 | dstcl: 0.0704 | lr: 0.000250
+[11.05.26|11:24:59] 	mean_loss: 0.029093887915627822
+[11.05.26|11:24:59] Time consumption:
+[11.05.26|11:24:59] Done.
+[11.05.26|11:24:59] Training epoch: 251
+[11.05.26|11:26:02] 	mean_loss: 0.029309347582360108
+[11.05.26|11:26:02] Time consumption:
+[11.05.26|11:26:02] Done.
+[11.05.26|11:26:02] Training epoch: 252
+[11.05.26|11:26:58] 	Iter 9100 Done. | loss: 0.0252 | sta: 0.0187 | ce: 0.0005 | dstcl: 0.0597 | lr: 0.000250
+[11.05.26|11:27:05] 	mean_loss: 0.028203296061191294
+[11.05.26|11:27:05] Time consumption:
+[11.05.26|11:27:05] Done.
+[11.05.26|11:27:05] Training epoch: 253
+[11.05.26|11:28:07] 	mean_loss: 0.02968459917853276
+[11.05.26|11:28:07] Time consumption:
+[11.05.26|11:28:07] Done.
+[11.05.26|11:28:07] Training epoch: 254
+[11.05.26|11:29:10] 	mean_loss: 0.02894632647641831
+[11.05.26|11:29:10] Time consumption:
+[11.05.26|11:29:10] Done.
+[11.05.26|11:29:10] Eval epoch: 254
+[11.05.26|11:29:54] 	mean_loss: 0.02894632647641831
+[11.05.26|11:29:54] 	Top1: 96.37%
+[11.05.26|11:29:54] 	Top5: 100.00%
+[11.05.26|11:29:54] 	Best Top1: 96.62%
+[11.05.26|11:29:54] current 96.37%, best 96.62%
+[11.05.26|11:29:55] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch255_acc96.37_model.pt.
+[11.05.26|11:29:55] Training epoch: 255
+[11.05.26|11:30:43] 	Iter 9200 Done. | loss: 0.0286 | sta: 0.0202 | ce: 0.0010 | dstcl: 0.0736 | lr: 0.000250
+[11.05.26|11:30:57] 	mean_loss: 0.03224966519822677
+[11.05.26|11:30:57] Time consumption:
+[11.05.26|11:30:57] Done.
+[11.05.26|11:30:57] Training epoch: 256
+[11.05.26|11:31:59] 	mean_loss: 0.030605487421982817
+[11.05.26|11:31:59] Time consumption:
+[11.05.26|11:31:59] Done.
+[11.05.26|11:31:59] Training epoch: 257
+[11.05.26|11:33:09] 	mean_loss: 0.028424564179860883
+[11.05.26|11:33:09] Time consumption:
+[11.05.26|11:33:09] Done.
+[11.05.26|11:33:09] Training epoch: 258
+[11.05.26|11:33:51] 	Iter 9300 Done. | loss: 0.0240 | sta: 0.0172 | ce: 0.0004 | dstcl: 0.0647 | lr: 0.000250
+[11.05.26|11:34:12] 	mean_loss: 0.02793849606273903
+[11.05.26|11:34:12] Time consumption:
+[11.05.26|11:34:12] Done.
+[11.05.26|11:34:12] Training epoch: 259
+[11.05.26|11:35:21] 	mean_loss: 0.028998026572581794
+[11.05.26|11:35:21] Time consumption:
+[11.05.26|11:35:21] Done.
+[11.05.26|11:35:21] Eval epoch: 259
+[11.05.26|11:36:01] 	mean_loss: 0.028998026572581794
+[11.05.26|11:36:01] 	Top1: 96.53%
+[11.05.26|11:36:01] 	Top5: 99.92%
+[11.05.26|11:36:01] 	Best Top1: 96.62%
+[11.05.26|11:36:01] current 96.53%, best 96.62%
+[11.05.26|11:36:01] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch260_acc96.53_model.pt.
+[11.05.26|11:36:01] Training epoch: 260
+[11.05.26|11:37:09] 	mean_loss: 0.0288583109051817
+[11.05.26|11:37:09] Time consumption:
+[11.05.26|11:37:09] Done.
+[11.05.26|11:37:09] Training epoch: 261
+[11.05.26|11:37:50] 	Iter 9400 Done. | loss: 0.0257 | sta: 0.0189 | ce: 0.0011 | dstcl: 0.0570 | lr: 0.000250
+[11.05.26|11:38:17] 	mean_loss: 0.028895473055955436
+[11.05.26|11:38:17] Time consumption:
+[11.05.26|11:38:17] Done.
+[11.05.26|11:38:17] Training epoch: 262
+[11.05.26|11:39:19] 	mean_loss: 0.028803700322492257
+[11.05.26|11:39:19] Time consumption:
+[11.05.26|11:39:19] Done.
+[11.05.26|11:39:19] Training epoch: 263
+[11.05.26|11:40:18] 	Iter 9500 Done. | loss: 0.0312 | sta: 0.0245 | ce: 0.0004 | dstcl: 0.0626 | lr: 0.000250
+[11.05.26|11:40:21] 	mean_loss: 0.03324416316010886
+[11.05.26|11:40:21] Time consumption:
+[11.05.26|11:40:21] Done.
+[11.05.26|11:40:21] Training epoch: 264
+[11.05.26|11:41:24] 	mean_loss: 0.03160071404029926
+[11.05.26|11:41:24] Time consumption:
+[11.05.26|11:41:24] Done.
+[11.05.26|11:41:24] Eval epoch: 264
+[11.05.26|11:42:05] 	mean_loss: 0.03160071404029926
+[11.05.26|11:42:05] 	Top1: 96.28%
+[11.05.26|11:42:05] 	Top5: 100.00%
+[11.05.26|11:42:05] 	Best Top1: 96.62%
+[11.05.26|11:42:05] current 96.28%, best 96.62%
+[11.05.26|11:42:05] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch265_acc96.28_model.pt.
+[11.05.26|11:42:05] Training epoch: 265
+[11.05.26|11:43:07] 	mean_loss: 0.028690541214827035
+[11.05.26|11:43:07] Time consumption:
+[11.05.26|11:43:07] Done.
+[11.05.26|11:43:07] Training epoch: 266
+[11.05.26|11:43:59] 	Iter 9600 Done. | loss: 0.0315 | sta: 0.0234 | ce: 0.0004 | dstcl: 0.0768 | lr: 0.000250
+[11.05.26|11:44:09] 	mean_loss: 0.030084905525048573
+[11.05.26|11:44:09] Time consumption:
+[11.05.26|11:44:09] Done.
+[11.05.26|11:44:09] Training epoch: 267
+[11.05.26|11:45:12] 	mean_loss: 0.027969810749507613
+[11.05.26|11:45:12] Time consumption:
+[11.05.26|11:45:12] Done.
+[11.05.26|11:45:12] Training epoch: 268
+[11.05.26|11:46:20] 	mean_loss: 0.02844967305039366
+[11.05.26|11:46:20] Time consumption:
+[11.05.26|11:46:20] Done.
+[11.05.26|11:46:20] Training epoch: 269
+[11.05.26|11:47:05] 	Iter 9700 Done. | loss: 0.0321 | sta: 0.0235 | ce: 0.0003 | dstcl: 0.0830 | lr: 0.000250
+[11.05.26|11:47:23] 	mean_loss: 0.028823259907464188
+[11.05.26|11:47:23] Time consumption:
+[11.05.26|11:47:23] Done.
+[11.05.26|11:47:23] Eval epoch: 269
+[11.05.26|11:48:09] 	mean_loss: 0.028823259907464188
+[11.05.26|11:48:09] 	Top1: 96.45%
+[11.05.26|11:48:09] 	Top5: 100.00%
+[11.05.26|11:48:09] 	Best Top1: 96.62%
+[11.05.26|11:48:09] current 96.45%, best 96.62%
+[11.05.26|11:48:09] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch270_acc96.45_model.pt.
+[11.05.26|11:48:09] Training epoch: 270
+[11.05.26|11:49:11] 	mean_loss: 0.028915023896843195
+[11.05.26|11:49:11] Time consumption:
+[11.05.26|11:49:11] Done.
+[11.05.26|11:49:11] Training epoch: 271
+[11.05.26|11:50:14] 	mean_loss: 0.03046448001017173
+[11.05.26|11:50:14] Time consumption:
+[11.05.26|11:50:14] Done.
+[11.05.26|11:50:14] Training epoch: 272
+[11.05.26|11:50:52] 	Iter 9800 Done. | loss: 0.0313 | sta: 0.0242 | ce: 0.0008 | dstcl: 0.0633 | lr: 0.000250
+[11.05.26|11:51:16] 	mean_loss: 0.029339257162064314
+[11.05.26|11:51:16] Time consumption:
+[11.05.26|11:51:16] Done.
+[11.05.26|11:51:16] Training epoch: 273
+[11.05.26|11:52:18] 	mean_loss: 0.028769981478237443
+[11.05.26|11:52:18] Time consumption:
+[11.05.26|11:52:18] Done.
+[11.05.26|11:52:18] Training epoch: 274
+[11.05.26|11:53:21] 	mean_loss: 0.030014739527056616
+[11.05.26|11:53:21] Time consumption:
+[11.05.26|11:53:21] Done.
+[11.05.26|11:53:21] Eval epoch: 274
+[11.05.26|11:54:01] 	mean_loss: 0.030014739527056616
+[11.05.26|11:54:01] 	Top1: 96.70%
+[11.05.26|11:54:01] 	Top5: 100.00%
+[11.05.26|11:54:01] 	Best Top1: 96.70%
+[11.05.26|11:54:01] current 96.70%, best 96.70%
+[11.05.26|11:54:01] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch275_acc96.70_model.pt.
+[11.05.26|11:54:01] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.05.26|11:54:01] Training epoch: 275
+[11.05.26|11:54:33] 	Iter 9900 Done. | loss: 0.0365 | sta: 0.0241 | ce: 0.0035 | dstcl: 0.0889 | lr: 0.000250
+[11.05.26|11:55:03] 	mean_loss: 0.03022884391248226
+[11.05.26|11:55:03] Time consumption:
+[11.05.26|11:55:03] Done.
+[11.05.26|11:55:03] Training epoch: 276
+[11.05.26|11:56:07] 	mean_loss: 0.028506547988702852
+[11.05.26|11:56:07] Time consumption:
+[11.05.26|11:56:07] Done.
+[11.05.26|11:56:07] Training epoch: 277
+[11.05.26|11:57:03] 	Iter 10000 Done. | loss: 0.0275 | sta: 0.0197 | ce: 0.0002 | dstcl: 0.0765 | lr: 0.000250
+[11.05.26|11:57:11] 	mean_loss: 0.0281114740193718
+[11.05.26|11:57:11] Time consumption:
+[11.05.26|11:57:11] Done.
+[11.05.26|11:57:11] Training epoch: 278
+[11.05.26|11:58:13] 	mean_loss: 0.028456697706133127
+[11.05.26|11:58:13] Time consumption:
+[11.05.26|11:58:13] Done.
+[11.05.26|11:58:13] Training epoch: 279
+[11.05.26|11:59:22] 	mean_loss: 0.028660873882472515
+[11.05.26|11:59:22] Time consumption:
+[11.05.26|11:59:22] Done.
+[11.05.26|11:59:22] Eval epoch: 279
+[11.05.26|12:00:08] 	mean_loss: 0.028660873882472515
+[11.05.26|12:00:08] 	Top1: 96.45%
+[11.05.26|12:00:08] 	Top5: 100.00%
+[11.05.26|12:00:08] 	Best Top1: 96.70%
+[11.05.26|12:00:08] current 96.45%, best 96.70%
+[11.05.26|12:00:08] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch280_acc96.45_model.pt.
+[11.05.26|12:00:08] Training epoch: 280
+[11.05.26|12:00:57] 	Iter 10100 Done. | loss: 0.0287 | sta: 0.0205 | ce: 0.0005 | dstcl: 0.0768 | lr: 0.000250
+[11.05.26|12:01:11] 	mean_loss: 0.02891324150065581
+[11.05.26|12:01:11] Time consumption:
+[11.05.26|12:01:11] Done.
+[11.05.26|12:01:11] Training epoch: 281
+[11.05.26|12:02:13] 	mean_loss: 0.028389656295379
+[11.05.26|12:02:13] Time consumption:
+[11.05.26|12:02:13] Done.
+[11.05.26|12:02:13] Training epoch: 282
+[11.05.26|12:03:16] 	mean_loss: 0.030392250925716426
+[11.05.26|12:03:16] Time consumption:
+[11.05.26|12:03:16] Done.
+[11.05.26|12:03:16] Training epoch: 283
+[11.05.26|12:03:58] 	Iter 10200 Done. | loss: 0.0285 | sta: 0.0210 | ce: 0.0004 | dstcl: 0.0708 | lr: 0.000250
+[11.05.26|12:04:31] 	mean_loss: 0.03221681651969751
+[11.05.26|12:04:31] Time consumption:
+[11.05.26|12:04:31] Done.
+[11.05.26|12:04:31] Training epoch: 284
+[11.05.26|12:05:58] 	mean_loss: 0.02995799978574117
+[11.05.26|12:05:58] Time consumption:
+[11.05.26|12:05:58] Done.
+[11.05.26|12:05:58] Eval epoch: 284
+[11.05.26|12:06:38] 	mean_loss: 0.02995799978574117
+[11.05.26|12:06:38] 	Top1: 96.70%
+[11.05.26|12:06:38] 	Top5: 100.00%
+[11.05.26|12:06:38] 	Best Top1: 96.70%
+[11.05.26|12:06:38] current 96.70%, best 96.70%
+[11.05.26|12:06:38] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch285_acc96.70_model.pt.
+[11.05.26|12:06:38] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt.
+[11.05.26|12:06:38] Training epoch: 285
+[11.05.26|12:07:41] 	mean_loss: 0.028920432190514274
+[11.05.26|12:07:41] Time consumption:
+[11.05.26|12:07:41] Done.
+[11.05.26|12:07:41] Training epoch: 286
+[11.05.26|12:08:16] 	Iter 10300 Done. | loss: 0.0324 | sta: 0.0227 | ce: 0.0010 | dstcl: 0.0869 | lr: 0.000250
+[11.05.26|12:08:43] 	mean_loss: 0.028581492292384308
+[11.05.26|12:08:43] Time consumption:
+[11.05.26|12:08:43] Done.
+[11.05.26|12:08:43] Training epoch: 287
+[11.05.26|12:09:51] 	mean_loss: 0.029470713136510715
+[11.05.26|12:09:51] Time consumption:
+[11.05.26|12:09:51] Done.
+[11.05.26|12:09:51] Training epoch: 288
+[11.05.26|12:10:50] 	Iter 10400 Done. | loss: 0.0230 | sta: 0.0169 | ce: 0.0003 | dstcl: 0.0581 | lr: 0.000250
+[11.05.26|12:10:54] 	mean_loss: 0.029938329425123002
+[11.05.26|12:10:54] Time consumption:
+[11.05.26|12:10:54] Done.
+[11.05.26|12:10:54] Training epoch: 289
+[11.05.26|12:11:56] 	mean_loss: 0.028927682226316795
+[11.05.26|12:11:56] Time consumption:
+[11.05.26|12:11:56] Done.
+[11.05.26|12:11:56] Eval epoch: 289
+[11.05.26|12:12:45] 	mean_loss: 0.028927682226316795
+[11.05.26|12:12:45] 	Top1: 96.53%
+[11.05.26|12:12:45] 	Top5: 100.00%
+[11.05.26|12:12:45] 	Best Top1: 96.70%
+[11.05.26|12:12:45] current 96.53%, best 96.70%
+[11.05.26|12:12:45] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch290_acc96.53_model.pt.
+[11.05.26|12:12:45] Training epoch: 290
+[11.05.26|12:13:47] 	mean_loss: 0.028733626214994326
+[11.05.26|12:13:47] Time consumption:
+[11.05.26|12:13:47] Done.
+[11.05.26|12:13:47] Training epoch: 291
+[11.05.26|12:14:39] 	Iter 10500 Done. | loss: 0.0334 | sta: 0.0220 | ce: 0.0006 | dstcl: 0.1078 | lr: 0.000250
+[11.05.26|12:14:49] 	mean_loss: 0.028975093064622745
+[11.05.26|12:14:49] Time consumption:
+[11.05.26|12:14:49] Done.
+[11.05.26|12:14:49] Training epoch: 292
+[11.05.26|12:15:51] 	mean_loss: 0.02924818354141381
+[11.05.26|12:15:51] Time consumption:
+[11.05.26|12:15:51] Done.
+[11.05.26|12:15:51] Training epoch: 293
+[11.05.26|12:16:54] 	mean_loss: 0.029995452250457473
+[11.05.26|12:16:54] Time consumption:
+[11.05.26|12:16:54] Done.
+[11.05.26|12:16:54] Training epoch: 294
+[11.05.26|12:17:39] 	Iter 10600 Done. | loss: 0.0269 | sta: 0.0169 | ce: 0.0020 | dstcl: 0.0803 | lr: 0.000250
+[11.05.26|12:17:56] 	mean_loss: 0.028522482607513666
+[11.05.26|12:17:56] Time consumption:
+[11.05.26|12:17:56] Done.
+[11.05.26|12:17:56] Eval epoch: 294
+[11.05.26|12:18:37] 	mean_loss: 0.028522482607513666
+[11.05.26|12:18:37] 	Top1: 96.28%
+[11.05.26|12:18:37] 	Top5: 100.00%
+[11.05.26|12:18:37] 	Best Top1: 96.70%
+[11.05.26|12:18:37] current 96.28%, best 96.70%
+[11.05.26|12:18:37] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch295_acc96.28_model.pt.
+[11.05.26|12:18:37] Training epoch: 295
+[11.05.26|12:19:46] 	mean_loss: 0.029256077741997108
+[11.05.26|12:19:46] Time consumption:
+[11.05.26|12:19:46] Done.
+[11.05.26|12:19:46] Training epoch: 296
+[11.05.26|12:20:48] 	mean_loss: 0.029136899444792006
+[11.05.26|12:20:48] Time consumption:
+[11.05.26|12:20:48] Done.
+[11.05.26|12:20:48] Training epoch: 297
+[11.05.26|12:21:27] 	Iter 10700 Done. | loss: 0.0236 | sta: 0.0169 | ce: 0.0002 | dstcl: 0.0640 | lr: 0.000250
+[11.05.26|12:21:51] 	mean_loss: 0.02824248740863469
+[11.05.26|12:21:51] Time consumption:
+[11.05.26|12:21:51] Done.
+[11.05.26|12:21:51] Training epoch: 298
+[11.05.26|12:22:53] 	mean_loss: 0.02918481443905168
+[11.05.26|12:22:53] Time consumption:
+[11.05.26|12:22:53] Done.
+[11.05.26|12:22:53] Training epoch: 299
+[11.05.26|12:23:56] 	mean_loss: 0.027627179450872872
+[11.05.26|12:23:56] Time consumption:
+[11.05.26|12:23:56] Done.
+[11.05.26|12:23:56] Eval epoch: 299
+[11.05.26|12:24:36] 	mean_loss: 0.027627179450872872
+[11.05.26|12:24:36] 	Top1: 96.28%
+[11.05.26|12:24:36] 	Top5: 100.00%
+[11.05.26|12:24:36] 	Best Top1: 96.70%
+[11.05.26|12:24:36] current 96.28%, best 96.70%
+[11.05.26|12:24:36] The model has been saved as ./work_dir/teacher/ctr_fcce_dstcl_v1/epoch300_acc96.28_model.pt.

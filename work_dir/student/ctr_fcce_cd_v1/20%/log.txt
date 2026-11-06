@@ -1,0 +1,114 @@
+[11.06.26|08:29:20] Parameters:
+{'work_dir': './work_dir/student/ctr_fcce_cd_v1/20%', 'config': 'config/cobot/train_distill.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 300, 'use_gpu': True, 'device': [0], 'log_interval': 100, 'save_interval': 10, 'eval_interval': 5, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_clr.Feeder', 'num_worker': 4, 'train_feeder_args': {'data_path': './data/datacobot_v2_full_gcn/xsub/train_position.npy', 'label_path': './data/datacobot_v2_full_gcn/xsub/train_label.pkl', 'text_path': 'text_prompts.json', 'data_ratio': 1.0, 'obs_ratio': 0.2, 'debug': False}, 'test_feeder_args': {'data_path': './data/datacobot_v2_full_gcn/xsub/val_position.npy', 'label_path': './data/datacobot_v2_full_gcn/xsub/val_label.pkl', 'text_path': 'text_prompts.json', 'obs_ratio': 0.2}, 'batch_size': 32, 'test_batch_size': 32, 'debug': False, 'model': 'net.student.StudentModel', 'model_args': {'base_encoder': 'net.ctr_ae.CTREncoder', 'num_class': 16, 'num_point': 48, 'num_person': 1, 'drop_out': 0.5, 'graph': 'graph.cobot.Graph', 'graph_args': {'labeling_mode': 'distance'}, 'enc_channels': [128, 256], 'enc_strides': [2, 2], 't_len': 24}, 'weights': None, 'ignore_weights': [], 'text_encoder': None, 'text_args': {}, 'teacher_model': 'net.teacher.TeacherModel', 'teacher_model_args': {'base_encoder': 'net.ctr_ae.CTREncoder', 'num_class': 16, 'num_point': 48, 'num_person': 1, 'drop_out': 0.5, 'graph': 'graph.cobot.Graph', 'graph_args': {'labeling_mode': 'distance'}, 'channels': [64, 128, 256], 'strides': [1, 2, 2], 'root_joint': 0, 'sta_stride': 2, 'tau': 0.125, 'rho': 0.9, 'ctx_ch': 384, 't_len': 24}, 'teacher_weights': './work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt', 'alpha': 1.0, 'feature_distillation': {'context_distill': 50.0, 'recon': 1.0}, 'logits_distillation': {'kd': 0.5, 'hardkd': 0, 'dkd': 0, 'ctkd': 0}, 'kd_T': 1, 'show_topk': [1, 5], 'base_lr': 0.025, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0001}
+
+[11.06.26|08:29:20] ---------- Networks initialized -------------
+[11.06.26|08:29:20] [Network] Total number of parameters : 0.565 M
+[11.06.26|08:29:20] -----------------------------------------------
+[11.06.26|08:29:20] Training epoch: 0
+[11.06.26|08:30:00] 	Iter 0 Done. | loss: 42.8817 | ce: 8.6219 | lr: 0.025000 | loss_context_distill: 33.0063 | loss_recon: 1.2535
+[11.06.26|08:30:42] 	mean_loss: 21.12014940049913
+[11.06.26|08:30:42] Time consumption:
+[11.06.26|08:30:42] Done.
+[11.06.26|08:30:42] Training epoch: 1
+[11.06.26|08:32:36] 	mean_loss: 18.12070804172092
+[11.06.26|08:32:36] Time consumption:
+[11.06.26|08:32:36] Done.
+[11.06.26|08:32:36] Training epoch: 2
+[11.06.26|08:33:57] 	Iter 100 Done. | loss: 17.4871 | ce: 2.7607 | lr: 0.025000 | loss_context_distill: 14.7123 | loss_recon: 0.0141
+[11.06.26|08:34:06] 	mean_loss: 18.05202187432183
+[11.06.26|08:34:06] Time consumption:
+[11.06.26|08:34:06] Done.
+[11.06.26|08:34:06] Training epoch: 3
+[11.06.26|08:35:44] 	mean_loss: 18.033934116363525
+[11.06.26|08:35:44] Time consumption:
+[11.06.26|08:35:44] Done.
+[11.06.26|08:35:44] Training epoch: 4
+[11.06.26|08:36:48] 	mean_loss: 18.02245224846734
+[11.06.26|08:36:48] Time consumption:
+[11.06.26|08:36:48] Done.
+[11.06.26|08:36:48] Eval epoch: 4
+[11.06.26|08:38:00] 	mean_loss: 18.02245224846734
+[11.06.26|08:38:00] 	Top1: 14.71%
+[11.06.26|08:38:00] 	Top5: 40.24%
+[11.06.26|08:38:00] 	Best Top1: 14.71%
+[11.06.26|08:38:00] current 14.71%, best 14.71%
+[11.06.26|08:38:00] The model has been saved as ./work_dir/student/ctr_fcce_cd_v1/20%/epoch005_acc14.71_model.pt.
+[11.06.26|08:38:01] The model has been saved as ./work_dir/student/ctr_fcce_cd_v1/20%/best_model.pt.
+[11.06.26|08:38:01] Training epoch: 5
+[11.06.26|08:39:12] 	Iter 200 Done. | loss: 18.4932 | ce: 2.7402 | lr: 0.025000 | loss_context_distill: 15.7429 | loss_recon: 0.0101
+[11.06.26|08:39:25] 	mean_loss: 18.01072973675198
+[11.06.26|08:39:25] Time consumption:
+[11.06.26|08:39:25] Done.
+[11.06.26|08:39:25] Training epoch: 6
+[11.06.26|08:40:33] 	mean_loss: 17.975555896759033
+[11.06.26|08:40:33] Time consumption:
+[11.06.26|08:40:33] Done.
+[11.06.26|08:40:33] Training epoch: 7
+[11.06.26|08:41:47] 	mean_loss: 17.99257204267714
+[11.06.26|08:41:47] Time consumption:
+[11.06.26|08:41:47] Done.
+[11.06.26|08:41:47] Training epoch: 8
+[11.06.26|08:42:40] 	Iter 300 Done. | loss: 17.8156 | ce: 2.7436 | lr: 0.025000 | loss_context_distill: 15.0604 | loss_recon: 0.0116
+[11.06.26|08:42:57] 	mean_loss: 17.994567182328964
+[11.06.26|08:42:57] Time consumption:
+[11.06.26|08:42:57] Done.
+[11.06.26|08:42:57] Training epoch: 9
+[11.06.26|08:44:02] 	mean_loss: 18.01472208234999
+[11.06.26|08:44:02] Time consumption:
+[11.06.26|08:44:02] Done.
+[11.06.26|08:44:02] Eval epoch: 9
+[11.06.26|08:44:48] 	mean_loss: 18.01472208234999
+[11.06.26|08:44:48] 	Top1: 18.77%
+[11.06.26|08:44:48] 	Top5: 47.00%
+[11.06.26|08:44:48] 	Best Top1: 18.77%
+[11.06.26|08:44:48] current 18.77%, best 18.77%
+[11.06.26|08:44:49] The model has been saved as ./work_dir/student/ctr_fcce_cd_v1/20%/epoch010_acc18.77_model.pt.
+[11.06.26|08:44:50] The model has been saved as ./work_dir/student/ctr_fcce_cd_v1/20%/best_model.pt.
+[11.06.26|08:44:50] Training epoch: 10
+[11.06.26|08:46:13] 	mean_loss: 17.948879718780518
+[11.06.26|08:46:13] Time consumption:
+[11.06.26|08:46:13] Done.
+[11.06.26|08:46:13] Training epoch: 11
+[11.06.26|08:46:51] 	Iter 400 Done. | loss: 17.5322 | ce: 2.7144 | lr: 0.025000 | loss_context_distill: 14.8065 | loss_recon: 0.0114
+[11.06.26|08:47:14] 	mean_loss: 17.91833930545383
+[11.06.26|08:47:14] Time consumption:
+[11.06.26|08:47:14] Done.
+[11.06.26|08:47:14] Training epoch: 12
+[11.06.26|08:48:29] 	mean_loss: 17.890943421257866
+[11.06.26|08:48:29] Time consumption:
+[11.06.26|08:48:29] Done.
+[11.06.26|08:48:29] Training epoch: 13
+[11.06.26|08:49:43] 	Iter 500 Done. | loss: 17.9057 | ce: 2.4855 | lr: 0.025000 | loss_context_distill: 15.4092 | loss_recon: 0.0110
+[11.06.26|08:49:47] 	mean_loss: 17.840267393324112
+[11.06.26|08:49:47] Time consumption:
+[11.06.26|08:49:47] Done.
+[11.06.26|08:49:47] Training epoch: 14
+[11.06.26|08:51:08] 	mean_loss: 17.791322496202255
+[11.06.26|08:51:08] Time consumption:
+[11.06.26|08:51:08] Done.
+[11.06.26|08:51:08] Eval epoch: 14
+[11.06.26|08:52:01] 	mean_loss: 17.791322496202255
+[11.06.26|08:52:01] 	Top1: 24.85%
+[11.06.26|08:52:01] 	Top5: 57.57%
+[11.06.26|08:52:01] 	Best Top1: 24.85%
+[11.06.26|08:52:01] current 24.85%, best 24.85%
+[11.06.26|08:52:01] The model has been saved as ./work_dir/student/ctr_fcce_cd_v1/20%/epoch015_acc24.85_model.pt.
+[11.06.26|08:52:01] The model has been saved as ./work_dir/student/ctr_fcce_cd_v1/20%/best_model.pt.
+[11.06.26|08:52:01] Training epoch: 15
+[11.06.26|08:53:28] 	mean_loss: 17.73260079489814
+[11.06.26|08:53:28] Time consumption:
+[11.06.26|08:53:28] Done.
+[11.06.26|08:53:28] Training epoch: 16
+[11.06.26|08:54:45] 	Iter 600 Done. | loss: 17.9860 | ce: 2.3532 | lr: 0.025000 | loss_context_distill: 15.6221 | loss_recon: 0.0106
+[11.06.26|08:54:56] 	mean_loss: 17.721235593159992
+[11.06.26|08:54:56] Time consumption:
+[11.06.26|08:54:56] Done.
+[11.06.26|08:54:56] Training epoch: 17
+[11.06.26|08:56:15] 	mean_loss: 17.66905821694268
+[11.06.26|08:56:15] Time consumption:
+[11.06.26|08:56:15] Done.
+[11.06.26|08:56:15] Training epoch: 18
+[11.06.26|08:57:40] 	mean_loss: 17.61056794060601
+[11.06.26|08:57:40] Time consumption:
+[11.06.26|08:57:40] Done.
+[11.06.26|08:57:40] Training epoch: 19

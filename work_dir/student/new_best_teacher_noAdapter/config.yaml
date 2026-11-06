@@ -1,0 +1,67 @@
+# command line: main.py train_student -c config/cobot/train_distill.yaml
+
+base_lr: 0.01
+batch_size: 32
+clr_epoch: 100
+config: config/cobot/train_distill.yaml
+debug: false
+device:
+- 2
+eval_interval: 5
+feeder: feeder.feeder_clr.Feeder
+ignore_weights: []
+kd_T: 4
+log_interval: 100
+model: net.student.StudentModel
+model_args:
+    base_encoder: net.ddnet.DDNet_Original
+    class_num: 16
+    feat_d: 1128
+    filters: 16
+    frame_l: 96
+    joint_d: 3
+    joint_n: 48
+nesterov: true
+num_epoch: 200
+num_worker: 4
+optimizer: SGD
+pavi_log: false
+phase: train
+print_log: true
+save_interval: 10
+save_log: true
+save_result: false
+show_topk:
+- 1
+- 5
+start_epoch: 0
+step: []
+teacher_model: net.teacher.TeacherModel
+teacher_model_args:
+    base_encoder: net.ctr_gcn.Model
+    drop_out: 0.5
+    graph: graph.cobot.Graph
+    graph_args:
+        labeling_mode: distance
+    num_class: 16
+    num_person: 1
+    num_point: 48
+teacher_weights: ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt
+test_batch_size: 32
+test_feeder_args:
+    data_path: ./datacobot_v2_full_gcn/xsub/val_position.npy
+    label_path: ./datacobot_v2_full_gcn/xsub/val_label.pkl
+    text_path: text_prompts.json
+text_args:
+    run_name: RN50x4
+    temperature: 0.1
+text_encoder: net.text.TextEncoder
+train_feeder_args:
+    data_path: ./datacobot_v2_full_gcn/xsub/train_position.npy
+    data_ratio: 1.0
+    label_path: ./datacobot_v2_full_gcn/xsub/train_label.pkl
+    text_path: text_prompts.json
+use_gpu: true
+weight_decay: 0.0001
+weights: null
+work_dir: ./work_dir/student2/new_best_teacher_noAdapter

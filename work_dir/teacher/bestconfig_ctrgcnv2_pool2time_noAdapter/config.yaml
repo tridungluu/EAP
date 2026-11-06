@@ -1,0 +1,64 @@
+# command line: main.py train_teacher -c config/cobot/train_clr.yaml
+
+base_lr: 0.01
+batch_size: 32
+clr_epoch: 100
+config: config/cobot/train_clr.yaml
+debug: false
+device:
+- 2
+eval_interval: 5
+feeder: feeder.feeder_clr.Feeder
+ignore_weights: []
+kd_T: 1
+log_interval: 100
+model: net.teacher.TeacherModel
+model_args:
+    base_encoder: net.ctr_gcn.Model
+    drop_out: 0.5
+    graph: graph.cobot.Graph
+    graph_args:
+        labeling_mode: distance
+    num_class: 16
+    num_person: 1
+    num_point: 48
+nesterov: true
+num_epoch: 150
+num_worker: 4
+optimizer: SGD
+pavi_log: false
+phase: train
+print_log: true
+save_interval: 10
+save_log: true
+save_result: false
+show_topk:
+- 1
+- 5
+start_epoch: 0
+step:
+- 30
+- 70
+teacher_model: null
+teacher_model_args: {}
+teacher_weights: null
+test_batch_size: 32
+test_feeder_args:
+    bone: false
+    data_path: ./datacobot_v2_full_gcn/xsub/val_position.npy
+    label_path: ./datacobot_v2_full_gcn/xsub/val_label.pkl
+    text_path: text_prompts.json
+text_args:
+    run_name: RN50x4
+    temperature: 0.1
+text_encoder: net.text.TextEncoder
+train_feeder_args:
+    bone: false
+    data_path: ./datacobot_v2_full_gcn/xsub/train_position.npy
+    data_ratio: 1.0
+    label_path: ./datacobot_v2_full_gcn/xsub/train_label.pkl
+    text_path: text_prompts.json
+use_gpu: true
+weight_decay: 0.0001
+weights: null
+work_dir: ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter

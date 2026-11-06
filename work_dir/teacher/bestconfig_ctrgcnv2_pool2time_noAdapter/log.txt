@@ -1,0 +1,878 @@
+[05.22.26|20:51:48] Parameters:
+{'work_dir': './work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter', 'config': 'config/cobot/train_clr.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 150, 'use_gpu': True, 'device': [2], 'log_interval': 100, 'save_interval': 10, 'eval_interval': 5, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_clr.Feeder', 'num_worker': 4, 'train_feeder_args': {'data_path': './datacobot_v2_full_gcn/xsub/train_position.npy', 'label_path': './datacobot_v2_full_gcn/xsub/train_label.pkl', 'text_path': 'text_prompts.json', 'data_ratio': 1.0, 'bone': False, 'debug': False}, 'test_feeder_args': {'data_path': './datacobot_v2_full_gcn/xsub/val_position.npy', 'label_path': './datacobot_v2_full_gcn/xsub/val_label.pkl', 'text_path': 'text_prompts.json', 'bone': False}, 'batch_size': 32, 'test_batch_size': 32, 'debug': False, 'model': 'net.teacher.TeacherModel', 'model_args': {'base_encoder': 'net.ctr_gcn.Model', 'num_class': 16, 'num_point': 48, 'num_person': 1, 'drop_out': 0.5, 'graph': 'graph.cobot.Graph', 'graph_args': {'labeling_mode': 'distance'}}, 'weights': None, 'ignore_weights': [], 'clr_epoch': 100, 'text_encoder': 'net.text.TextEncoder', 'text_args': {'run_name': 'RN50x4', 'temperature': 0.1}, 'teacher_model': None, 'teacher_model_args': {}, 'teacher_weights': None, 'kd_T': 1, 'show_topk': [1, 5], 'base_lr': 0.01, 'step': [30, 70], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0001}
+
+[05.22.26|20:51:48] ---------- Networks initialized -------------
+[05.22.26|20:51:48] [Network] Total number of parameters : 1.363 M
+[05.22.26|20:51:48] -----------------------------------------------
+[05.22.26|20:51:48] Training epoch: 0
+[05.22.26|20:51:50] 	Iter 0 Done. | loss: 3.4877 | lr: 0.010000
+[05.22.26|20:51:59] 	mean_loss: 3.023385379049513
+[05.22.26|20:51:59] Time consumption:
+[05.22.26|20:51:59] Done.
+[05.22.26|20:51:59] Training epoch: 1
+[05.22.26|20:52:08] 	mean_loss: 2.3171468575795493
+[05.22.26|20:52:08] Time consumption:
+[05.22.26|20:52:08] Done.
+[05.22.26|20:52:08] Training epoch: 2
+[05.22.26|20:52:15] 	Iter 100 Done. | loss: 1.9398 | lr: 0.010000
+[05.22.26|20:52:17] 	mean_loss: 1.9848998056517706
+[05.22.26|20:52:17] Time consumption:
+[05.22.26|20:52:17] Done.
+[05.22.26|20:52:17] Training epoch: 3
+[05.22.26|20:52:26] 	mean_loss: 1.74686465660731
+[05.22.26|20:52:26] Time consumption:
+[05.22.26|20:52:26] Done.
+[05.22.26|20:52:26] Training epoch: 4
+[05.22.26|20:52:36] 	mean_loss: 1.5983730554580688
+[05.22.26|20:52:36] Time consumption:
+[05.22.26|20:52:36] Done.
+[05.22.26|20:52:36] Eval epoch: 4
+[05.22.26|20:52:38] 	mean_loss: 1.5983730554580688
+[05.22.26|20:52:38] 	Top1: 92.98%
+[05.22.26|20:52:38] 	Top5: 99.75%
+[05.22.26|20:52:38] 	Best Top1: 92.98%
+[05.22.26|20:52:38] current 92.98%, best 92.98%
+[05.22.26|20:52:39] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch005_acc92.98_model.pt.
+[05.22.26|20:52:39] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt.
+[05.22.26|20:52:39] Training epoch: 5
+[05.22.26|20:52:44] 	Iter 200 Done. | loss: 1.4574 | lr: 0.010000
+[05.22.26|20:52:48] 	mean_loss: 1.5263616740703583
+[05.22.26|20:52:48] Time consumption:
+[05.22.26|20:52:48] Done.
+[05.22.26|20:52:48] Training epoch: 6
+[05.22.26|20:52:57] 	mean_loss: 1.4937349127398596
+[05.22.26|20:52:57] Time consumption:
+[05.22.26|20:52:57] Done.
+[05.22.26|20:52:57] Training epoch: 7
+[05.22.26|20:53:06] 	mean_loss: 1.4451028903325398
+[05.22.26|20:53:06] Time consumption:
+[05.22.26|20:53:06] Done.
+[05.22.26|20:53:06] Training epoch: 8
+[05.22.26|20:53:09] 	Iter 300 Done. | loss: 1.4904 | lr: 0.010000
+[05.22.26|20:53:15] 	mean_loss: 1.4493624866008759
+[05.22.26|20:53:15] Time consumption:
+[05.22.26|20:53:15] Done.
+[05.22.26|20:53:15] Training epoch: 9
+[05.22.26|20:53:25] 	mean_loss: 1.409470819764667
+[05.22.26|20:53:25] Time consumption:
+[05.22.26|20:53:25] Done.
+[05.22.26|20:53:25] Eval epoch: 9
+[05.22.26|20:53:31] 	mean_loss: 1.409470819764667
+[05.22.26|20:53:31] 	Top1: 96.96%
+[05.22.26|20:53:31] 	Top5: 99.83%
+[05.22.26|20:53:31] 	Best Top1: 96.96%
+[05.22.26|20:53:31] current 96.96%, best 96.96%
+[05.22.26|20:53:31] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch010_acc96.96_model.pt.
+[05.22.26|20:53:31] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt.
+[05.22.26|20:53:31] Training epoch: 10
+[05.22.26|20:53:40] 	mean_loss: 1.3946811689270868
+[05.22.26|20:53:40] Time consumption:
+[05.22.26|20:53:40] Done.
+[05.22.26|20:53:40] Training epoch: 11
+[05.22.26|20:53:42] 	Iter 400 Done. | loss: 1.4755 | lr: 0.010000
+[05.22.26|20:53:50] 	mean_loss: 1.3935712940163083
+[05.22.26|20:53:50] Time consumption:
+[05.22.26|20:53:50] Done.
+[05.22.26|20:53:50] Training epoch: 12
+[05.22.26|20:53:59] 	mean_loss: 1.394260009129842
+[05.22.26|20:53:59] Time consumption:
+[05.22.26|20:53:59] Done.
+[05.22.26|20:53:59] Training epoch: 13
+[05.22.26|20:54:08] 	Iter 500 Done. | loss: 1.3463 | lr: 0.010000
+[05.22.26|20:54:08] 	mean_loss: 1.3805528051323361
+[05.22.26|20:54:08] Time consumption:
+[05.22.26|20:54:08] Done.
+[05.22.26|20:54:08] Training epoch: 14
+[05.22.26|20:54:18] 	mean_loss: 1.3645608060889773
+[05.22.26|20:54:18] Time consumption:
+[05.22.26|20:54:18] Done.
+[05.22.26|20:54:18] Eval epoch: 14
+[05.22.26|20:54:21] 	mean_loss: 1.3645608060889773
+[05.22.26|20:54:21] 	Top1: 97.89%
+[05.22.26|20:54:21] 	Top5: 99.92%
+[05.22.26|20:54:21] 	Best Top1: 97.89%
+[05.22.26|20:54:21] current 97.89%, best 97.89%
+[05.22.26|20:54:21] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch015_acc97.89_model.pt.
+[05.22.26|20:54:21] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt.
+[05.22.26|20:54:21] Training epoch: 15
+[05.22.26|20:54:30] 	mean_loss: 1.3488241400983598
+[05.22.26|20:54:30] Time consumption:
+[05.22.26|20:54:30] Done.
+[05.22.26|20:54:30] Training epoch: 16
+[05.22.26|20:54:37] 	Iter 600 Done. | loss: 1.2981 | lr: 0.010000
+[05.22.26|20:54:40] 	mean_loss: 1.3593275613254971
+[05.22.26|20:54:40] Time consumption:
+[05.22.26|20:54:40] Done.
+[05.22.26|20:54:40] Training epoch: 17
+[05.22.26|20:54:49] 	mean_loss: 1.3502708971500397
+[05.22.26|20:54:49] Time consumption:
+[05.22.26|20:54:49] Done.
+[05.22.26|20:54:49] Training epoch: 18
+[05.22.26|20:54:58] 	mean_loss: 1.366940352651808
+[05.22.26|20:54:58] Time consumption:
+[05.22.26|20:54:58] Done.
+[05.22.26|20:54:58] Training epoch: 19
+[05.22.26|20:55:03] 	Iter 700 Done. | loss: 1.3602 | lr: 0.010000
+[05.22.26|20:55:08] 	mean_loss: 1.3714645438724093
+[05.22.26|20:55:08] Time consumption:
+[05.22.26|20:55:08] Done.
+[05.22.26|20:55:08] Eval epoch: 19
+[05.22.26|20:55:10] 	mean_loss: 1.3714645438724093
+[05.22.26|20:55:10] 	Top1: 96.20%
+[05.22.26|20:55:10] 	Top5: 99.75%
+[05.22.26|20:55:10] 	Best Top1: 97.89%
+[05.22.26|20:55:10] current 96.20%, best 97.89%
+[05.22.26|20:55:11] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch020_acc96.20_model.pt.
+[05.22.26|20:55:11] Training epoch: 20
+[05.22.26|20:55:20] 	mean_loss: 1.3689619037840102
+[05.22.26|20:55:20] Time consumption:
+[05.22.26|20:55:20] Done.
+[05.22.26|20:55:20] Training epoch: 21
+[05.22.26|20:55:29] 	mean_loss: 1.3741790453592937
+[05.22.26|20:55:29] Time consumption:
+[05.22.26|20:55:29] Done.
+[05.22.26|20:55:29] Training epoch: 22
+[05.22.26|20:55:32] 	Iter 800 Done. | loss: 1.4710 | lr: 0.010000
+[05.22.26|20:55:39] 	mean_loss: 1.3686860733562045
+[05.22.26|20:55:39] Time consumption:
+[05.22.26|20:55:39] Done.
+[05.22.26|20:55:39] Training epoch: 23
+[05.22.26|20:55:48] 	mean_loss: 1.3538562059402466
+[05.22.26|20:55:48] Time consumption:
+[05.22.26|20:55:48] Done.
+[05.22.26|20:55:48] Training epoch: 24
+[05.22.26|20:55:58] 	mean_loss: 1.3596151603592768
+[05.22.26|20:55:58] Time consumption:
+[05.22.26|20:55:58] Done.
+[05.22.26|20:55:58] Eval epoch: 24
+[05.22.26|20:56:01] 	mean_loss: 1.3596151603592768
+[05.22.26|20:56:01] 	Top1: 97.97%
+[05.22.26|20:56:01] 	Top5: 99.92%
+[05.22.26|20:56:01] 	Best Top1: 97.97%
+[05.22.26|20:56:01] current 97.97%, best 97.97%
+[05.22.26|20:56:01] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch025_acc97.97_model.pt.
+[05.22.26|20:56:01] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt.
+[05.22.26|20:56:01] Training epoch: 25
+[05.22.26|20:56:01] 	Iter 900 Done. | loss: 1.3459 | lr: 0.010000
+[05.22.26|20:56:10] 	mean_loss: 1.3632822400993772
+[05.22.26|20:56:10] Time consumption:
+[05.22.26|20:56:10] Done.
+[05.22.26|20:56:10] Training epoch: 26
+[05.22.26|20:56:20] 	mean_loss: 1.3457053767310247
+[05.22.26|20:56:20] Time consumption:
+[05.22.26|20:56:20] Done.
+[05.22.26|20:56:20] Training epoch: 27
+[05.22.26|20:56:27] 	Iter 1000 Done. | loss: 1.3436 | lr: 0.010000
+[05.22.26|20:56:29] 	mean_loss: 1.3638912273777857
+[05.22.26|20:56:29] Time consumption:
+[05.22.26|20:56:29] Done.
+[05.22.26|20:56:29] Training epoch: 28
+[05.22.26|20:56:38] 	mean_loss: 1.349837001827028
+[05.22.26|20:56:38] Time consumption:
+[05.22.26|20:56:38] Done.
+[05.22.26|20:56:38] Training epoch: 29
+[05.22.26|20:56:48] 	mean_loss: 1.3619141115082636
+[05.22.26|20:56:48] Time consumption:
+[05.22.26|20:56:48] Done.
+[05.22.26|20:56:48] Eval epoch: 29
+[05.22.26|20:56:51] 	mean_loss: 1.3619141115082636
+[05.22.26|20:56:51] 	Top1: 97.13%
+[05.22.26|20:56:51] 	Top5: 99.92%
+[05.22.26|20:56:51] 	Best Top1: 97.97%
+[05.22.26|20:56:51] current 97.13%, best 97.97%
+[05.22.26|20:56:51] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch030_acc97.13_model.pt.
+[05.22.26|20:56:51] Training epoch: 30
+[05.22.26|20:56:56] 	Iter 1100 Done. | loss: 1.5006 | lr: 0.001000
+[05.22.26|20:57:00] 	mean_loss: 1.3525261018011305
+[05.22.26|20:57:00] Time consumption:
+[05.22.26|20:57:00] Done.
+[05.22.26|20:57:00] Training epoch: 31
+[05.22.26|20:57:10] 	mean_loss: 1.3344140383932326
+[05.22.26|20:57:10] Time consumption:
+[05.22.26|20:57:10] Done.
+[05.22.26|20:57:10] Training epoch: 32
+[05.22.26|20:57:19] 	mean_loss: 1.3408996297253504
+[05.22.26|20:57:19] Time consumption:
+[05.22.26|20:57:19] Done.
+[05.22.26|20:57:19] Training epoch: 33
+[05.22.26|20:57:23] 	Iter 1200 Done. | loss: 1.3843 | lr: 0.001000
+[05.22.26|20:57:28] 	mean_loss: 1.3567174110147688
+[05.22.26|20:57:28] Time consumption:
+[05.22.26|20:57:28] Done.
+[05.22.26|20:57:28] Training epoch: 34
+[05.22.26|20:57:38] 	mean_loss: 1.338135110007392
+[05.22.26|20:57:38] Time consumption:
+[05.22.26|20:57:38] Done.
+[05.22.26|20:57:38] Eval epoch: 34
+[05.22.26|20:57:41] 	mean_loss: 1.338135110007392
+[05.22.26|20:57:41] 	Top1: 97.63%
+[05.22.26|20:57:41] 	Top5: 99.92%
+[05.22.26|20:57:41] 	Best Top1: 97.97%
+[05.22.26|20:57:41] current 97.63%, best 97.97%
+[05.22.26|20:57:41] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch035_acc97.63_model.pt.
+[05.22.26|20:57:41] Training epoch: 35
+[05.22.26|20:57:50] 	mean_loss: 1.3394014769130282
+[05.22.26|20:57:50] Time consumption:
+[05.22.26|20:57:50] Done.
+[05.22.26|20:57:50] Training epoch: 36
+[05.22.26|20:57:52] 	Iter 1300 Done. | loss: 1.3149 | lr: 0.001000
+[05.22.26|20:58:00] 	mean_loss: 1.3269638452264998
+[05.22.26|20:58:00] Time consumption:
+[05.22.26|20:58:00] Done.
+[05.22.26|20:58:00] Training epoch: 37
+[05.22.26|20:58:09] 	mean_loss: 1.3626585205396016
+[05.22.26|20:58:09] Time consumption:
+[05.22.26|20:58:09] Done.
+[05.22.26|20:58:09] Training epoch: 38
+[05.22.26|20:58:18] 	Iter 1400 Done. | loss: 1.3212 | lr: 0.001000
+[05.22.26|20:58:18] 	mean_loss: 1.3537349469131894
+[05.22.26|20:58:18] Time consumption:
+[05.22.26|20:58:18] Done.
+[05.22.26|20:58:18] Training epoch: 39
+[05.22.26|20:58:28] 	mean_loss: 1.3455068204138014
+[05.22.26|20:58:28] Time consumption:
+[05.22.26|20:58:28] Done.
+[05.22.26|20:58:28] Eval epoch: 39
+[05.22.26|20:58:31] 	mean_loss: 1.3455068204138014
+[05.22.26|20:58:31] 	Top1: 97.72%
+[05.22.26|20:58:31] 	Top5: 99.92%
+[05.22.26|20:58:31] 	Best Top1: 97.97%
+[05.22.26|20:58:31] current 97.72%, best 97.97%
+[05.22.26|20:58:31] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch040_acc97.72_model.pt.
+[05.22.26|20:58:31] Training epoch: 40
+[05.22.26|20:58:40] 	mean_loss: 1.3530481855074565
+[05.22.26|20:58:40] Time consumption:
+[05.22.26|20:58:40] Done.
+[05.22.26|20:58:40] Training epoch: 41
+[05.22.26|20:58:47] 	Iter 1500 Done. | loss: 1.3459 | lr: 0.001000
+[05.22.26|20:58:49] 	mean_loss: 1.3427178098095789
+[05.22.26|20:58:49] Time consumption:
+[05.22.26|20:58:49] Done.
+[05.22.26|20:58:49] Training epoch: 42
+[05.22.26|20:58:59] 	mean_loss: 1.3302168746789296
+[05.22.26|20:58:59] Time consumption:
+[05.22.26|20:58:59] Done.
+[05.22.26|20:58:59] Training epoch: 43
+[05.22.26|20:59:08] 	mean_loss: 1.331072770886951
+[05.22.26|20:59:08] Time consumption:
+[05.22.26|20:59:08] Done.
+[05.22.26|20:59:08] Training epoch: 44
+[05.22.26|20:59:13] 	Iter 1600 Done. | loss: 1.3727 | lr: 0.001000
+[05.22.26|20:59:18] 	mean_loss: 1.350771082772149
+[05.22.26|20:59:18] Time consumption:
+[05.22.26|20:59:18] Done.
+[05.22.26|20:59:18] Eval epoch: 44
+[05.22.26|20:59:21] 	mean_loss: 1.350771082772149
+[05.22.26|20:59:21] 	Top1: 97.80%
+[05.22.26|20:59:21] 	Top5: 99.92%
+[05.22.26|20:59:21] 	Best Top1: 97.97%
+[05.22.26|20:59:21] current 97.80%, best 97.97%
+[05.22.26|20:59:21] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch045_acc97.80_model.pt.
+[05.22.26|20:59:21] Training epoch: 45
+[05.22.26|20:59:31] 	mean_loss: 1.3530292477872636
+[05.22.26|20:59:31] Time consumption:
+[05.22.26|20:59:31] Done.
+[05.22.26|20:59:31] Training epoch: 46
+[05.22.26|20:59:40] 	mean_loss: 1.3258289959695604
+[05.22.26|20:59:40] Time consumption:
+[05.22.26|20:59:40] Done.
+[05.22.26|20:59:40] Training epoch: 47
+[05.22.26|20:59:43] 	Iter 1700 Done. | loss: 1.4416 | lr: 0.001000
+[05.22.26|20:59:49] 	mean_loss: 1.3619003759490118
+[05.22.26|20:59:49] Time consumption:
+[05.22.26|20:59:49] Done.
+[05.22.26|20:59:49] Training epoch: 48
+[05.22.26|20:59:59] 	mean_loss: 1.3395678997039795
+[05.22.26|20:59:59] Time consumption:
+[05.22.26|20:59:59] Done.
+[05.22.26|20:59:59] Training epoch: 49
+[05.22.26|21:00:08] 	mean_loss: 1.3437179062101576
+[05.22.26|21:00:08] Time consumption:
+[05.22.26|21:00:08] Done.
+[05.22.26|21:00:08] Eval epoch: 49
+[05.22.26|21:00:11] 	mean_loss: 1.3437179062101576
+[05.22.26|21:00:11] 	Top1: 97.72%
+[05.22.26|21:00:11] 	Top5: 99.92%
+[05.22.26|21:00:11] 	Best Top1: 97.97%
+[05.22.26|21:00:11] current 97.72%, best 97.97%
+[05.22.26|21:00:11] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch050_acc97.72_model.pt.
+[05.22.26|21:00:11] Training epoch: 50
+[05.22.26|21:00:12] 	Iter 1800 Done. | loss: 1.2776 | lr: 0.001000
+[05.22.26|21:00:21] 	mean_loss: 1.359320878982544
+[05.22.26|21:00:21] Time consumption:
+[05.22.26|21:00:21] Done.
+[05.22.26|21:00:21] Training epoch: 51
+[05.22.26|21:00:30] 	mean_loss: 1.3535561230447557
+[05.22.26|21:00:30] Time consumption:
+[05.22.26|21:00:30] Done.
+[05.22.26|21:00:30] Training epoch: 52
+[05.22.26|21:00:38] 	Iter 1900 Done. | loss: 1.3159 | lr: 0.001000
+[05.22.26|21:00:40] 	mean_loss: 1.3259157670868769
+[05.22.26|21:00:40] Time consumption:
+[05.22.26|21:00:40] Done.
+[05.22.26|21:00:40] Training epoch: 53
+[05.22.26|21:00:49] 	mean_loss: 1.3178215391106076
+[05.22.26|21:00:49] Time consumption:
+[05.22.26|21:00:49] Done.
+[05.22.26|21:00:49] Training epoch: 54
+[05.22.26|21:00:58] 	mean_loss: 1.3455356525050268
+[05.22.26|21:00:58] Time consumption:
+[05.22.26|21:00:58] Done.
+[05.22.26|21:00:58] Eval epoch: 54
+[05.22.26|21:01:01] 	mean_loss: 1.3455356525050268
+[05.22.26|21:01:01] 	Top1: 97.72%
+[05.22.26|21:01:01] 	Top5: 99.92%
+[05.22.26|21:01:01] 	Best Top1: 97.97%
+[05.22.26|21:01:01] current 97.72%, best 97.97%
+[05.22.26|21:01:01] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch055_acc97.72_model.pt.
+[05.22.26|21:01:01] Training epoch: 55
+[05.22.26|21:01:07] 	Iter 2000 Done. | loss: 1.2688 | lr: 0.001000
+[05.22.26|21:01:11] 	mean_loss: 1.3464330037434895
+[05.22.26|21:01:11] Time consumption:
+[05.22.26|21:01:11] Done.
+[05.22.26|21:01:11] Training epoch: 56
+[05.22.26|21:01:20] 	mean_loss: 1.35506209731102
+[05.22.26|21:01:20] Time consumption:
+[05.22.26|21:01:20] Done.
+[05.22.26|21:01:20] Training epoch: 57
+[05.22.26|21:01:30] 	mean_loss: 1.3419587645265791
+[05.22.26|21:01:30] Time consumption:
+[05.22.26|21:01:30] Done.
+[05.22.26|21:01:30] Training epoch: 58
+[05.22.26|21:01:33] 	Iter 2100 Done. | loss: 1.4991 | lr: 0.001000
+[05.22.26|21:01:39] 	mean_loss: 1.3507035540209875
+[05.22.26|21:01:39] Time consumption:
+[05.22.26|21:01:39] Done.
+[05.22.26|21:01:39] Training epoch: 59
+[05.22.26|21:01:49] 	mean_loss: 1.3511724604500666
+[05.22.26|21:01:49] Time consumption:
+[05.22.26|21:01:49] Done.
+[05.22.26|21:01:49] Eval epoch: 59
+[05.22.26|21:01:52] 	mean_loss: 1.3511724604500666
+[05.22.26|21:01:52] 	Top1: 97.89%
+[05.22.26|21:01:52] 	Top5: 99.92%
+[05.22.26|21:01:52] 	Best Top1: 97.97%
+[05.22.26|21:01:52] current 97.89%, best 97.97%
+[05.22.26|21:01:52] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch060_acc97.89_model.pt.
+[05.22.26|21:01:52] Training epoch: 60
+[05.22.26|21:02:01] 	mean_loss: 1.3375269042121039
+[05.22.26|21:02:01] Time consumption:
+[05.22.26|21:02:01] Done.
+[05.22.26|21:02:01] Training epoch: 61
+[05.22.26|21:02:03] 	Iter 2200 Done. | loss: 1.2348 | lr: 0.001000
+[05.22.26|21:02:11] 	mean_loss: 1.328499221139484
+[05.22.26|21:02:11] Time consumption:
+[05.22.26|21:02:11] Done.
+[05.22.26|21:02:11] Training epoch: 62
+[05.22.26|21:02:20] 	mean_loss: 1.3446436391936407
+[05.22.26|21:02:20] Time consumption:
+[05.22.26|21:02:20] Done.
+[05.22.26|21:02:20] Training epoch: 63
+[05.22.26|21:02:29] 	Iter 2300 Done. | loss: 1.4320 | lr: 0.001000
+[05.22.26|21:02:30] 	mean_loss: 1.3389518558979034
+[05.22.26|21:02:30] Time consumption:
+[05.22.26|21:02:30] Done.
+[05.22.26|21:02:30] Training epoch: 64
+[05.22.26|21:02:39] 	mean_loss: 1.334022558397717
+[05.22.26|21:02:39] Time consumption:
+[05.22.26|21:02:39] Done.
+[05.22.26|21:02:39] Eval epoch: 64
+[05.22.26|21:02:42] 	mean_loss: 1.334022558397717
+[05.22.26|21:02:42] 	Top1: 97.63%
+[05.22.26|21:02:42] 	Top5: 99.92%
+[05.22.26|21:02:42] 	Best Top1: 97.97%
+[05.22.26|21:02:42] current 97.63%, best 97.97%
+[05.22.26|21:02:42] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch065_acc97.63_model.pt.
+[05.22.26|21:02:42] Training epoch: 65
+[05.22.26|21:02:52] 	mean_loss: 1.342333538664712
+[05.22.26|21:02:52] Time consumption:
+[05.22.26|21:02:52] Done.
+[05.22.26|21:02:52] Training epoch: 66
+[05.22.26|21:02:58] 	Iter 2400 Done. | loss: 1.2673 | lr: 0.001000
+[05.22.26|21:03:01] 	mean_loss: 1.3271998001469507
+[05.22.26|21:03:01] Time consumption:
+[05.22.26|21:03:01] Done.
+[05.22.26|21:03:01] Training epoch: 67
+[05.22.26|21:03:11] 	mean_loss: 1.3419412639405992
+[05.22.26|21:03:11] Time consumption:
+[05.22.26|21:03:11] Done.
+[05.22.26|21:03:11] Training epoch: 68
+[05.22.26|21:03:20] 	mean_loss: 1.340513613488939
+[05.22.26|21:03:20] Time consumption:
+[05.22.26|21:03:20] Done.
+[05.22.26|21:03:20] Training epoch: 69
+[05.22.26|21:03:25] 	Iter 2500 Done. | loss: 1.4579 | lr: 0.001000
+[05.22.26|21:03:30] 	mean_loss: 1.3259524901707966
+[05.22.26|21:03:30] Time consumption:
+[05.22.26|21:03:30] Done.
+[05.22.26|21:03:30] Eval epoch: 69
+[05.22.26|21:03:33] 	mean_loss: 1.3259524901707966
+[05.22.26|21:03:33] 	Top1: 98.06%
+[05.22.26|21:03:33] 	Top5: 99.92%
+[05.22.26|21:03:33] 	Best Top1: 98.06%
+[05.22.26|21:03:33] current 98.06%, best 98.06%
+[05.22.26|21:03:33] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch070_acc98.06_model.pt.
+[05.22.26|21:03:33] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt.
+[05.22.26|21:03:33] Training epoch: 70
+[05.22.26|21:03:42] 	mean_loss: 1.3430807325575087
+[05.22.26|21:03:42] Time consumption:
+[05.22.26|21:03:42] Done.
+[05.22.26|21:03:42] Training epoch: 71
+[05.22.26|21:03:52] 	mean_loss: 1.344341109196345
+[05.22.26|21:03:52] Time consumption:
+[05.22.26|21:03:52] Done.
+[05.22.26|21:03:52] Training epoch: 72
+[05.22.26|21:03:54] 	Iter 2600 Done. | loss: 1.2365 | lr: 0.000100
+[05.22.26|21:04:01] 	mean_loss: 1.3418327040142484
+[05.22.26|21:04:01] Time consumption:
+[05.22.26|21:04:01] Done.
+[05.22.26|21:04:01] Training epoch: 73
+[05.22.26|21:04:11] 	mean_loss: 1.3460891114340887
+[05.22.26|21:04:11] Time consumption:
+[05.22.26|21:04:11] Done.
+[05.22.26|21:04:11] Training epoch: 74
+[05.22.26|21:04:20] 	mean_loss: 1.3405101597309113
+[05.22.26|21:04:20] Time consumption:
+[05.22.26|21:04:20] Done.
+[05.22.26|21:04:20] Eval epoch: 74
+[05.22.26|21:04:23] 	mean_loss: 1.3405101597309113
+[05.22.26|21:04:23] 	Top1: 97.89%
+[05.22.26|21:04:23] 	Top5: 99.92%
+[05.22.26|21:04:23] 	Best Top1: 98.06%
+[05.22.26|21:04:23] current 97.89%, best 98.06%
+[05.22.26|21:04:23] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch075_acc97.89_model.pt.
+[05.22.26|21:04:23] Training epoch: 75
+[05.22.26|21:04:24] 	Iter 2700 Done. | loss: 1.3065 | lr: 0.000100
+[05.22.26|21:04:33] 	mean_loss: 1.3495947420597076
+[05.22.26|21:04:33] Time consumption:
+[05.22.26|21:04:33] Done.
+[05.22.26|21:04:33] Training epoch: 76
+[05.22.26|21:04:42] 	mean_loss: 1.337064117193222
+[05.22.26|21:04:42] Time consumption:
+[05.22.26|21:04:42] Done.
+[05.22.26|21:04:42] Training epoch: 77
+[05.22.26|21:04:50] 	Iter 2800 Done. | loss: 1.4165 | lr: 0.000100
+[05.22.26|21:04:51] 	mean_loss: 1.3357846571339502
+[05.22.26|21:04:51] Time consumption:
+[05.22.26|21:04:51] Done.
+[05.22.26|21:04:51] Training epoch: 78
+[05.22.26|21:05:01] 	mean_loss: 1.3387640648418002
+[05.22.26|21:05:01] Time consumption:
+[05.22.26|21:05:01] Done.
+[05.22.26|21:05:01] Training epoch: 79
+[05.22.26|21:05:10] 	mean_loss: 1.3406096365716722
+[05.22.26|21:05:10] Time consumption:
+[05.22.26|21:05:10] Done.
+[05.22.26|21:05:10] Eval epoch: 79
+[05.22.26|21:05:13] 	mean_loss: 1.3406096365716722
+[05.22.26|21:05:13] 	Top1: 97.97%
+[05.22.26|21:05:13] 	Top5: 99.92%
+[05.22.26|21:05:13] 	Best Top1: 98.06%
+[05.22.26|21:05:13] current 97.97%, best 98.06%
+[05.22.26|21:05:13] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch080_acc97.97_model.pt.
+[05.22.26|21:05:13] Training epoch: 80
+[05.22.26|21:05:19] 	Iter 2900 Done. | loss: 1.2671 | lr: 0.000100
+[05.22.26|21:05:23] 	mean_loss: 1.3553767402966816
+[05.22.26|21:05:23] Time consumption:
+[05.22.26|21:05:23] Done.
+[05.22.26|21:05:23] Training epoch: 81
+[05.22.26|21:05:32] 	mean_loss: 1.314704908265008
+[05.22.26|21:05:32] Time consumption:
+[05.22.26|21:05:32] Done.
+[05.22.26|21:05:32] Training epoch: 82
+[05.22.26|21:05:42] 	mean_loss: 1.3466386397679646
+[05.22.26|21:05:42] Time consumption:
+[05.22.26|21:05:42] Done.
+[05.22.26|21:05:42] Training epoch: 83
+[05.22.26|21:05:46] 	Iter 3000 Done. | loss: 1.2677 | lr: 0.000100
+[05.22.26|21:05:51] 	mean_loss: 1.3367716206444635
+[05.22.26|21:05:51] Time consumption:
+[05.22.26|21:05:51] Done.
+[05.22.26|21:05:51] Training epoch: 84
+[05.22.26|21:06:01] 	mean_loss: 1.3332718676990933
+[05.22.26|21:06:01] Time consumption:
+[05.22.26|21:06:01] Done.
+[05.22.26|21:06:01] Eval epoch: 84
+[05.22.26|21:06:04] 	mean_loss: 1.3332718676990933
+[05.22.26|21:06:04] 	Top1: 97.55%
+[05.22.26|21:06:04] 	Top5: 99.92%
+[05.22.26|21:06:04] 	Best Top1: 98.06%
+[05.22.26|21:06:04] current 97.55%, best 98.06%
+[05.22.26|21:06:04] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch085_acc97.55_model.pt.
+[05.22.26|21:06:04] Training epoch: 85
+[05.22.26|21:06:13] 	mean_loss: 1.3405363923973508
+[05.22.26|21:06:13] Time consumption:
+[05.22.26|21:06:13] Done.
+[05.22.26|21:06:13] Training epoch: 86
+[05.22.26|21:06:15] 	Iter 3100 Done. | loss: 1.2671 | lr: 0.000100
+[05.22.26|21:06:23] 	mean_loss: 1.332576420572069
+[05.22.26|21:06:23] Time consumption:
+[05.22.26|21:06:23] Done.
+[05.22.26|21:06:23] Training epoch: 87
+[05.22.26|21:06:32] 	mean_loss: 1.3408544196022882
+[05.22.26|21:06:32] Time consumption:
+[05.22.26|21:06:32] Done.
+[05.22.26|21:06:32] Training epoch: 88
+[05.22.26|21:06:41] 	Iter 3200 Done. | loss: 1.4543 | lr: 0.000100
+[05.22.26|21:06:42] 	mean_loss: 1.336456732617484
+[05.22.26|21:06:42] Time consumption:
+[05.22.26|21:06:42] Done.
+[05.22.26|21:06:42] Training epoch: 89
+[05.22.26|21:06:51] 	mean_loss: 1.315656903717253
+[05.22.26|21:06:51] Time consumption:
+[05.22.26|21:06:51] Done.
+[05.22.26|21:06:51] Eval epoch: 89
+[05.22.26|21:06:54] 	mean_loss: 1.315656903717253
+[05.22.26|21:06:54] 	Top1: 97.89%
+[05.22.26|21:06:54] 	Top5: 99.92%
+[05.22.26|21:06:54] 	Best Top1: 98.06%
+[05.22.26|21:06:54] current 97.89%, best 98.06%
+[05.22.26|21:06:54] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch090_acc97.89_model.pt.
+[05.22.26|21:06:54] Training epoch: 90
+[05.22.26|21:07:04] 	mean_loss: 1.3536623451444838
+[05.22.26|21:07:04] Time consumption:
+[05.22.26|21:07:04] Done.
+[05.22.26|21:07:04] Training epoch: 91
+[05.22.26|21:07:10] 	Iter 3300 Done. | loss: 1.3923 | lr: 0.000100
+[05.22.26|21:07:13] 	mean_loss: 1.3609991172949474
+[05.22.26|21:07:13] Time consumption:
+[05.22.26|21:07:13] Done.
+[05.22.26|21:07:13] Training epoch: 92
+[05.22.26|21:07:23] 	mean_loss: 1.3464496168825362
+[05.22.26|21:07:23] Time consumption:
+[05.22.26|21:07:23] Done.
+[05.22.26|21:07:23] Training epoch: 93
+[05.22.26|21:07:32] 	mean_loss: 1.343781395090951
+[05.22.26|21:07:32] Time consumption:
+[05.22.26|21:07:32] Done.
+[05.22.26|21:07:32] Training epoch: 94
+[05.22.26|21:07:37] 	Iter 3400 Done. | loss: 1.2859 | lr: 0.000100
+[05.22.26|21:07:41] 	mean_loss: 1.3284369077947404
+[05.22.26|21:07:41] Time consumption:
+[05.22.26|21:07:41] Done.
+[05.22.26|21:07:41] Eval epoch: 94
+[05.22.26|21:07:44] 	mean_loss: 1.3284369077947404
+[05.22.26|21:07:44] 	Top1: 98.06%
+[05.22.26|21:07:44] 	Top5: 99.92%
+[05.22.26|21:07:44] 	Best Top1: 98.06%
+[05.22.26|21:07:44] current 98.06%, best 98.06%
+[05.22.26|21:07:45] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch095_acc98.06_model.pt.
+[05.22.26|21:07:45] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt.
+[05.22.26|21:07:45] Training epoch: 95
+[05.22.26|21:07:54] 	mean_loss: 1.3486066857973735
+[05.22.26|21:07:54] Time consumption:
+[05.22.26|21:07:54] Done.
+[05.22.26|21:07:54] Training epoch: 96
+[05.22.26|21:08:03] 	mean_loss: 1.354481925566991
+[05.22.26|21:08:03] Time consumption:
+[05.22.26|21:08:03] Done.
+[05.22.26|21:08:03] Training epoch: 97
+[05.22.26|21:08:06] 	Iter 3500 Done. | loss: 1.2250 | lr: 0.000100
+[05.22.26|21:08:13] 	mean_loss: 1.32960221502516
+[05.22.26|21:08:13] Time consumption:
+[05.22.26|21:08:13] Done.
+[05.22.26|21:08:13] Training epoch: 98
+[05.22.26|21:08:22] 	mean_loss: 1.3249168892701466
+[05.22.26|21:08:22] Time consumption:
+[05.22.26|21:08:22] Done.
+[05.22.26|21:08:22] Training epoch: 99
+[05.22.26|21:08:32] 	mean_loss: 1.3586877584457397
+[05.22.26|21:08:32] Time consumption:
+[05.22.26|21:08:32] Done.
+[05.22.26|21:08:32] Eval epoch: 99
+[05.22.26|21:08:35] 	mean_loss: 1.3586877584457397
+[05.22.26|21:08:35] 	Top1: 97.97%
+[05.22.26|21:08:35] 	Top5: 99.92%
+[05.22.26|21:08:35] 	Best Top1: 98.06%
+[05.22.26|21:08:35] current 97.97%, best 98.06%
+[05.22.26|21:08:35] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch100_acc97.97_model.pt.
+[05.22.26|21:08:35] Training epoch: 100
+[05.22.26|21:08:35] 	Iter 3600 Done. | loss: 1.2811 | lr: 0.000100
+[05.22.26|21:08:44] 	mean_loss: 1.3362532920307584
+[05.22.26|21:08:44] Time consumption:
+[05.22.26|21:08:44] Done.
+[05.22.26|21:08:44] Training epoch: 101
+[05.22.26|21:08:54] 	mean_loss: 1.3412168622016907
+[05.22.26|21:08:54] Time consumption:
+[05.22.26|21:08:54] Done.
+[05.22.26|21:08:54] Training epoch: 102
+[05.22.26|21:09:01] 	Iter 3700 Done. | loss: 1.2828 | lr: 0.000100
+[05.22.26|21:09:03] 	mean_loss: 1.3257170120875041
+[05.22.26|21:09:03] Time consumption:
+[05.22.26|21:09:03] Done.
+[05.22.26|21:09:03] Training epoch: 103
+[05.22.26|21:09:13] 	mean_loss: 1.3633823659684923
+[05.22.26|21:09:13] Time consumption:
+[05.22.26|21:09:13] Done.
+[05.22.26|21:09:13] Training epoch: 104
+[05.22.26|21:09:22] 	mean_loss: 1.3465998503896925
+[05.22.26|21:09:22] Time consumption:
+[05.22.26|21:09:22] Done.
+[05.22.26|21:09:22] Eval epoch: 104
+[05.22.26|21:09:25] 	mean_loss: 1.3465998503896925
+[05.22.26|21:09:25] 	Top1: 97.63%
+[05.22.26|21:09:25] 	Top5: 99.92%
+[05.22.26|21:09:25] 	Best Top1: 98.06%
+[05.22.26|21:09:25] current 97.63%, best 98.06%
+[05.22.26|21:09:25] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch105_acc97.63_model.pt.
+[05.22.26|21:09:25] Training epoch: 105
+[05.22.26|21:09:31] 	Iter 3800 Done. | loss: 1.3380 | lr: 0.000100
+[05.22.26|21:09:35] 	mean_loss: 1.338299532731374
+[05.22.26|21:09:35] Time consumption:
+[05.22.26|21:09:35] Done.
+[05.22.26|21:09:35] Training epoch: 106
+[05.22.26|21:09:44] 	mean_loss: 1.3517431683010526
+[05.22.26|21:09:44] Time consumption:
+[05.22.26|21:09:44] Done.
+[05.22.26|21:09:44] Training epoch: 107
+[05.22.26|21:09:54] 	mean_loss: 1.3391246100266774
+[05.22.26|21:09:54] Time consumption:
+[05.22.26|21:09:54] Done.
+[05.22.26|21:09:54] Training epoch: 108
+[05.22.26|21:09:57] 	Iter 3900 Done. | loss: 1.3100 | lr: 0.000100
+[05.22.26|21:10:03] 	mean_loss: 1.3317048119174109
+[05.22.26|21:10:03] Time consumption:
+[05.22.26|21:10:03] Done.
+[05.22.26|21:10:03] Training epoch: 109
+[05.22.26|21:10:12] 	mean_loss: 1.3345324761337705
+[05.22.26|21:10:12] Time consumption:
+[05.22.26|21:10:12] Done.
+[05.22.26|21:10:12] Eval epoch: 109
+[05.22.26|21:10:15] 	mean_loss: 1.3345324761337705
+[05.22.26|21:10:15] 	Top1: 97.80%
+[05.22.26|21:10:15] 	Top5: 99.92%
+[05.22.26|21:10:15] 	Best Top1: 98.06%
+[05.22.26|21:10:15] current 97.80%, best 98.06%
+[05.22.26|21:10:15] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch110_acc97.80_model.pt.
+[05.22.26|21:10:15] Training epoch: 110
+[05.22.26|21:10:25] 	mean_loss: 1.338081396288342
+[05.22.26|21:10:25] Time consumption:
+[05.22.26|21:10:25] Done.
+[05.22.26|21:10:25] Training epoch: 111
+[05.22.26|21:10:27] 	Iter 4000 Done. | loss: 1.4009 | lr: 0.000100
+[05.22.26|21:10:34] 	mean_loss: 1.3319878975550334
+[05.22.26|21:10:34] Time consumption:
+[05.22.26|21:10:34] Done.
+[05.22.26|21:10:34] Training epoch: 112
+[05.22.26|21:10:44] 	mean_loss: 1.329041235976749
+[05.22.26|21:10:44] Time consumption:
+[05.22.26|21:10:44] Done.
+[05.22.26|21:10:44] Training epoch: 113
+[05.22.26|21:10:53] 	Iter 4100 Done. | loss: 1.3436 | lr: 0.000100
+[05.22.26|21:10:54] 	mean_loss: 1.3566552135679457
+[05.22.26|21:10:54] Time consumption:
+[05.22.26|21:10:54] Done.
+[05.22.26|21:10:54] Training epoch: 114
+[05.22.26|21:11:03] 	mean_loss: 1.3469634883933597
+[05.22.26|21:11:03] Time consumption:
+[05.22.26|21:11:03] Done.
+[05.22.26|21:11:03] Eval epoch: 114
+[05.22.26|21:11:06] 	mean_loss: 1.3469634883933597
+[05.22.26|21:11:06] 	Top1: 98.14%
+[05.22.26|21:11:06] 	Top5: 99.92%
+[05.22.26|21:11:06] 	Best Top1: 98.14%
+[05.22.26|21:11:06] current 98.14%, best 98.14%
+[05.22.26|21:11:06] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch115_acc98.14_model.pt.
+[05.22.26|21:11:06] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt.
+[05.22.26|21:11:06] Training epoch: 115
+[05.22.26|21:11:15] 	mean_loss: 1.3318488068050809
+[05.22.26|21:11:15] Time consumption:
+[05.22.26|21:11:15] Done.
+[05.22.26|21:11:15] Training epoch: 116
+[05.22.26|21:11:22] 	Iter 4200 Done. | loss: 1.2790 | lr: 0.000100
+[05.22.26|21:11:25] 	mean_loss: 1.3259519735972087
+[05.22.26|21:11:25] Time consumption:
+[05.22.26|21:11:25] Done.
+[05.22.26|21:11:25] Training epoch: 117
+[05.22.26|21:11:34] 	mean_loss: 1.3335764871703253
+[05.22.26|21:11:34] Time consumption:
+[05.22.26|21:11:34] Done.
+[05.22.26|21:11:34] Training epoch: 118
+[05.22.26|21:11:44] 	mean_loss: 1.3375651703940497
+[05.22.26|21:11:44] Time consumption:
+[05.22.26|21:11:44] Done.
+[05.22.26|21:11:44] Training epoch: 119
+[05.22.26|21:11:48] 	Iter 4300 Done. | loss: 1.4078 | lr: 0.000100
+[05.22.26|21:11:53] 	mean_loss: 1.373826437526279
+[05.22.26|21:11:53] Time consumption:
+[05.22.26|21:11:53] Done.
+[05.22.26|21:11:53] Eval epoch: 119
+[05.22.26|21:11:56] 	mean_loss: 1.373826437526279
+[05.22.26|21:11:56] 	Top1: 97.89%
+[05.22.26|21:11:56] 	Top5: 99.92%
+[05.22.26|21:11:56] 	Best Top1: 98.14%
+[05.22.26|21:11:56] current 97.89%, best 98.14%
+[05.22.26|21:11:56] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch120_acc97.89_model.pt.
+[05.22.26|21:11:56] Training epoch: 120
+[05.22.26|21:12:06] 	mean_loss: 1.3303939269648657
+[05.22.26|21:12:06] Time consumption:
+[05.22.26|21:12:06] Done.
+[05.22.26|21:12:06] Training epoch: 121
+[05.22.26|21:12:15] 	mean_loss: 1.3504983252949185
+[05.22.26|21:12:15] Time consumption:
+[05.22.26|21:12:15] Done.
+[05.22.26|21:12:15] Training epoch: 122
+[05.22.26|21:12:18] 	Iter 4400 Done. | loss: 1.2829 | lr: 0.000100
+[05.22.26|21:12:25] 	mean_loss: 1.3626099129517872
+[05.22.26|21:12:25] Time consumption:
+[05.22.26|21:12:25] Done.
+[05.22.26|21:12:25] Training epoch: 123
+[05.22.26|21:12:34] 	mean_loss: 1.3373576634460025
+[05.22.26|21:12:34] Time consumption:
+[05.22.26|21:12:34] Done.
+[05.22.26|21:12:34] Training epoch: 124
+[05.22.26|21:12:44] 	mean_loss: 1.3296461237801447
+[05.22.26|21:12:44] Time consumption:
+[05.22.26|21:12:44] Done.
+[05.22.26|21:12:44] Eval epoch: 124
+[05.22.26|21:12:46] 	mean_loss: 1.3296461237801447
+[05.22.26|21:12:46] 	Top1: 97.72%
+[05.22.26|21:12:47] 	Top5: 99.92%
+[05.22.26|21:12:47] 	Best Top1: 98.14%
+[05.22.26|21:12:47] current 97.72%, best 98.14%
+[05.22.26|21:12:47] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch125_acc97.72_model.pt.
+[05.22.26|21:12:47] Training epoch: 125
+[05.22.26|21:12:47] 	Iter 4500 Done. | loss: 1.2752 | lr: 0.000100
+[05.22.26|21:12:56] 	mean_loss: 1.3388654655880399
+[05.22.26|21:12:56] Time consumption:
+[05.22.26|21:12:56] Done.
+[05.22.26|21:12:56] Training epoch: 126
+[05.22.26|21:13:06] 	mean_loss: 1.3384528623686895
+[05.22.26|21:13:06] Time consumption:
+[05.22.26|21:13:06] Done.
+[05.22.26|21:13:06] Training epoch: 127
+[05.22.26|21:13:13] 	Iter 4600 Done. | loss: 1.2303 | lr: 0.000100
+[05.22.26|21:13:15] 	mean_loss: 1.3366261819998424
+[05.22.26|21:13:15] Time consumption:
+[05.22.26|21:13:15] Done.
+[05.22.26|21:13:15] Training epoch: 128
+[05.22.26|21:13:25] 	mean_loss: 1.3491577075587378
+[05.22.26|21:13:25] Time consumption:
+[05.22.26|21:13:25] Done.
+[05.22.26|21:13:25] Training epoch: 129
+[05.22.26|21:13:34] 	mean_loss: 1.3529306219683752
+[05.22.26|21:13:34] Time consumption:
+[05.22.26|21:13:34] Done.
+[05.22.26|21:13:34] Eval epoch: 129
+[05.22.26|21:13:37] 	mean_loss: 1.3529306219683752
+[05.22.26|21:13:37] 	Top1: 97.89%
+[05.22.26|21:13:37] 	Top5: 99.92%
+[05.22.26|21:13:37] 	Best Top1: 98.14%
+[05.22.26|21:13:37] current 97.89%, best 98.14%
+[05.22.26|21:13:37] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch130_acc97.89_model.pt.
+[05.22.26|21:13:37] Training epoch: 130
+[05.22.26|21:13:43] 	Iter 4700 Done. | loss: 1.3166 | lr: 0.000100
+[05.22.26|21:13:47] 	mean_loss: 1.3368692364957597
+[05.22.26|21:13:47] Time consumption:
+[05.22.26|21:13:47] Done.
+[05.22.26|21:13:47] Training epoch: 131
+[05.22.26|21:13:56] 	mean_loss: 1.367892665995492
+[05.22.26|21:13:56] Time consumption:
+[05.22.26|21:13:56] Done.
+[05.22.26|21:13:56] Training epoch: 132
+[05.22.26|21:14:05] 	mean_loss: 1.3546574811140697
+[05.22.26|21:14:05] Time consumption:
+[05.22.26|21:14:05] Done.
+[05.22.26|21:14:05] Training epoch: 133
+[05.22.26|21:14:09] 	Iter 4800 Done. | loss: 1.3557 | lr: 0.000100
+[05.22.26|21:14:15] 	mean_loss: 1.3346590134832594
+[05.22.26|21:14:15] Time consumption:
+[05.22.26|21:14:15] Done.
+[05.22.26|21:14:15] Training epoch: 134
+[05.22.26|21:14:24] 	mean_loss: 1.352089951435725
+[05.22.26|21:14:24] Time consumption:
+[05.22.26|21:14:24] Done.
+[05.22.26|21:14:24] Eval epoch: 134
+[05.22.26|21:14:27] 	mean_loss: 1.352089951435725
+[05.22.26|21:14:27] 	Top1: 98.14%
+[05.22.26|21:14:28] 	Top5: 99.92%
+[05.22.26|21:14:28] 	Best Top1: 98.14%
+[05.22.26|21:14:28] current 98.14%, best 98.14%
+[05.22.26|21:14:28] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch135_acc98.14_model.pt.
+[05.22.26|21:14:28] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt.
+[05.22.26|21:14:28] Training epoch: 135
+[05.22.26|21:14:37] 	mean_loss: 1.357736498117447
+[05.22.26|21:14:37] Time consumption:
+[05.22.26|21:14:37] Done.
+[05.22.26|21:14:37] Training epoch: 136
+[05.22.26|21:14:39] 	Iter 4900 Done. | loss: 1.4164 | lr: 0.000100
+[05.22.26|21:14:47] 	mean_loss: 1.344194879134496
+[05.22.26|21:14:47] Time consumption:
+[05.22.26|21:14:47] Done.
+[05.22.26|21:14:47] Training epoch: 137
+[05.22.26|21:14:56] 	mean_loss: 1.3331836760044098
+[05.22.26|21:14:56] Time consumption:
+[05.22.26|21:14:56] Done.
+[05.22.26|21:14:56] Training epoch: 138
+[05.22.26|21:15:05] 	Iter 5000 Done. | loss: 1.4279 | lr: 0.000100
+[05.22.26|21:15:06] 	mean_loss: 1.3557157582706876
+[05.22.26|21:15:06] Time consumption:
+[05.22.26|21:15:06] Done.
+[05.22.26|21:15:06] Training epoch: 139
+[05.22.26|21:15:15] 	mean_loss: 1.3445297049151526
+[05.22.26|21:15:15] Time consumption:
+[05.22.26|21:15:15] Done.
+[05.22.26|21:15:15] Eval epoch: 139
+[05.22.26|21:15:18] 	mean_loss: 1.3445297049151526
+[05.22.26|21:15:18] 	Top1: 97.72%
+[05.22.26|21:15:18] 	Top5: 99.92%
+[05.22.26|21:15:18] 	Best Top1: 98.14%
+[05.22.26|21:15:18] current 97.72%, best 98.14%
+[05.22.26|21:15:18] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch140_acc97.72_model.pt.
+[05.22.26|21:15:18] Training epoch: 140
+[05.22.26|21:15:27] 	mean_loss: 1.3282819423410628
+[05.22.26|21:15:27] Time consumption:
+[05.22.26|21:15:27] Done.
+[05.22.26|21:15:27] Training epoch: 141
+[05.22.26|21:15:34] 	Iter 5100 Done. | loss: 1.2192 | lr: 0.000100
+[05.22.26|21:15:37] 	mean_loss: 1.3184735311402216
+[05.22.26|21:15:37] Time consumption:
+[05.22.26|21:15:37] Done.
+[05.22.26|21:15:37] Training epoch: 142
+[05.22.26|21:15:46] 	mean_loss: 1.3517896797921922
+[05.22.26|21:15:46] Time consumption:
+[05.22.26|21:15:46] Done.
+[05.22.26|21:15:46] Training epoch: 143
+[05.22.26|21:15:55] 	mean_loss: 1.3253581557008955
+[05.22.26|21:15:55] Time consumption:
+[05.22.26|21:15:55] Done.
+[05.22.26|21:15:55] Training epoch: 144
+[05.22.26|21:16:00] 	Iter 5200 Done. | loss: 1.2489 | lr: 0.000100
+[05.22.26|21:16:05] 	mean_loss: 1.3418962690565321
+[05.22.26|21:16:05] Time consumption:
+[05.22.26|21:16:05] Done.
+[05.22.26|21:16:05] Eval epoch: 144
+[05.22.26|21:16:08] 	mean_loss: 1.3418962690565321
+[05.22.26|21:16:08] 	Top1: 97.63%
+[05.22.26|21:16:08] 	Top5: 99.92%
+[05.22.26|21:16:08] 	Best Top1: 98.14%
+[05.22.26|21:16:08] current 97.63%, best 98.14%
+[05.22.26|21:16:08] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch145_acc97.63_model.pt.
+[05.22.26|21:16:08] Training epoch: 145
+[05.22.26|21:16:17] 	mean_loss: 1.3260303305255041
+[05.22.26|21:16:17] Time consumption:
+[05.22.26|21:16:17] Done.
+[05.22.26|21:16:17] Training epoch: 146
+[05.22.26|21:16:27] 	mean_loss: 1.3419889244768355
+[05.22.26|21:16:27] Time consumption:
+[05.22.26|21:16:27] Done.
+[05.22.26|21:16:27] Training epoch: 147
+[05.22.26|21:16:29] 	Iter 5300 Done. | loss: 1.3983 | lr: 0.000100
+[05.22.26|21:16:36] 	mean_loss: 1.3528252475791507
+[05.22.26|21:16:36] Time consumption:
+[05.22.26|21:16:36] Done.
+[05.22.26|21:16:36] Training epoch: 148
+[05.22.26|21:16:46] 	mean_loss: 1.3267527520656586
+[05.22.26|21:16:46] Time consumption:
+[05.22.26|21:16:46] Done.
+[05.22.26|21:16:46] Training epoch: 149
+[05.22.26|21:16:55] 	mean_loss: 1.33993442191018
+[05.22.26|21:16:55] Time consumption:
+[05.22.26|21:16:55] Done.
+[05.22.26|21:16:55] Eval epoch: 149
+[05.22.26|21:16:58] 	mean_loss: 1.33993442191018
+[05.22.26|21:16:58] 	Top1: 97.97%
+[05.22.26|21:16:58] 	Top5: 99.92%
+[05.22.26|21:16:58] 	Best Top1: 98.14%
+[05.22.26|21:16:58] current 97.97%, best 98.14%
+[05.22.26|21:16:58] The model has been saved as ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/epoch150_acc97.97_model.pt.

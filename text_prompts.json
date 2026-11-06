@@ -1,0 +1,18 @@
+{
+    "0": ["A person signals to start using one arm with a dynamic motion, raising a fist and bending the forearm inward before returning."],
+    "1": ["A person signals to stop using one arm with a dynamic motion, raising an open palm across the body and moving the forearm sideways before returning."],
+    "2": ["A person signals to slow down using one arm with a dynamic motion, pressing the palm downward from chest level and returning."],
+    "3": ["A person signals to speed up using one arm with a dynamic motion, lifting the palm upward from the waist to chest level and lowering it back."],
+    "4": ["A person signals to move forward along the X-axis using two arms with a dynamic motion, showing one finger while the other hand pushes forward."],
+    "5": ["A person signals to move forward along the Y-axis using two arms with a dynamic motion, showing two fingers while the other hand pushes forward."],
+    "6": ["A person signals to move forward along the Z-axis using two arms with a dynamic motion, showing three fingers while the other hand pushes forward."],
+    "7": ["A person signals to move backward along the X-axis using two arms with a dynamic motion, showing one finger while the other arm pulls backward."],
+    "8": ["A person signals to move backward along the Y-axis using two arms with a dynamic motion, showing two fingers while the other arm pulls backward."],
+    "9": ["A person signals to move backward along the Z-axis using two arms with a dynamic motion, showing three fingers while the other arm pulls backward."],
+    "10": ["A person signals to rotate along the X-axis using two arms with a dynamic motion, showing one finger while the other hand rotates a fist."],
+    "11": ["A person signals to rotate along the Y-axis using two arms with a dynamic motion, showing two fingers while the other hand rotates a fist."],
+    "12": ["A person signals to rotate along the Z-axis using two arms with a dynamic motion, showing three fingers while the other hand rotates a fist."],
+    "13": ["A person signals to confirm completion using one arm with a static pose, holding a thumbs-up."],
+    "14": ["A person signals to pick up a part using one arm with a static pose, holding a grasping hand shape."],
+    "15": ["A person signals to deposit a part using one arm with a static pose, holding a clenched fist"]
+}

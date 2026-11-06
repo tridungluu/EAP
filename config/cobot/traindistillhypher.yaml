@@ -1,0 +1,76 @@
+work_dir: ./work_dir/student/hypersa_fcce_cd_v1
+
+# feeder (student sees a truncated sequence: obs_ratio = 0.2 / 0.4 / 0.6 / 0.8 / 1.0)
+feeder: feeder.feeder_clr.Feeder
+train_feeder_args:
+  data_path: ./datacobot_v2_full_gcn/xsub/train_position.npy
+  label_path: ./datacobot_v2_full_gcn/xsub/train_label.pkl
+  text_path: text_prompts.json     # still required by Feeder.__init__, not used for training
+  data_ratio: 1.0
+  obs_ratio: 0.2
+
+test_feeder_args:
+  data_path: ./datacobot_v2_full_gcn/xsub/val_position.npy
+  label_path:  ./datacobot_v2_full_gcn/xsub/val_label.pkl
+  text_path: text_prompts.json
+  obs_ratio: 0.2
+
+# teacher model (model_args MUST match train_clr.yaml, weights = the NEW FC+CE teacher)
+teacher_weights: ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt
+teacher_model: net.teacher.TeacherModel
+teacher_model_args:
+  base_encoder: net.hypersa_ae.HyperSAEncoder
+  num_class: 16
+  num_point: 48
+  num_person: 1
+  drop_out: 0.5
+  graph: graph.cobot.Graph
+  graph_args:
+    labeling_mode: 'distance'
+  channels: [64, 128, 256]
+  strides: [1, 2, 2]
+  heads: 8
+  num_hyperedges: 5     # learned partition (Eq. 8-9); paper Fig. 3 uses ~5 body-part groups on NTU
+  # partition_groups: [0,0,1,...]   # optional: fixed empirical partition, one group id per joint (len = num_point)
+  # hop_edges: [[0,1],[1,2]]        # optional: bone list (0-indexed) if the graph has no A_binary/neighbor_link
+  root_joint: 0
+  sta_stride: 2
+  tau: 0.125
+  rho: 0.9
+  ctx_ch: 384
+  t_len: 24
+
+# student model: 2-block HyperSA encoder, 2-block HyperSA decoder, FC classifier (CE)
+model: net.student.StudentModel
+model_args:
+  base_encoder: net.hypersa_ae.HyperSAEncoder
+  num_class: 16
+  num_point: 48
+  num_person: 1
+  drop_out: 0.5
+  graph: graph.cobot.Graph
+  graph_args:
+    labeling_mode: 'distance'
+  enc_channels: [128, 256]
+  enc_strides: [2, 2]
+  heads: 8
+  num_hyperedges: 5     # learned partition (Eq. 8-9); paper Fig. 3 uses ~5 body-part groups on NTU
+  # partition_groups: [0,0,1,...]   # optional: fixed empirical partition, one group id per joint (len = num_point)
+  # hop_edges: [[0,1],[1,2]]        # optional: bone list (0-indexed) if the graph has no A_binary/neighbor_link
+  t_len: 24            # must equal teacher t_len
+
+# optim
+weight_decay: 0.0001
+base_lr: 0.025          # paper (NTU)
+
+# training
+device: [0]
+batch_size: 32
+test_batch_size: 32
+num_epoch: 300           # paper
+
+# Eq. 16: L_S = w_ce * CE + w_cd * CD + w_recon * Recon
+alpha: 1.0               # w_ce
+feature_distillation:
+  context_distill: 50.0  # w_cd, Eq. 15 (try 10 / 50 / 100)
+  recon: 1.0             # w_recon, Eq. 14

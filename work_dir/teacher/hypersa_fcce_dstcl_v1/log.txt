@@ -1,0 +1,591 @@
+[11.06.26|12:02:06] Parameters:
+{'work_dir': './work_dir/teacher/hypersa_fcce_dstcl_v1', 'config': 'config/cobot/trainhypherclr.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 300, 'use_gpu': True, 'device': [0], 'log_interval': 100, 'save_interval': 10, 'eval_interval': 5, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_clr.Feeder', 'num_worker': 4, 'train_feeder_args': {'data_path': './datacobot_v2_full_gcn/xsub/train_position.npy', 'label_path': './datacobot_v2_full_gcn/xsub/train_label.pkl', 'text_path': 'text_prompts.json', 'data_ratio': 1.0, 'bone': False, 'debug': False}, 'test_feeder_args': {'data_path': './datacobot_v2_full_gcn/xsub/val_position.npy', 'label_path': './datacobot_v2_full_gcn/xsub/val_label.pkl', 'text_path': 'text_prompts.json', 'bone': False}, 'batch_size': 32, 'test_batch_size': 32, 'debug': False, 'model': 'net.teacher.TeacherModel', 'model_args': {'base_encoder': 'net.hypersa_ae.HyperSAEncoder', 'num_class': 16, 'num_point': 48, 'num_person': 1, 'drop_out': 0.5, 'graph': 'graph.cobot.Graph', 'graph_args': {'labeling_mode': 'distance'}, 'channels': [64, 128, 256], 'strides': [1, 2, 2], 'heads': 8, 'num_hyperedges': 5, 'root_joint': 0, 'sta_stride': 2, 'tau': 0.125, 'rho': 0.9, 'ctx_ch': 384, 't_len': 24}, 'weights': None, 'ignore_weights': [], 'text_encoder': None, 'text_args': {}, 'teacher_model': None, 'teacher_model_args': {}, 'teacher_weights': None, 'alpha': None, 'feature_distillation': {'cosine': 0, 'align': 0, 'spatial': 1}, 'logits_distillation': {'kd': 0.5, 'hardkd': 0, 'dkd': 0, 'ctkd': 0}, 'kd_T': 1, 'show_topk': [1, 5], 'base_lr': 0.025, 'step': [150, 225], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0001, 'lr_decay_rate': 0.1, 'warm_up_epoch': 0, 'w_sta': 1.0, 'w_ce': 1.0, 'w_cl': 0.1}
+
+[11.06.26|12:02:06] ---------- Networks initialized -------------
+[11.06.26|12:02:06] [Network] Total number of parameters : 0.890 M
+[11.06.26|12:02:06] -----------------------------------------------
+[11.06.26|12:02:06] Training epoch: 0
+[11.06.26|12:02:20] 	Iter 0 Done. | loss: 9.1389 | sta: 0.3085 | ce: 7.7205 | dstcl: 11.0997 | lr: 0.025000
+[11.06.26|12:03:08] 	mean_loss: 6.988126503096686
+[11.06.26|12:03:08] Time consumption:
+[11.06.26|12:03:08] Done.
+[11.06.26|12:03:08] Training epoch: 1
+[11.06.26|12:04:09] 	mean_loss: 3.32476716571384
+[11.06.26|12:04:09] Time consumption:
+[11.06.26|12:04:09] Done.
+[11.06.26|12:04:09] Training epoch: 2
+[11.06.26|12:04:59] 	Iter 100 Done. | loss: 1.6983 | sta: 0.1095 | ce: 1.1105 | dstcl: 4.7827 | lr: 0.025000
+[11.06.26|12:05:09] 	mean_loss: 2.44431389702691
+[11.06.26|12:05:09] Time consumption:
+[11.06.26|12:05:09] Done.
+[11.06.26|12:05:09] Training epoch: 3
+[11.06.26|12:06:10] 	mean_loss: 2.0571654074721866
+[11.06.26|12:06:10] Time consumption:
+[11.06.26|12:06:10] Done.
+[11.06.26|12:06:10] Training epoch: 4
+[11.06.26|12:07:11] 	mean_loss: 1.7607047425376043
+[11.06.26|12:07:11] Time consumption:
+[11.06.26|12:07:11] Done.
+[11.06.26|12:07:11] Eval epoch: 4
+[11.06.26|12:07:31] 	mean_loss: 1.7607047425376043
+[11.06.26|12:07:31] 	Top1: 60.36%
+[11.06.26|12:07:31] 	Top5: 95.18%
+[11.06.26|12:07:31] 	Best Top1: 60.36%
+[11.06.26|12:07:31] current 60.36%, best 60.36%
+[11.06.26|12:07:31] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch005_acc60.36_model.pt.
+[11.06.26|12:07:31] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt.
+[11.06.26|12:07:31] Training epoch: 5
+[11.06.26|12:08:10] 	Iter 200 Done. | loss: 1.1773 | sta: 0.0892 | ce: 0.7443 | dstcl: 3.4385 | lr: 0.025000
+[11.06.26|12:08:32] 	mean_loss: 1.406849033302731
+[11.06.26|12:08:32] Time consumption:
+[11.06.26|12:08:32] Done.
+[11.06.26|12:08:32] Training epoch: 6
+[11.06.26|12:09:33] 	mean_loss: 1.0898787511719599
+[11.06.26|12:09:33] Time consumption:
+[11.06.26|12:09:33] Done.
+[11.06.26|12:09:33] Training epoch: 7
+[11.06.26|12:10:35] 	mean_loss: 0.8656537582476934
+[11.06.26|12:10:35] Time consumption:
+[11.06.26|12:10:35] Done.
+[11.06.26|12:10:35] Training epoch: 8
+[11.06.26|12:11:05] 	Iter 300 Done. | loss: 0.6524 | sta: 0.0790 | ce: 0.3362 | dstcl: 2.3713 | lr: 0.025000
+[11.06.26|12:11:37] 	mean_loss: 0.7668515269955
+[11.06.26|12:11:37] Time consumption:
+[11.06.26|12:11:37] Done.
+[11.06.26|12:11:37] Training epoch: 9
+[11.06.26|12:13:38] 	mean_loss: 0.6416942535175217
+[11.06.26|12:13:38] Time consumption:
+[11.06.26|12:13:38] Done.
+[11.06.26|12:13:38] Eval epoch: 9
+[11.06.26|12:14:04] 	mean_loss: 0.6416942535175217
+[11.06.26|12:14:04] 	Top1: 84.87%
+[11.06.26|12:14:04] 	Top5: 99.24%
+[11.06.26|12:14:04] 	Best Top1: 84.87%
+[11.06.26|12:14:04] current 84.87%, best 84.87%
+[11.06.26|12:14:04] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch010_acc84.87_model.pt.
+[11.06.26|12:14:04] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt.
+[11.06.26|12:14:04] Training epoch: 10
+[11.06.26|12:15:06] 	mean_loss: 0.5056727536850505
+[11.06.26|12:15:06] Time consumption:
+[11.06.26|12:15:06] Done.
+[11.06.26|12:15:06] Training epoch: 11
+[11.06.26|12:15:24] 	Iter 400 Done. | loss: 0.4700 | sta: 0.0733 | ce: 0.2520 | dstcl: 1.4464 | lr: 0.025000
+[11.06.26|12:16:39] 	mean_loss: 0.4308500910798709
+[11.06.26|12:16:39] Time consumption:
+[11.06.26|12:16:39] Done.
+[11.06.26|12:16:39] Training epoch: 12
+[11.06.26|12:17:41] 	mean_loss: 0.36999181658029556
+[11.06.26|12:17:41] Time consumption:
+[11.06.26|12:17:41] Done.
+[11.06.26|12:17:41] Training epoch: 13
+[11.06.26|12:18:37] 	Iter 500 Done. | loss: 0.4346 | sta: 0.0703 | ce: 0.2650 | dstcl: 0.9932 | lr: 0.025000
+[11.06.26|12:18:42] 	mean_loss: 0.3982209898531437
+[11.06.26|12:18:42] Time consumption:
+[11.06.26|12:18:42] Done.
+[11.06.26|12:18:42] Training epoch: 14
+[11.06.26|12:20:40] 	mean_loss: 0.364581573754549
+[11.06.26|12:20:40] Time consumption:
+[11.06.26|12:20:40] Done.
+[11.06.26|12:20:40] Eval epoch: 14
+[11.06.26|12:21:18] 	mean_loss: 0.364581573754549
+[11.06.26|12:21:18] 	Top1: 90.96%
+[11.06.26|12:21:18] 	Top5: 99.32%
+[11.06.26|12:21:18] 	Best Top1: 90.96%
+[11.06.26|12:21:18] current 90.96%, best 90.96%
+[11.06.26|12:21:18] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch015_acc90.96_model.pt.
+[11.06.26|12:21:18] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt.
+[11.06.26|12:21:18] Training epoch: 15
+[11.06.26|12:22:19] 	mean_loss: 0.32120943773123956
+[11.06.26|12:22:19] Time consumption:
+[11.06.26|12:22:19] Done.
+[11.06.26|12:22:19] Training epoch: 16
+[11.06.26|12:23:05] 	Iter 600 Done. | loss: 0.4712 | sta: 0.0568 | ce: 0.2551 | dstcl: 1.5926 | lr: 0.025000
+[11.06.26|12:23:25] 	mean_loss: 0.3281428735289309
+[11.06.26|12:23:25] Time consumption:
+[11.06.26|12:23:25] Done.
+[11.06.26|12:23:25] Training epoch: 17
+[11.06.26|12:25:25] 	mean_loss: 0.28371162795358235
+[11.06.26|12:25:25] Time consumption:
+[11.06.26|12:25:25] Done.
+[11.06.26|12:25:25] Training epoch: 18
+[11.06.26|12:27:30] 	mean_loss: 0.3809928980966409
+[11.06.26|12:27:30] Time consumption:
+[11.06.26|12:27:30] Done.
+[11.06.26|12:27:30] Training epoch: 19
+[11.06.26|12:28:23] 	Iter 700 Done. | loss: 0.6101 | sta: 0.0565 | ce: 0.3925 | dstcl: 1.6114 | lr: 0.025000
+[11.06.26|12:28:50] 	mean_loss: 0.2979769470791022
+[11.06.26|12:28:50] Time consumption:
+[11.06.26|12:28:50] Done.
+[11.06.26|12:28:50] Eval epoch: 19
+[11.06.26|12:29:21] 	mean_loss: 0.2979769470791022
+[11.06.26|12:29:21] 	Top1: 93.41%
+[11.06.26|12:29:21] 	Top5: 99.75%
+[11.06.26|12:29:21] 	Best Top1: 93.41%
+[11.06.26|12:29:21] current 93.41%, best 93.41%
+[11.06.26|12:29:21] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch020_acc93.41_model.pt.
+[11.06.26|12:29:21] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt.
+[11.06.26|12:29:21] Training epoch: 20
+[11.06.26|12:31:21] 	mean_loss: 0.23496883983413377
+[11.06.26|12:31:21] Time consumption:
+[11.06.26|12:31:21] Done.
+[11.06.26|12:31:21] Training epoch: 21
+[11.06.26|12:32:37] 	mean_loss: 0.2470410420662827
+[11.06.26|12:32:37] Time consumption:
+[11.06.26|12:32:37] Done.
+[11.06.26|12:32:37] Training epoch: 22
+[11.06.26|12:33:00] 	Iter 800 Done. | loss: 0.1519 | sta: 0.0601 | ce: 0.0374 | dstcl: 0.5436 | lr: 0.025000
+[11.06.26|12:33:38] 	mean_loss: 0.2324188498573171
+[11.06.26|12:33:38] Time consumption:
+[11.06.26|12:33:38] Done.
+[11.06.26|12:33:38] Training epoch: 23
+[11.06.26|12:35:37] 	mean_loss: 0.2455282455517186
+[11.06.26|12:35:37] Time consumption:
+[11.06.26|12:35:37] Done.
+[11.06.26|12:35:37] Training epoch: 24
+[11.06.26|12:37:45] 	mean_loss: 0.20375403120285934
+[11.06.26|12:37:45] Time consumption:
+[11.06.26|12:37:45] Done.
+[11.06.26|12:37:45] Eval epoch: 24
+[11.06.26|12:38:29] 	mean_loss: 0.20375403120285934
+[11.06.26|12:38:29] 	Top1: 92.56%
+[11.06.26|12:38:29] 	Top5: 99.41%
+[11.06.26|12:38:29] 	Best Top1: 93.41%
+[11.06.26|12:38:29] current 92.56%, best 93.41%
+[11.06.26|12:38:29] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch025_acc92.56_model.pt.
+[11.06.26|12:38:29] Training epoch: 25
+[11.06.26|12:38:57] 	Iter 900 Done. | loss: 0.1620 | sta: 0.0553 | ce: 0.0513 | dstcl: 0.5533 | lr: 0.025000
+[11.06.26|12:40:41] 	mean_loss: 0.1630504789451758
+[11.06.26|12:40:41] Time consumption:
+[11.06.26|12:40:41] Done.
+[11.06.26|12:40:41] Training epoch: 26
+[11.06.26|12:42:46] 	mean_loss: 0.178740874139799
+[11.06.26|12:42:46] Time consumption:
+[11.06.26|12:42:46] Done.
+[11.06.26|12:42:46] Training epoch: 27
+[11.06.26|12:44:30] 	Iter 1000 Done. | loss: 0.1957 | sta: 0.0394 | ce: 0.1019 | dstcl: 0.5443 | lr: 0.025000
+[11.06.26|12:44:52] 	mean_loss: 0.18065899134510094
+[11.06.26|12:44:52] Time consumption:
+[11.06.26|12:44:52] Done.
+[11.06.26|12:44:52] Training epoch: 28
+[11.06.26|12:46:53] 	mean_loss: 0.18391329277720717
+[11.06.26|12:46:53] Time consumption:
+[11.06.26|12:46:53] Done.
+[11.06.26|12:46:53] Training epoch: 29
+[11.06.26|12:48:54] 	mean_loss: 0.19848322081896994
+[11.06.26|12:48:54] Time consumption:
+[11.06.26|12:48:54] Done.
+[11.06.26|12:48:54] Eval epoch: 29
+[11.06.26|12:49:29] 	mean_loss: 0.19848322081896994
+[11.06.26|12:49:29] 	Top1: 88.50%
+[11.06.26|12:49:29] 	Top5: 99.15%
+[11.06.26|12:49:29] 	Best Top1: 93.41%
+[11.06.26|12:49:29] current 88.50%, best 93.41%
+[11.06.26|12:49:29] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch030_acc88.50_model.pt.
+[11.06.26|12:49:29] Training epoch: 30
+[11.06.26|12:50:46] 	Iter 1100 Done. | loss: 0.2554 | sta: 0.0461 | ce: 0.0995 | dstcl: 1.0980 | lr: 0.025000
+[11.06.26|12:51:31] 	mean_loss: 0.21242712520890766
+[11.06.26|12:51:31] Time consumption:
+[11.06.26|12:51:31] Done.
+[11.06.26|12:51:31] Training epoch: 31
+[11.06.26|12:53:36] 	mean_loss: 0.2143892902466986
+[11.06.26|12:53:36] Time consumption:
+[11.06.26|12:53:36] Done.
+[11.06.26|12:53:36] Training epoch: 32
+[11.06.26|12:55:43] 	mean_loss: 0.18317172076139185
+[11.06.26|12:55:43] Time consumption:
+[11.06.26|12:55:43] Done.
+[11.06.26|12:55:43] Training epoch: 33
+[11.06.26|12:56:50] 	Iter 1200 Done. | loss: 0.3152 | sta: 0.0481 | ce: 0.1760 | dstcl: 0.9118 | lr: 0.025000
+[11.06.26|12:57:58] 	mean_loss: 0.15184785549839339
+[11.06.26|12:57:58] Time consumption:
+[11.06.26|12:57:58] Done.
+[11.06.26|12:57:58] Training epoch: 34
+[11.06.26|13:00:04] 	mean_loss: 0.14077792978949016
+[11.06.26|13:00:04] Time consumption:
+[11.06.26|13:00:04] Done.
+[11.06.26|13:00:04] Eval epoch: 34
+[11.06.26|13:00:44] 	mean_loss: 0.14077792978949016
+[11.06.26|13:00:44] 	Top1: 95.35%
+[11.06.26|13:00:44] 	Top5: 99.75%
+[11.06.26|13:00:44] 	Best Top1: 95.35%
+[11.06.26|13:00:44] current 95.35%, best 95.35%
+[11.06.26|13:00:44] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch035_acc95.35_model.pt.
+[11.06.26|13:00:44] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt.
+[11.06.26|13:00:44] Training epoch: 35
+[11.06.26|13:02:50] 	mean_loss: 0.170803291309211
+[11.06.26|13:02:50] Time consumption:
+[11.06.26|13:02:50] Done.
+[11.06.26|13:02:50] Training epoch: 36
+[11.06.26|13:03:26] 	Iter 1300 Done. | loss: 0.1556 | sta: 0.0324 | ce: 0.0643 | dstcl: 0.5897 | lr: 0.025000
+[11.06.26|13:04:58] 	mean_loss: 0.13784712573720348
+[11.06.26|13:04:58] Time consumption:
+[11.06.26|13:04:58] Done.
+[11.06.26|13:04:58] Training epoch: 37
+[11.06.26|13:07:10] 	mean_loss: 0.13412670460012224
+[11.06.26|13:07:10] Time consumption:
+[11.06.26|13:07:10] Done.
+[11.06.26|13:07:10] Training epoch: 38
+[11.06.26|13:08:10] 	Iter 1400 Done. | loss: 0.3023 | sta: 0.0453 | ce: 0.1994 | dstcl: 0.5765 | lr: 0.025000
+[11.06.26|13:08:15] 	mean_loss: 0.15795335856576762
+[11.06.26|13:08:15] Time consumption:
+[11.06.26|13:08:15] Done.
+[11.06.26|13:08:15] Training epoch: 39
+[11.06.26|13:09:35] 	mean_loss: 0.2113499887701538
+[11.06.26|13:09:35] Time consumption:
+[11.06.26|13:09:35] Done.
+[11.06.26|13:09:35] Eval epoch: 39
+[11.06.26|13:10:06] 	mean_loss: 0.2113499887701538
+[11.06.26|13:10:06] 	Top1: 92.31%
+[11.06.26|13:10:06] 	Top5: 99.83%
+[11.06.26|13:10:06] 	Best Top1: 95.35%
+[11.06.26|13:10:06] current 92.31%, best 95.35%
+[11.06.26|13:10:06] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch040_acc92.31_model.pt.
+[11.06.26|13:10:06] Training epoch: 40
+[11.06.26|13:11:59] 	mean_loss: 0.14484462017814317
+[11.06.26|13:11:59] Time consumption:
+[11.06.26|13:11:59] Done.
+[11.06.26|13:11:59] Training epoch: 41
+[11.06.26|13:13:01] 	Iter 1500 Done. | loss: 0.1419 | sta: 0.0330 | ce: 0.0481 | dstcl: 0.6082 | lr: 0.025000
+[11.06.26|13:13:34] 	mean_loss: 0.16712159146037367
+[11.06.26|13:13:34] Time consumption:
+[11.06.26|13:13:34] Done.
+[11.06.26|13:13:34] Training epoch: 42
+[11.06.26|13:15:39] 	mean_loss: 0.1463117907858557
+[11.06.26|13:15:39] Time consumption:
+[11.06.26|13:15:39] Done.
+[11.06.26|13:15:39] Training epoch: 43
+[11.06.26|13:17:47] 	mean_loss: 0.1296597762654225
+[11.06.26|13:17:47] Time consumption:
+[11.06.26|13:17:47] Done.
+[11.06.26|13:17:47] Training epoch: 44
+[11.06.26|13:18:25] 	Iter 1600 Done. | loss: 0.1921 | sta: 0.0420 | ce: 0.0901 | dstcl: 0.6012 | lr: 0.025000
+[11.06.26|13:18:57] 	mean_loss: 0.1570080831232998
+[11.06.26|13:18:57] Time consumption:
+[11.06.26|13:18:57] Done.
+[11.06.26|13:18:57] Eval epoch: 44
+[11.06.26|13:19:18] 	mean_loss: 0.1570080831232998
+[11.06.26|13:19:18] 	Top1: 91.89%
+[11.06.26|13:19:18] 	Top5: 99.75%
+[11.06.26|13:19:18] 	Best Top1: 95.35%
+[11.06.26|13:19:18] current 91.89%, best 95.35%
+[11.06.26|13:19:18] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch045_acc91.89_model.pt.
+[11.06.26|13:19:18] Training epoch: 45
+[11.06.26|13:20:27] 	mean_loss: 0.13220073738031918
+[11.06.26|13:20:27] Time consumption:
+[11.06.26|13:20:27] Done.
+[11.06.26|13:20:27] Training epoch: 46
+[11.06.26|13:21:27] 	mean_loss: 0.10221934008101623
+[11.06.26|13:21:27] Time consumption:
+[11.06.26|13:21:27] Done.
+[11.06.26|13:21:27] Training epoch: 47
+[11.06.26|13:21:50] 	Iter 1700 Done. | loss: 0.2079 | sta: 0.0308 | ce: 0.1171 | dstcl: 0.5995 | lr: 0.025000
+[11.06.26|13:22:27] 	mean_loss: 0.09787361385921638
+[11.06.26|13:22:27] Time consumption:
+[11.06.26|13:22:27] Done.
+[11.06.26|13:22:27] Training epoch: 48
+[11.06.26|13:23:28] 	mean_loss: 0.11468487346751823
+[11.06.26|13:23:28] Time consumption:
+[11.06.26|13:23:28] Done.
+[11.06.26|13:23:28] Training epoch: 49
+[11.06.26|13:24:29] 	mean_loss: 0.09630993526015016
+[11.06.26|13:24:29] Time consumption:
+[11.06.26|13:24:29] Done.
+[11.06.26|13:24:29] Eval epoch: 49
+[11.06.26|13:25:06] 	mean_loss: 0.09630993526015016
+[11.06.26|13:25:06] 	Top1: 95.60%
+[11.06.26|13:25:06] 	Top5: 99.75%
+[11.06.26|13:25:06] 	Best Top1: 95.60%
+[11.06.26|13:25:06] current 95.60%, best 95.60%
+[11.06.26|13:25:06] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch050_acc95.60_model.pt.
+[11.06.26|13:25:06] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt.
+[11.06.26|13:25:06] Training epoch: 50
+[11.06.26|13:25:26] 	Iter 1800 Done. | loss: 0.0550 | sta: 0.0259 | ce: 0.0077 | dstcl: 0.2137 | lr: 0.025000
+[11.06.26|13:27:10] 	mean_loss: 0.09954902778069179
+[11.06.26|13:27:10] Time consumption:
+[11.06.26|13:27:10] Done.
+[11.06.26|13:27:10] Training epoch: 51
+[11.06.26|13:29:15] 	mean_loss: 0.20770004226101768
+[11.06.26|13:29:15] Time consumption:
+[11.06.26|13:29:15] Done.
+[11.06.26|13:29:15] Training epoch: 52
+[11.06.26|13:31:04] 	Iter 1900 Done. | loss: 0.0782 | sta: 0.0346 | ce: 0.0204 | dstcl: 0.2321 | lr: 0.025000
+[11.06.26|13:31:25] 	mean_loss: 0.13246465722719827
+[11.06.26|13:31:25] Time consumption:
+[11.06.26|13:31:25] Done.
+[11.06.26|13:31:25] Training epoch: 53
+[11.06.26|13:33:32] 	mean_loss: 0.09438572658432855
+[11.06.26|13:33:32] Time consumption:
+[11.06.26|13:33:32] Done.
+[11.06.26|13:33:32] Training epoch: 54
+[11.06.26|13:35:41] 	mean_loss: 0.09565096296783951
+[11.06.26|13:35:41] Time consumption:
+[11.06.26|13:35:41] Done.
+[11.06.26|13:35:41] Eval epoch: 54
+[11.06.26|13:36:23] 	mean_loss: 0.09565096296783951
+[11.06.26|13:36:23] 	Top1: 96.03%
+[11.06.26|13:36:23] 	Top5: 99.66%
+[11.06.26|13:36:23] 	Best Top1: 96.03%
+[11.06.26|13:36:23] current 96.03%, best 96.03%
+[11.06.26|13:36:23] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch055_acc96.03_model.pt.
+[11.06.26|13:36:23] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt.
+[11.06.26|13:36:23] Training epoch: 55
+[11.06.26|13:37:46] 	Iter 2000 Done. | loss: 0.1321 | sta: 0.0372 | ce: 0.0475 | dstcl: 0.4738 | lr: 0.025000
+[11.06.26|13:38:31] 	mean_loss: 0.09530664431966013
+[11.06.26|13:38:31] Time consumption:
+[11.06.26|13:38:31] Done.
+[11.06.26|13:38:31] Training epoch: 56
+[11.06.26|13:40:37] 	mean_loss: 0.08503143882585897
+[11.06.26|13:40:37] Time consumption:
+[11.06.26|13:40:37] Done.
+[11.06.26|13:40:37] Training epoch: 57
+[11.06.26|13:42:39] 	mean_loss: 0.08636882890843683
+[11.06.26|13:42:39] Time consumption:
+[11.06.26|13:42:39] Done.
+[11.06.26|13:42:39] Training epoch: 58
+[11.06.26|13:43:33] 	Iter 2100 Done. | loss: 0.0598 | sta: 0.0321 | ce: 0.0021 | dstcl: 0.2556 | lr: 0.025000
+[11.06.26|13:44:42] 	mean_loss: 0.08635079508854283
+[11.06.26|13:44:42] Time consumption:
+[11.06.26|13:44:42] Done.
+[11.06.26|13:44:42] Training epoch: 59
+[11.06.26|13:46:48] 	mean_loss: 0.07381520834234026
+[11.06.26|13:46:48] Time consumption:
+[11.06.26|13:46:48] Done.
+[11.06.26|13:46:48] Eval epoch: 59
+[11.06.26|13:47:27] 	mean_loss: 0.07381520834234026
+[11.06.26|13:47:27] 	Top1: 95.60%
+[11.06.26|13:47:27] 	Top5: 99.92%
+[11.06.26|13:47:27] 	Best Top1: 96.03%
+[11.06.26|13:47:27] current 95.60%, best 96.03%
+[11.06.26|13:47:27] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch060_acc95.60_model.pt.
+[11.06.26|13:47:27] Training epoch: 60
+[11.06.26|13:49:32] 	mean_loss: 0.07751597557216883
+[11.06.26|13:49:32] Time consumption:
+[11.06.26|13:49:32] Done.
+[11.06.26|13:49:32] Training epoch: 61
+[11.06.26|13:50:09] 	Iter 2200 Done. | loss: 0.0507 | sta: 0.0265 | ce: 0.0030 | dstcl: 0.2117 | lr: 0.025000
+[11.06.26|13:51:42] 	mean_loss: 0.08765021256274647
+[11.06.26|13:51:42] Time consumption:
+[11.06.26|13:51:42] Done.
+[11.06.26|13:51:42] Training epoch: 62
+[11.06.26|13:53:53] 	mean_loss: 0.13002186672141156
+[11.06.26|13:53:53] Time consumption:
+[11.06.26|13:53:53] Done.
+[11.06.26|13:53:53] Training epoch: 63
+[11.06.26|13:55:50] 	Iter 2300 Done. | loss: 0.0534 | sta: 0.0273 | ce: 0.0041 | dstcl: 0.2209 | lr: 0.025000
+[11.06.26|13:56:00] 	mean_loss: 0.07547107928742965
+[11.06.26|13:56:00] Time consumption:
+[11.06.26|13:56:00] Done.
+[11.06.26|13:56:00] Training epoch: 64
+[11.06.26|13:57:04] 	mean_loss: 0.07180587481707335
+[11.06.26|13:57:04] Time consumption:
+[11.06.26|13:57:04] Done.
+[11.06.26|13:57:04] Eval epoch: 64
+[11.06.26|13:57:24] 	mean_loss: 0.07180587481707335
+[11.06.26|13:57:24] 	Top1: 95.52%
+[11.06.26|13:57:24] 	Top5: 99.92%
+[11.06.26|13:57:24] 	Best Top1: 96.03%
+[11.06.26|13:57:24] current 95.52%, best 96.03%
+[11.06.26|13:57:24] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch065_acc95.52_model.pt.
+[11.06.26|13:57:24] Training epoch: 65
+[11.06.26|13:58:25] 	mean_loss: 0.0697762705385685
+[11.06.26|13:58:25] Time consumption:
+[11.06.26|13:58:25] Done.
+[11.06.26|13:58:25] Training epoch: 66
+[11.06.26|13:59:10] 	Iter 2400 Done. | loss: 0.0685 | sta: 0.0355 | ce: 0.0041 | dstcl: 0.2889 | lr: 0.025000
+[11.06.26|13:59:26] 	mean_loss: 0.09222344557444255
+[11.06.26|13:59:26] Time consumption:
+[11.06.26|13:59:26] Done.
+[11.06.26|13:59:26] Training epoch: 67
+[11.06.26|14:00:26] 	mean_loss: 0.07122818525466654
+[11.06.26|14:00:26] Time consumption:
+[11.06.26|14:00:26] Done.
+[11.06.26|14:00:26] Training epoch: 68
+[11.06.26|14:01:29] 	mean_loss: 0.07384646777063608
+[11.06.26|14:01:29] Time consumption:
+[11.06.26|14:01:29] Done.
+[11.06.26|14:01:29] Training epoch: 69
+[11.06.26|14:02:04] 	Iter 2500 Done. | loss: 0.2923 | sta: 0.0363 | ce: 0.1842 | dstcl: 0.7185 | lr: 0.025000
+[11.06.26|14:02:31] 	mean_loss: 0.1014739153906703
+[11.06.26|14:02:31] Time consumption:
+[11.06.26|14:02:31] Done.
+[11.06.26|14:02:31] Eval epoch: 69
+[11.06.26|14:02:54] 	mean_loss: 0.1014739153906703
+[11.06.26|14:02:54] 	Top1: 95.01%
+[11.06.26|14:02:54] 	Top5: 99.83%
+[11.06.26|14:02:54] 	Best Top1: 96.03%
+[11.06.26|14:02:54] current 95.01%, best 96.03%
+[11.06.26|14:02:54] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch070_acc95.01_model.pt.
+[11.06.26|14:02:54] Training epoch: 70
+[11.06.26|14:03:55] 	mean_loss: 0.08753800226582421
+[11.06.26|14:03:55] Time consumption:
+[11.06.26|14:03:55] Done.
+[11.06.26|14:03:55] Training epoch: 71
+[11.06.26|14:04:56] 	mean_loss: 0.09293535103400548
+[11.06.26|14:04:56] Time consumption:
+[11.06.26|14:04:56] Done.
+[11.06.26|14:04:56] Training epoch: 72
+[11.06.26|14:05:23] 	Iter 2600 Done. | loss: 0.1696 | sta: 0.0361 | ce: 0.1041 | dstcl: 0.2940 | lr: 0.025000
+[11.06.26|14:06:02] 	mean_loss: 0.11375533830788401
+[11.06.26|14:06:02] Time consumption:
+[11.06.26|14:06:02] Done.
+[11.06.26|14:06:02] Training epoch: 73
+[11.06.26|14:08:02] 	mean_loss: 0.08780325959540075
+[11.06.26|14:08:02] Time consumption:
+[11.06.26|14:08:02] Done.
+[11.06.26|14:08:02] Training epoch: 74
+[11.06.26|14:10:14] 	mean_loss: 0.06702565112047726
+[11.06.26|14:10:14] Time consumption:
+[11.06.26|14:10:14] Done.
+[11.06.26|14:10:14] Eval epoch: 74
+[11.06.26|14:10:55] 	mean_loss: 0.06702565112047726
+[11.06.26|14:10:55] 	Top1: 95.44%
+[11.06.26|14:10:55] 	Top5: 99.92%
+[11.06.26|14:10:55] 	Best Top1: 96.03%
+[11.06.26|14:10:55] current 95.44%, best 96.03%
+[11.06.26|14:10:55] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch075_acc95.44_model.pt.
+[11.06.26|14:10:55] Training epoch: 75
+[11.06.26|14:11:16] 	Iter 2700 Done. | loss: 0.0652 | sta: 0.0300 | ce: 0.0068 | dstcl: 0.2840 | lr: 0.025000
+[11.06.26|14:12:09] 	mean_loss: 0.06427877779222196
+[11.06.26|14:12:09] Time consumption:
+[11.06.26|14:12:09] Done.
+[11.06.26|14:12:09] Training epoch: 76
+[11.06.26|14:13:10] 	mean_loss: 0.07115553350498278
+[11.06.26|14:13:10] Time consumption:
+[11.06.26|14:13:10] Done.
+[11.06.26|14:13:10] Training epoch: 77
+[11.06.26|14:14:00] 	Iter 2800 Done. | loss: 0.0482 | sta: 0.0260 | ce: 0.0056 | dstcl: 0.1661 | lr: 0.025000
+[11.06.26|14:14:10] 	mean_loss: 0.06318425221575631
+[11.06.26|14:14:10] Time consumption:
+[11.06.26|14:14:10] Done.
+[11.06.26|14:14:10] Training epoch: 78
+[11.06.26|14:15:12] 	mean_loss: 0.05674309407671293
+[11.06.26|14:15:12] Time consumption:
+[11.06.26|14:15:12] Done.
+[11.06.26|14:15:12] Training epoch: 79
+[11.06.26|14:16:14] 	mean_loss: 0.06269803456962109
+[11.06.26|14:16:14] Time consumption:
+[11.06.26|14:16:14] Done.
+[11.06.26|14:16:14] Eval epoch: 79
+[11.06.26|14:16:33] 	mean_loss: 0.06269803456962109
+[11.06.26|14:16:33] 	Top1: 95.01%
+[11.06.26|14:16:33] 	Top5: 99.75%
+[11.06.26|14:16:33] 	Best Top1: 96.03%
+[11.06.26|14:16:33] current 95.01%, best 96.03%
+[11.06.26|14:16:33] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch080_acc95.01_model.pt.
+[11.06.26|14:16:33] Training epoch: 80
+[11.06.26|14:17:15] 	Iter 2900 Done. | loss: 0.0495 | sta: 0.0343 | ce: 0.0008 | dstcl: 0.1439 | lr: 0.025000
+[11.06.26|14:17:36] 	mean_loss: 0.06448917887690994
+[11.06.26|14:17:36] Time consumption:
+[11.06.26|14:17:36] Done.
+[11.06.26|14:17:36] Training epoch: 81
+[11.06.26|14:18:37] 	mean_loss: 0.05308801566974984
+[11.06.26|14:18:37] Time consumption:
+[11.06.26|14:18:37] Done.
+[11.06.26|14:18:37] Training epoch: 82
+[11.06.26|14:19:40] 	mean_loss: 0.0574908833950758
+[11.06.26|14:19:40] Time consumption:
+[11.06.26|14:19:40] Done.
+[11.06.26|14:19:40] Training epoch: 83
+[11.06.26|14:20:10] 	Iter 3000 Done. | loss: 0.0452 | sta: 0.0291 | ce: 0.0010 | dstcl: 0.1506 | lr: 0.025000
+[11.06.26|14:20:42] 	mean_loss: 0.053110012577639684
+[11.06.26|14:20:42] Time consumption:
+[11.06.26|14:20:42] Done.
+[11.06.26|14:20:42] Training epoch: 84
+[11.06.26|14:21:45] 	mean_loss: 0.050803869031369686
+[11.06.26|14:21:45] Time consumption:
+[11.06.26|14:21:45] Done.
+[11.06.26|14:21:45] Eval epoch: 84
+[11.06.26|14:22:04] 	mean_loss: 0.050803869031369686
+[11.06.26|14:22:04] 	Top1: 95.86%
+[11.06.26|14:22:04] 	Top5: 99.83%
+[11.06.26|14:22:04] 	Best Top1: 96.03%
+[11.06.26|14:22:04] current 95.86%, best 96.03%
+[11.06.26|14:22:04] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch085_acc95.86_model.pt.
+[11.06.26|14:22:04] Training epoch: 85
+[11.06.26|14:23:09] 	mean_loss: 0.053112552811702095
+[11.06.26|14:23:09] Time consumption:
+[11.06.26|14:23:09] Done.
+[11.06.26|14:23:09] Training epoch: 86
+[11.06.26|14:23:27] 	Iter 3100 Done. | loss: 0.0417 | sta: 0.0252 | ce: 0.0012 | dstcl: 0.1531 | lr: 0.025000
+[11.06.26|14:24:10] 	mean_loss: 0.048846350672344364
+[11.06.26|14:24:10] Time consumption:
+[11.06.26|14:24:10] Done.
+[11.06.26|14:24:10] Training epoch: 87
+[11.06.26|14:25:15] 	mean_loss: 0.047883416319059
+[11.06.26|14:25:15] Time consumption:
+[11.06.26|14:25:15] Done.
+[11.06.26|14:25:15] Training epoch: 88
+[11.06.26|14:26:13] 	Iter 3200 Done. | loss: 0.1415 | sta: 0.0257 | ce: 0.0638 | dstcl: 0.5202 | lr: 0.025000
+[11.06.26|14:26:18] 	mean_loss: 0.07218898325744602
+[11.06.26|14:26:18] Time consumption:
+[11.06.26|14:26:18] Done.
+[11.06.26|14:26:18] Training epoch: 89
+[11.06.26|14:27:21] 	mean_loss: 0.06641273976614077
+[11.06.26|14:27:21] Time consumption:
+[11.06.26|14:27:21] Done.
+[11.06.26|14:27:21] Eval epoch: 89
+[11.06.26|14:27:44] 	mean_loss: 0.06641273976614077
+[11.06.26|14:27:44] 	Top1: 95.44%
+[11.06.26|14:27:44] 	Top5: 99.83%
+[11.06.26|14:27:44] 	Best Top1: 96.03%
+[11.06.26|14:27:44] current 95.44%, best 96.03%
+[11.06.26|14:27:44] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch090_acc95.44_model.pt.
+[11.06.26|14:27:44] Training epoch: 90
+[11.06.26|14:28:49] 	mean_loss: 0.061962385247978896
+[11.06.26|14:28:49] Time consumption:
+[11.06.26|14:28:49] Done.
+[11.06.26|14:28:49] Training epoch: 91
+[11.06.26|14:29:38] 	Iter 3300 Done. | loss: 0.0534 | sta: 0.0304 | ce: 0.0046 | dstcl: 0.1840 | lr: 0.025000
+[11.06.26|14:29:53] 	mean_loss: 0.13256679444263378
+[11.06.26|14:29:53] Time consumption:
+[11.06.26|14:29:53] Done.
+[11.06.26|14:29:53] Training epoch: 92
+[11.06.26|14:30:57] 	mean_loss: 0.07621555102782117
+[11.06.26|14:30:57] Time consumption:
+[11.06.26|14:30:57] Done.
+[11.06.26|14:30:57] Training epoch: 93
+[11.06.26|14:31:59] 	mean_loss: 0.08172540532218085
+[11.06.26|14:31:59] Time consumption:
+[11.06.26|14:31:59] Done.
+[11.06.26|14:31:59] Training epoch: 94
+[11.06.26|14:32:38] 	Iter 3400 Done. | loss: 0.0554 | sta: 0.0309 | ce: 0.0019 | dstcl: 0.2257 | lr: 0.025000
+[11.06.26|14:33:04] 	mean_loss: 0.07129339294301139
+[11.06.26|14:33:04] Time consumption:
+[11.06.26|14:33:04] Done.
+[11.06.26|14:33:04] Eval epoch: 94
+[11.06.26|14:33:23] 	mean_loss: 0.07129339294301139
+[11.06.26|14:33:23] 	Top1: 95.60%
+[11.06.26|14:33:23] 	Top5: 99.75%
+[11.06.26|14:33:23] 	Best Top1: 96.03%
+[11.06.26|14:33:23] current 95.60%, best 96.03%
+[11.06.26|14:33:23] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch095_acc95.60_model.pt.
+[11.06.26|14:33:23] Training epoch: 95
+[11.06.26|14:34:26] 	mean_loss: 0.05912155378609896
+[11.06.26|14:34:26] Time consumption:
+[11.06.26|14:34:26] Done.
+[11.06.26|14:34:26] Training epoch: 96
+[11.06.26|14:35:27] 	mean_loss: 0.0522242005293568
+[11.06.26|14:35:27] Time consumption:
+[11.06.26|14:35:27] Done.
+[11.06.26|14:35:27] Training epoch: 97
+[11.06.26|14:35:52] 	Iter 3500 Done. | loss: 0.0492 | sta: 0.0337 | ce: 0.0012 | dstcl: 0.1434 | lr: 0.025000
+[11.06.26|14:36:29] 	mean_loss: 0.05115824182414346
+[11.06.26|14:36:29] Time consumption:
+[11.06.26|14:36:29] Done.
+[11.06.26|14:36:29] Training epoch: 98
+[11.06.26|14:37:32] 	mean_loss: 0.04926851795365413
+[11.06.26|14:37:32] Time consumption:
+[11.06.26|14:37:32] Done.
+[11.06.26|14:37:32] Training epoch: 99
+[11.06.26|14:38:36] 	mean_loss: 0.05395358314530717
+[11.06.26|14:38:36] Time consumption:
+[11.06.26|14:38:36] Done.
+[11.06.26|14:38:36] Eval epoch: 99
+[11.06.26|14:38:55] 	mean_loss: 0.05395358314530717
+[11.06.26|14:38:55] 	Top1: 94.42%
+[11.06.26|14:38:55] 	Top5: 99.75%
+[11.06.26|14:38:55] 	Best Top1: 96.03%
+[11.06.26|14:38:55] current 94.42%, best 96.03%
+[11.06.26|14:38:55] The model has been saved as ./work_dir/teacher/hypersa_fcce_dstcl_v1/epoch100_acc94.42_model.pt.
+[11.06.26|14:38:55] Training epoch: 100
+[11.06.26|14:39:11] 	Iter 3600 Done. | loss: 0.0498 | sta: 0.0260 | ce: 0.0023 | dstcl: 0.2154 | lr: 0.025000

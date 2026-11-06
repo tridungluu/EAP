@@ -1,0 +1,97 @@
+# command line: main.py train_student -c config/cobot/train_distill.yaml
+
+alpha: 1.0
+base_lr: 0.025
+batch_size: 32
+config: config/cobot/train_distill.yaml
+debug: false
+device:
+- 0
+eval_interval: 5
+feature_distillation:
+    context_distill: 50.0
+    recon: 1.0
+feeder: feeder.feeder_clr.Feeder
+ignore_weights: []
+kd_T: 1
+log_interval: 100
+logits_distillation:
+    ctkd: 0
+    dkd: 0
+    hardkd: 0
+    kd: 0.5
+model: net.student.StudentModel
+model_args:
+    base_encoder: net.ctr_ae.CTREncoder
+    drop_out: 0.5
+    enc_channels:
+    - 128
+    - 256
+    enc_strides:
+    - 2
+    - 2
+    graph: graph.cobot.Graph
+    graph_args:
+        labeling_mode: distance
+    num_class: 16
+    num_person: 1
+    num_point: 48
+    t_len: 24
+nesterov: true
+num_epoch: 300
+num_worker: 4
+optimizer: SGD
+pavi_log: false
+phase: train
+print_log: true
+save_interval: 10
+save_log: true
+save_result: false
+show_topk:
+- 1
+- 5
+start_epoch: 0
+step: []
+teacher_model: net.teacher.TeacherModel
+teacher_model_args:
+    base_encoder: net.ctr_ae.CTREncoder
+    channels:
+    - 64
+    - 128
+    - 256
+    ctx_ch: 384
+    drop_out: 0.5
+    graph: graph.cobot.Graph
+    graph_args:
+        labeling_mode: distance
+    num_class: 16
+    num_person: 1
+    num_point: 48
+    rho: 0.9
+    root_joint: 0
+    sta_stride: 2
+    strides:
+    - 1
+    - 2
+    - 2
+    t_len: 24
+    tau: 0.125
+teacher_weights: ./work_dir/teacher/ctr_fcce_dstcl_v1/best_model.pt
+test_batch_size: 32
+test_feeder_args:
+    data_path: ./data/datacobot_v2_full_gcn/xsub/val_position.npy
+    label_path: ./data/datacobot_v2_full_gcn/xsub/val_label.pkl
+    obs_ratio: 0.2
+    text_path: text_prompts.json
+text_args: {}
+text_encoder: null
+train_feeder_args:
+    data_path: ./data/datacobot_v2_full_gcn/xsub/train_position.npy
+    data_ratio: 1.0
+    label_path: ./data/datacobot_v2_full_gcn/xsub/train_label.pkl
+    obs_ratio: 0.2
+    text_path: text_prompts.json
+use_gpu: true
+weight_decay: 0.0001
+weights: null
+work_dir: ./work_dir/student/ctr_fcce_cd_v1/20%

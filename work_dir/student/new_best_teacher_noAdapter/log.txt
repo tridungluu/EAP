@@ -1,0 +1,1184 @@
+[05.22.26|21:49:46] Parameters:
+{'work_dir': './work_dir/student2/new_best_teacher_noAdapter', 'config': 'config/cobot/train_distill.yaml', 'phase': 'train', 'save_result': False, 'start_epoch': 0, 'num_epoch': 200, 'use_gpu': True, 'device': [2], 'log_interval': 100, 'save_interval': 10, 'eval_interval': 5, 'save_log': True, 'print_log': True, 'pavi_log': False, 'feeder': 'feeder.feeder_clr.Feeder', 'num_worker': 4, 'train_feeder_args': {'data_path': './datacobot_v2_full_gcn/xsub/train_position.npy', 'label_path': './datacobot_v2_full_gcn/xsub/train_label.pkl', 'text_path': 'text_prompts.json', 'data_ratio': 1.0, 'debug': False}, 'test_feeder_args': {'data_path': './datacobot_v2_full_gcn/xsub/val_position.npy', 'label_path': './datacobot_v2_full_gcn/xsub/val_label.pkl', 'text_path': 'text_prompts.json'}, 'batch_size': 32, 'test_batch_size': 32, 'debug': False, 'model': 'net.student.StudentModel', 'model_args': {'base_encoder': 'net.ddnet.DDNet_Original', 'frame_l': 96, 'joint_n': 48, 'joint_d': 3, 'feat_d': 1128, 'class_num': 16, 'filters': 16}, 'weights': None, 'ignore_weights': [], 'clr_epoch': 100, 'text_encoder': 'net.text.TextEncoder', 'text_args': {'run_name': 'RN50x4', 'temperature': 0.1}, 'teacher_model': 'net.teacher.TeacherModel', 'teacher_model_args': {'base_encoder': 'net.ctr_gcn.Model', 'num_class': 16, 'num_point': 48, 'num_person': 1, 'drop_out': 0.5, 'graph': 'graph.cobot.Graph', 'graph_args': {'labeling_mode': 'distance'}}, 'teacher_weights': './work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt', 'kd_T': 4, 'show_topk': [1, 5], 'base_lr': 0.01, 'step': [], 'optimizer': 'SGD', 'nesterov': True, 'weight_decay': 0.0001}
+
+[05.22.26|21:49:46] ---------- Networks initialized -------------
+[05.22.26|21:49:46] [Network] Total number of parameters : 0.271 M
+[05.22.26|21:49:46] -----------------------------------------------
+[05.22.26|21:49:46] Training epoch: 0
+[05.22.26|21:49:48] 	Iter 0 Done. | loss: 3.0680 | lr: 0.010000
+[05.22.26|21:49:52] 	mean_loss: 2.7335311902893915
+[05.22.26|21:49:52] Time consumption:
+[05.22.26|21:49:52] Done.
+[05.22.26|21:49:52] Training epoch: 1
+[05.22.26|21:49:56] 	mean_loss: 2.452558583683438
+[05.22.26|21:49:56] Time consumption:
+[05.22.26|21:49:56] Done.
+[05.22.26|21:49:56] Training epoch: 2
+[05.22.26|21:49:59] 	Iter 100 Done. | loss: 2.2210 | lr: 0.010000
+[05.22.26|21:50:00] 	mean_loss: 2.2959167228804693
+[05.22.26|21:50:00] Time consumption:
+[05.22.26|21:50:00] Done.
+[05.22.26|21:50:00] Training epoch: 3
+[05.22.26|21:50:04] 	mean_loss: 2.2418346537484064
+[05.22.26|21:50:04] Time consumption:
+[05.22.26|21:50:04] Done.
+[05.22.26|21:50:04] Training epoch: 4
+[05.22.26|21:50:08] 	mean_loss: 2.197928441895379
+[05.22.26|21:50:08] Time consumption:
+[05.22.26|21:50:08] Done.
+[05.22.26|21:50:08] Eval epoch: 4
+[05.22.26|21:50:09] 	mean_loss: 2.197928441895379
+[05.22.26|21:50:09] 	Top1: 29.67%
+[05.22.26|21:50:09] 	Top5: 86.56%
+[05.22.26|21:50:09] 	Best Top1: 29.67%
+[05.22.26|21:50:09] current 29.67%, best 29.67%
+[05.22.26|21:50:09] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch005_acc29.67_model.pt.
+[05.22.26|21:50:09] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:50:09] Training epoch: 5
+[05.22.26|21:50:11] 	Iter 200 Done. | loss: 2.1185 | lr: 0.010000
+[05.22.26|21:50:13] 	mean_loss: 2.166261845164829
+[05.22.26|21:50:13] Time consumption:
+[05.22.26|21:50:13] Done.
+[05.22.26|21:50:13] Training epoch: 6
+[05.22.26|21:50:16] 	mean_loss: 2.132660279671351
+[05.22.26|21:50:16] Time consumption:
+[05.22.26|21:50:16] Done.
+[05.22.26|21:50:16] Training epoch: 7
+[05.22.26|21:50:20] 	mean_loss: 2.1239998671743603
+[05.22.26|21:50:20] Time consumption:
+[05.22.26|21:50:20] Done.
+[05.22.26|21:50:20] Training epoch: 8
+[05.22.26|21:50:22] 	Iter 300 Done. | loss: 2.1313 | lr: 0.010000
+[05.22.26|21:50:24] 	mean_loss: 2.1083525353007846
+[05.22.26|21:50:24] Time consumption:
+[05.22.26|21:50:24] Done.
+[05.22.26|21:50:24] Training epoch: 9
+[05.22.26|21:50:28] 	mean_loss: 2.078890187872781
+[05.22.26|21:50:28] Time consumption:
+[05.22.26|21:50:28] Done.
+[05.22.26|21:50:28] Eval epoch: 9
+[05.22.26|21:50:29] 	mean_loss: 2.078890187872781
+[05.22.26|21:50:29] 	Top1: 39.31%
+[05.22.26|21:50:29] 	Top5: 93.15%
+[05.22.26|21:50:29] 	Best Top1: 39.31%
+[05.22.26|21:50:29] current 39.31%, best 39.31%
+[05.22.26|21:50:29] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch010_acc39.31_model.pt.
+[05.22.26|21:50:29] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:50:29] Training epoch: 10
+[05.22.26|21:50:33] 	mean_loss: 2.0464431643486023
+[05.22.26|21:50:33] Time consumption:
+[05.22.26|21:50:33] Done.
+[05.22.26|21:50:33] Training epoch: 11
+[05.22.26|21:50:34] 	Iter 400 Done. | loss: 2.0532 | lr: 0.010000
+[05.22.26|21:50:37] 	mean_loss: 2.0260586705472736
+[05.22.26|21:50:37] Time consumption:
+[05.22.26|21:50:37] Done.
+[05.22.26|21:50:37] Training epoch: 12
+[05.22.26|21:50:41] 	mean_loss: 2.014722360504998
+[05.22.26|21:50:41] Time consumption:
+[05.22.26|21:50:41] Done.
+[05.22.26|21:50:41] Training epoch: 13
+[05.22.26|21:50:44] 	Iter 500 Done. | loss: 2.0924 | lr: 0.010000
+[05.22.26|21:50:45] 	mean_loss: 2.003677407900492
+[05.22.26|21:50:45] Time consumption:
+[05.22.26|21:50:45] Done.
+[05.22.26|21:50:45] Training epoch: 14
+[05.22.26|21:50:49] 	mean_loss: 1.966338614622752
+[05.22.26|21:50:49] Time consumption:
+[05.22.26|21:50:49] Done.
+[05.22.26|21:50:49] Eval epoch: 14
+[05.22.26|21:50:50] 	mean_loss: 1.966338614622752
+[05.22.26|21:50:50] 	Top1: 41.08%
+[05.22.26|21:50:50] 	Top5: 96.62%
+[05.22.26|21:50:50] 	Best Top1: 41.08%
+[05.22.26|21:50:50] current 41.08%, best 41.08%
+[05.22.26|21:50:50] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch015_acc41.08_model.pt.
+[05.22.26|21:50:50] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:50:50] Training epoch: 15
+[05.22.26|21:50:54] 	mean_loss: 1.960001637538274
+[05.22.26|21:50:54] Time consumption:
+[05.22.26|21:50:54] Done.
+[05.22.26|21:50:54] Training epoch: 16
+[05.22.26|21:50:57] 	Iter 600 Done. | loss: 1.8898 | lr: 0.010000
+[05.22.26|21:50:58] 	mean_loss: 1.9528369307518005
+[05.22.26|21:50:58] Time consumption:
+[05.22.26|21:50:58] Done.
+[05.22.26|21:50:58] Training epoch: 17
+[05.22.26|21:51:02] 	mean_loss: 1.9341026080979242
+[05.22.26|21:51:02] Time consumption:
+[05.22.26|21:51:02] Done.
+[05.22.26|21:51:02] Training epoch: 18
+[05.22.26|21:51:06] 	mean_loss: 1.931165724992752
+[05.22.26|21:51:06] Time consumption:
+[05.22.26|21:51:06] Done.
+[05.22.26|21:51:06] Training epoch: 19
+[05.22.26|21:51:08] 	Iter 700 Done. | loss: 1.8891 | lr: 0.010000
+[05.22.26|21:51:10] 	mean_loss: 1.9110632538795471
+[05.22.26|21:51:10] Time consumption:
+[05.22.26|21:51:10] Done.
+[05.22.26|21:51:10] Eval epoch: 19
+[05.22.26|21:51:11] 	mean_loss: 1.9110632538795471
+[05.22.26|21:51:11] 	Top1: 45.98%
+[05.22.26|21:51:11] 	Top5: 98.22%
+[05.22.26|21:51:11] 	Best Top1: 45.98%
+[05.22.26|21:51:11] current 45.98%, best 45.98%
+[05.22.26|21:51:11] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch020_acc45.98_model.pt.
+[05.22.26|21:51:11] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:51:11] Training epoch: 20
+[05.22.26|21:51:15] 	mean_loss: 1.8963641160064273
+[05.22.26|21:51:15] Time consumption:
+[05.22.26|21:51:15] Done.
+[05.22.26|21:51:15] Training epoch: 21
+[05.22.26|21:51:19] 	mean_loss: 1.8879583477973938
+[05.22.26|21:51:19] Time consumption:
+[05.22.26|21:51:19] Done.
+[05.22.26|21:51:19] Training epoch: 22
+[05.22.26|21:51:20] 	Iter 800 Done. | loss: 1.8459 | lr: 0.010000
+[05.22.26|21:51:23] 	mean_loss: 1.8735107713275485
+[05.22.26|21:51:23] Time consumption:
+[05.22.26|21:51:23] Done.
+[05.22.26|21:51:23] Training epoch: 23
+[05.22.26|21:51:27] 	mean_loss: 1.8627818359269037
+[05.22.26|21:51:27] Time consumption:
+[05.22.26|21:51:27] Done.
+[05.22.26|21:51:27] Training epoch: 24
+[05.22.26|21:51:31] 	mean_loss: 1.8669767611556582
+[05.22.26|21:51:31] Time consumption:
+[05.22.26|21:51:31] Done.
+[05.22.26|21:51:31] Eval epoch: 24
+[05.22.26|21:51:32] 	mean_loss: 1.8669767611556582
+[05.22.26|21:51:32] 	Top1: 51.31%
+[05.22.26|21:51:32] 	Top5: 98.22%
+[05.22.26|21:51:32] 	Best Top1: 51.31%
+[05.22.26|21:51:32] current 51.31%, best 51.31%
+[05.22.26|21:51:32] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch025_acc51.31_model.pt.
+[05.22.26|21:51:32] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:51:32] Training epoch: 25
+[05.22.26|21:51:32] 	Iter 900 Done. | loss: 1.8992 | lr: 0.010000
+[05.22.26|21:51:36] 	mean_loss: 1.8459520141283672
+[05.22.26|21:51:36] Time consumption:
+[05.22.26|21:51:36] Done.
+[05.22.26|21:51:36] Training epoch: 26
+[05.22.26|21:51:40] 	mean_loss: 1.8441551791297064
+[05.22.26|21:51:40] Time consumption:
+[05.22.26|21:51:40] Done.
+[05.22.26|21:51:40] Training epoch: 27
+[05.22.26|21:51:43] 	Iter 1000 Done. | loss: 1.8172 | lr: 0.010000
+[05.22.26|21:51:44] 	mean_loss: 1.831701742278205
+[05.22.26|21:51:44] Time consumption:
+[05.22.26|21:51:44] Done.
+[05.22.26|21:51:44] Training epoch: 28
+[05.22.26|21:51:48] 	mean_loss: 1.8426404529147677
+[05.22.26|21:51:48] Time consumption:
+[05.22.26|21:51:48] Done.
+[05.22.26|21:51:48] Training epoch: 29
+[05.22.26|21:51:52] 	mean_loss: 1.8183787730005052
+[05.22.26|21:51:52] Time consumption:
+[05.22.26|21:51:52] Done.
+[05.22.26|21:51:52] Eval epoch: 29
+[05.22.26|21:51:53] 	mean_loss: 1.8183787730005052
+[05.22.26|21:51:53] 	Top1: 52.83%
+[05.22.26|21:51:53] 	Top5: 98.82%
+[05.22.26|21:51:53] 	Best Top1: 52.83%
+[05.22.26|21:51:53] current 52.83%, best 52.83%
+[05.22.26|21:51:53] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch030_acc52.83_model.pt.
+[05.22.26|21:51:53] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:51:53] Training epoch: 30
+[05.22.26|21:51:55] 	Iter 1100 Done. | loss: 1.7712 | lr: 0.010000
+[05.22.26|21:51:57] 	mean_loss: 1.8255615234375
+[05.22.26|21:51:57] Time consumption:
+[05.22.26|21:51:57] Done.
+[05.22.26|21:51:57] Training epoch: 31
+[05.22.26|21:52:01] 	mean_loss: 1.8083320657412212
+[05.22.26|21:52:01] Time consumption:
+[05.22.26|21:52:01] Done.
+[05.22.26|21:52:01] Training epoch: 32
+[05.22.26|21:52:05] 	mean_loss: 1.8163590596781836
+[05.22.26|21:52:05] Time consumption:
+[05.22.26|21:52:05] Done.
+[05.22.26|21:52:05] Training epoch: 33
+[05.22.26|21:52:07] 	Iter 1200 Done. | loss: 1.7618 | lr: 0.010000
+[05.22.26|21:52:09] 	mean_loss: 1.8052082790268793
+[05.22.26|21:52:09] Time consumption:
+[05.22.26|21:52:09] Done.
+[05.22.26|21:52:09] Training epoch: 34
+[05.22.26|21:52:13] 	mean_loss: 1.7951114707522922
+[05.22.26|21:52:13] Time consumption:
+[05.22.26|21:52:13] Done.
+[05.22.26|21:52:13] Eval epoch: 34
+[05.22.26|21:52:14] 	mean_loss: 1.7951114707522922
+[05.22.26|21:52:14] 	Top1: 55.87%
+[05.22.26|21:52:14] 	Top5: 98.73%
+[05.22.26|21:52:14] 	Best Top1: 55.87%
+[05.22.26|21:52:14] current 55.87%, best 55.87%
+[05.22.26|21:52:14] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch035_acc55.87_model.pt.
+[05.22.26|21:52:14] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:52:14] Training epoch: 35
+[05.22.26|21:52:18] 	mean_loss: 1.7939213150077395
+[05.22.26|21:52:18] Time consumption:
+[05.22.26|21:52:18] Done.
+[05.22.26|21:52:18] Training epoch: 36
+[05.22.26|21:52:19] 	Iter 1300 Done. | loss: 1.9538 | lr: 0.010000
+[05.22.26|21:52:22] 	mean_loss: 1.7960021595160167
+[05.22.26|21:52:22] Time consumption:
+[05.22.26|21:52:22] Done.
+[05.22.26|21:52:22] Training epoch: 37
+[05.22.26|21:52:26] 	mean_loss: 1.7880981200271182
+[05.22.26|21:52:26] Time consumption:
+[05.22.26|21:52:26] Done.
+[05.22.26|21:52:26] Training epoch: 38
+[05.22.26|21:52:30] 	Iter 1400 Done. | loss: 1.9845 | lr: 0.010000
+[05.22.26|21:52:30] 	mean_loss: 1.7957983248763614
+[05.22.26|21:52:30] Time consumption:
+[05.22.26|21:52:30] Done.
+[05.22.26|21:52:30] Training epoch: 39
+[05.22.26|21:52:34] 	mean_loss: 1.7701150973637898
+[05.22.26|21:52:34] Time consumption:
+[05.22.26|21:52:34] Done.
+[05.22.26|21:52:34] Eval epoch: 39
+[05.22.26|21:52:35] 	mean_loss: 1.7701150973637898
+[05.22.26|21:52:35] 	Top1: 54.61%
+[05.22.26|21:52:35] 	Top5: 99.07%
+[05.22.26|21:52:35] 	Best Top1: 55.87%
+[05.22.26|21:52:35] current 54.61%, best 55.87%
+[05.22.26|21:52:35] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch040_acc54.61_model.pt.
+[05.22.26|21:52:35] Training epoch: 40
+[05.22.26|21:52:39] 	mean_loss: 1.7798709505134158
+[05.22.26|21:52:39] Time consumption:
+[05.22.26|21:52:39] Done.
+[05.22.26|21:52:39] Training epoch: 41
+[05.22.26|21:52:42] 	Iter 1500 Done. | loss: 1.6883 | lr: 0.010000
+[05.22.26|21:52:43] 	mean_loss: 1.7795053157541487
+[05.22.26|21:52:43] Time consumption:
+[05.22.26|21:52:43] Done.
+[05.22.26|21:52:43] Training epoch: 42
+[05.22.26|21:52:47] 	mean_loss: 1.7692073782285054
+[05.22.26|21:52:47] Time consumption:
+[05.22.26|21:52:47] Done.
+[05.22.26|21:52:47] Training epoch: 43
+[05.22.26|21:52:51] 	mean_loss: 1.7523797319995031
+[05.22.26|21:52:51] Time consumption:
+[05.22.26|21:52:51] Done.
+[05.22.26|21:52:51] Training epoch: 44
+[05.22.26|21:52:53] 	Iter 1600 Done. | loss: 1.6296 | lr: 0.010000
+[05.22.26|21:52:55] 	mean_loss: 1.7570788065592449
+[05.22.26|21:52:55] Time consumption:
+[05.22.26|21:52:55] Done.
+[05.22.26|21:52:55] Eval epoch: 44
+[05.22.26|21:52:56] 	mean_loss: 1.7570788065592449
+[05.22.26|21:52:56] 	Top1: 66.78%
+[05.22.26|21:52:56] 	Top5: 99.07%
+[05.22.26|21:52:56] 	Best Top1: 66.78%
+[05.22.26|21:52:56] current 66.78%, best 66.78%
+[05.22.26|21:52:56] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch045_acc66.78_model.pt.
+[05.22.26|21:52:56] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:52:56] Training epoch: 45
+[05.22.26|21:53:00] 	mean_loss: 1.7468984689977434
+[05.22.26|21:53:00] Time consumption:
+[05.22.26|21:53:00] Done.
+[05.22.26|21:53:00] Training epoch: 46
+[05.22.26|21:53:04] 	mean_loss: 1.7477156519889832
+[05.22.26|21:53:04] Time consumption:
+[05.22.26|21:53:04] Done.
+[05.22.26|21:53:04] Training epoch: 47
+[05.22.26|21:53:05] 	Iter 1700 Done. | loss: 1.7320 | lr: 0.010000
+[05.22.26|21:53:08] 	mean_loss: 1.7335706618097093
+[05.22.26|21:53:08] Time consumption:
+[05.22.26|21:53:08] Done.
+[05.22.26|21:53:08] Training epoch: 48
+[05.22.26|21:53:12] 	mean_loss: 1.717516240146425
+[05.22.26|21:53:12] Time consumption:
+[05.22.26|21:53:12] Done.
+[05.22.26|21:53:12] Training epoch: 49
+[05.22.26|21:53:16] 	mean_loss: 1.7179293831189473
+[05.22.26|21:53:16] Time consumption:
+[05.22.26|21:53:16] Done.
+[05.22.26|21:53:16] Eval epoch: 49
+[05.22.26|21:53:17] 	mean_loss: 1.7179293831189473
+[05.22.26|21:53:17] 	Top1: 75.49%
+[05.22.26|21:53:17] 	Top5: 99.32%
+[05.22.26|21:53:17] 	Best Top1: 75.49%
+[05.22.26|21:53:17] current 75.49%, best 75.49%
+[05.22.26|21:53:17] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch050_acc75.49_model.pt.
+[05.22.26|21:53:17] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:53:17] Training epoch: 50
+[05.22.26|21:53:17] 	Iter 1800 Done. | loss: 1.5954 | lr: 0.010000
+[05.22.26|21:53:21] 	mean_loss: 1.7112804651260376
+[05.22.26|21:53:21] Time consumption:
+[05.22.26|21:53:21] Done.
+[05.22.26|21:53:21] Training epoch: 51
+[05.22.26|21:53:25] 	mean_loss: 1.7101630535390642
+[05.22.26|21:53:25] Time consumption:
+[05.22.26|21:53:25] Done.
+[05.22.26|21:53:25] Training epoch: 52
+[05.22.26|21:53:28] 	Iter 1900 Done. | loss: 1.8121 | lr: 0.010000
+[05.22.26|21:53:29] 	mean_loss: 1.6985863943894703
+[05.22.26|21:53:29] Time consumption:
+[05.22.26|21:53:29] Done.
+[05.22.26|21:53:29] Training epoch: 53
+[05.22.26|21:53:33] 	mean_loss: 1.6923289597034454
+[05.22.26|21:53:33] Time consumption:
+[05.22.26|21:53:33] Done.
+[05.22.26|21:53:33] Training epoch: 54
+[05.22.26|21:53:37] 	mean_loss: 1.6863647136423323
+[05.22.26|21:53:37] Time consumption:
+[05.22.26|21:53:37] Done.
+[05.22.26|21:53:37] Eval epoch: 54
+[05.22.26|21:53:38] 	mean_loss: 1.6863647136423323
+[05.22.26|21:53:38] 	Top1: 77.68%
+[05.22.26|21:53:38] 	Top5: 99.66%
+[05.22.26|21:53:38] 	Best Top1: 77.68%
+[05.22.26|21:53:38] current 77.68%, best 77.68%
+[05.22.26|21:53:38] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch055_acc77.68_model.pt.
+[05.22.26|21:53:38] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:53:38] Training epoch: 55
+[05.22.26|21:53:41] 	Iter 2000 Done. | loss: 1.6752 | lr: 0.010000
+[05.22.26|21:53:42] 	mean_loss: 1.68491792678833
+[05.22.26|21:53:42] Time consumption:
+[05.22.26|21:53:42] Done.
+[05.22.26|21:53:42] Training epoch: 56
+[05.22.26|21:53:46] 	mean_loss: 1.6596864196989272
+[05.22.26|21:53:46] Time consumption:
+[05.22.26|21:53:46] Done.
+[05.22.26|21:53:46] Training epoch: 57
+[05.22.26|21:53:50] 	mean_loss: 1.6559661626815796
+[05.22.26|21:53:50] Time consumption:
+[05.22.26|21:53:50] Done.
+[05.22.26|21:53:50] Training epoch: 58
+[05.22.26|21:53:52] 	Iter 2100 Done. | loss: 1.6806 | lr: 0.010000
+[05.22.26|21:53:54] 	mean_loss: 1.6657548944155376
+[05.22.26|21:53:54] Time consumption:
+[05.22.26|21:53:54] Done.
+[05.22.26|21:53:54] Training epoch: 59
+[05.22.26|21:53:58] 	mean_loss: 1.6582708954811096
+[05.22.26|21:53:58] Time consumption:
+[05.22.26|21:53:58] Done.
+[05.22.26|21:53:58] Eval epoch: 59
+[05.22.26|21:53:59] 	mean_loss: 1.6582708954811096
+[05.22.26|21:53:59] 	Top1: 81.23%
+[05.22.26|21:53:59] 	Top5: 99.83%
+[05.22.26|21:53:59] 	Best Top1: 81.23%
+[05.22.26|21:53:59] current 81.23%, best 81.23%
+[05.22.26|21:53:59] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch060_acc81.23_model.pt.
+[05.22.26|21:53:59] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:53:59] Training epoch: 60
+[05.22.26|21:54:03] 	mean_loss: 1.6457336213853624
+[05.22.26|21:54:03] Time consumption:
+[05.22.26|21:54:03] Done.
+[05.22.26|21:54:03] Training epoch: 61
+[05.22.26|21:54:04] 	Iter 2200 Done. | loss: 1.8299 | lr: 0.010000
+[05.22.26|21:54:07] 	mean_loss: 1.6415853533479903
+[05.22.26|21:54:07] Time consumption:
+[05.22.26|21:54:07] Done.
+[05.22.26|21:54:07] Training epoch: 62
+[05.22.26|21:54:11] 	mean_loss: 1.6418884065416124
+[05.22.26|21:54:11] Time consumption:
+[05.22.26|21:54:11] Done.
+[05.22.26|21:54:11] Training epoch: 63
+[05.22.26|21:54:15] 	Iter 2300 Done. | loss: 1.7533 | lr: 0.010000
+[05.22.26|21:54:15] 	mean_loss: 1.6394205921226077
+[05.22.26|21:54:15] Time consumption:
+[05.22.26|21:54:15] Done.
+[05.22.26|21:54:15] Training epoch: 64
+[05.22.26|21:54:19] 	mean_loss: 1.6192459894551172
+[05.22.26|21:54:19] Time consumption:
+[05.22.26|21:54:19] Done.
+[05.22.26|21:54:19] Eval epoch: 64
+[05.22.26|21:54:20] 	mean_loss: 1.6192459894551172
+[05.22.26|21:54:20] 	Top1: 79.80%
+[05.22.26|21:54:20] 	Top5: 99.75%
+[05.22.26|21:54:20] 	Best Top1: 81.23%
+[05.22.26|21:54:20] current 79.80%, best 81.23%
+[05.22.26|21:54:20] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch065_acc79.80_model.pt.
+[05.22.26|21:54:20] Training epoch: 65
+[05.22.26|21:54:24] 	mean_loss: 1.6253402862283919
+[05.22.26|21:54:24] Time consumption:
+[05.22.26|21:54:24] Done.
+[05.22.26|21:54:24] Training epoch: 66
+[05.22.26|21:54:27] 	Iter 2400 Done. | loss: 1.6385 | lr: 0.010000
+[05.22.26|21:54:28] 	mean_loss: 1.6258420447508495
+[05.22.26|21:54:28] Time consumption:
+[05.22.26|21:54:28] Done.
+[05.22.26|21:54:28] Training epoch: 67
+[05.22.26|21:54:32] 	mean_loss: 1.6205991009871166
+[05.22.26|21:54:32] Time consumption:
+[05.22.26|21:54:32] Done.
+[05.22.26|21:54:32] Training epoch: 68
+[05.22.26|21:54:36] 	mean_loss: 1.6113334132565393
+[05.22.26|21:54:36] Time consumption:
+[05.22.26|21:54:36] Done.
+[05.22.26|21:54:36] Training epoch: 69
+[05.22.26|21:54:38] 	Iter 2500 Done. | loss: 1.5352 | lr: 0.010000
+[05.22.26|21:54:40] 	mean_loss: 1.6042921476893954
+[05.22.26|21:54:40] Time consumption:
+[05.22.26|21:54:40] Done.
+[05.22.26|21:54:40] Eval epoch: 69
+[05.22.26|21:54:41] 	mean_loss: 1.6042921476893954
+[05.22.26|21:54:41] 	Top1: 85.21%
+[05.22.26|21:54:41] 	Top5: 99.75%
+[05.22.26|21:54:41] 	Best Top1: 85.21%
+[05.22.26|21:54:41] current 85.21%, best 85.21%
+[05.22.26|21:54:41] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch070_acc85.21_model.pt.
+[05.22.26|21:54:41] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:54:41] Training epoch: 70
+[05.22.26|21:54:45] 	mean_loss: 1.6168903079297807
+[05.22.26|21:54:45] Time consumption:
+[05.22.26|21:54:45] Done.
+[05.22.26|21:54:45] Training epoch: 71
+[05.22.26|21:54:50] 	mean_loss: 1.6135969029532538
+[05.22.26|21:54:50] Time consumption:
+[05.22.26|21:54:50] Done.
+[05.22.26|21:54:50] Training epoch: 72
+[05.22.26|21:54:51] 	Iter 2600 Done. | loss: 1.5481 | lr: 0.010000
+[05.22.26|21:54:54] 	mean_loss: 1.5963422490490808
+[05.22.26|21:54:54] Time consumption:
+[05.22.26|21:54:54] Done.
+[05.22.26|21:54:54] Training epoch: 73
+[05.22.26|21:54:58] 	mean_loss: 1.5837746461232503
+[05.22.26|21:54:58] Time consumption:
+[05.22.26|21:54:58] Done.
+[05.22.26|21:54:58] Training epoch: 74
+[05.22.26|21:55:02] 	mean_loss: 1.5945534076955583
+[05.22.26|21:55:02] Time consumption:
+[05.22.26|21:55:02] Done.
+[05.22.26|21:55:02] Eval epoch: 74
+[05.22.26|21:55:03] 	mean_loss: 1.5945534076955583
+[05.22.26|21:55:03] 	Top1: 88.00%
+[05.22.26|21:55:03] 	Top5: 99.83%
+[05.22.26|21:55:03] 	Best Top1: 88.00%
+[05.22.26|21:55:03] current 88.00%, best 88.00%
+[05.22.26|21:55:03] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch075_acc88.00_model.pt.
+[05.22.26|21:55:03] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:55:03] Training epoch: 75
+[05.22.26|21:55:03] 	Iter 2700 Done. | loss: 1.5710 | lr: 0.010000
+[05.22.26|21:55:07] 	mean_loss: 1.598524530728658
+[05.22.26|21:55:07] Time consumption:
+[05.22.26|21:55:07] Done.
+[05.22.26|21:55:07] Training epoch: 76
+[05.22.26|21:55:11] 	mean_loss: 1.5868950221273634
+[05.22.26|21:55:11] Time consumption:
+[05.22.26|21:55:11] Done.
+[05.22.26|21:55:11] Training epoch: 77
+[05.22.26|21:55:14] 	Iter 2800 Done. | loss: 1.7637 | lr: 0.010000
+[05.22.26|21:55:15] 	mean_loss: 1.5961782568030887
+[05.22.26|21:55:15] Time consumption:
+[05.22.26|21:55:15] Done.
+[05.22.26|21:55:15] Training epoch: 78
+[05.22.26|21:55:19] 	mean_loss: 1.5999389323923323
+[05.22.26|21:55:19] Time consumption:
+[05.22.26|21:55:19] Done.
+[05.22.26|21:55:19] Training epoch: 79
+[05.22.26|21:55:23] 	mean_loss: 1.5767611496978335
+[05.22.26|21:55:23] Time consumption:
+[05.22.26|21:55:23] Done.
+[05.22.26|21:55:23] Eval epoch: 79
+[05.22.26|21:55:23] 	mean_loss: 1.5767611496978335
+[05.22.26|21:55:23] 	Top1: 90.45%
+[05.22.26|21:55:24] 	Top5: 99.83%
+[05.22.26|21:55:24] 	Best Top1: 90.45%
+[05.22.26|21:55:24] current 90.45%, best 90.45%
+[05.22.26|21:55:24] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch080_acc90.45_model.pt.
+[05.22.26|21:55:24] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:55:24] Training epoch: 80
+[05.22.26|21:55:26] 	Iter 2900 Done. | loss: 1.5470 | lr: 0.010000
+[05.22.26|21:55:28] 	mean_loss: 1.5744768447346158
+[05.22.26|21:55:28] Time consumption:
+[05.22.26|21:55:28] Done.
+[05.22.26|21:55:28] Training epoch: 81
+[05.22.26|21:55:32] 	mean_loss: 1.5593357152409024
+[05.22.26|21:55:32] Time consumption:
+[05.22.26|21:55:32] Done.
+[05.22.26|21:55:32] Training epoch: 82
+[05.22.26|21:55:36] 	mean_loss: 1.58218272195922
+[05.22.26|21:55:36] Time consumption:
+[05.22.26|21:55:36] Done.
+[05.22.26|21:55:36] Training epoch: 83
+[05.22.26|21:55:37] 	Iter 3000 Done. | loss: 1.6039 | lr: 0.010000
+[05.22.26|21:55:40] 	mean_loss: 1.5512904458575778
+[05.22.26|21:55:40] Time consumption:
+[05.22.26|21:55:40] Done.
+[05.22.26|21:55:40] Training epoch: 84
+[05.22.26|21:55:44] 	mean_loss: 1.578425344493654
+[05.22.26|21:55:44] Time consumption:
+[05.22.26|21:55:44] Done.
+[05.22.26|21:55:44] Eval epoch: 84
+[05.22.26|21:55:45] 	mean_loss: 1.578425344493654
+[05.22.26|21:55:45] 	Top1: 91.55%
+[05.22.26|21:55:45] 	Top5: 99.83%
+[05.22.26|21:55:45] 	Best Top1: 91.55%
+[05.22.26|21:55:45] current 91.55%, best 91.55%
+[05.22.26|21:55:45] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch085_acc91.55_model.pt.
+[05.22.26|21:55:45] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:55:45] Training epoch: 85
+[05.22.26|21:55:49] 	mean_loss: 1.5643604497114818
+[05.22.26|21:55:49] Time consumption:
+[05.22.26|21:55:49] Done.
+[05.22.26|21:55:49] Training epoch: 86
+[05.22.26|21:55:50] 	Iter 3100 Done. | loss: 1.4900 | lr: 0.010000
+[05.22.26|21:55:53] 	mean_loss: 1.5516015787919362
+[05.22.26|21:55:53] Time consumption:
+[05.22.26|21:55:53] Done.
+[05.22.26|21:55:53] Training epoch: 87
+[05.22.26|21:55:57] 	mean_loss: 1.5493967533111572
+[05.22.26|21:55:57] Time consumption:
+[05.22.26|21:55:57] Done.
+[05.22.26|21:55:57] Training epoch: 88
+[05.22.26|21:56:01] 	Iter 3200 Done. | loss: 1.4862 | lr: 0.010000
+[05.22.26|21:56:01] 	mean_loss: 1.5548009408844843
+[05.22.26|21:56:01] Time consumption:
+[05.22.26|21:56:01] Done.
+[05.22.26|21:56:01] Training epoch: 89
+[05.22.26|21:56:05] 	mean_loss: 1.5487077898449368
+[05.22.26|21:56:05] Time consumption:
+[05.22.26|21:56:05] Done.
+[05.22.26|21:56:05] Eval epoch: 89
+[05.22.26|21:56:06] 	mean_loss: 1.5487077898449368
+[05.22.26|21:56:06] 	Top1: 93.41%
+[05.22.26|21:56:06] 	Top5: 99.92%
+[05.22.26|21:56:06] 	Best Top1: 93.41%
+[05.22.26|21:56:06] current 93.41%, best 93.41%
+[05.22.26|21:56:06] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch090_acc93.41_model.pt.
+[05.22.26|21:56:06] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:56:06] Training epoch: 90
+[05.22.26|21:56:10] 	mean_loss: 1.5370297233263652
+[05.22.26|21:56:10] Time consumption:
+[05.22.26|21:56:10] Done.
+[05.22.26|21:56:10] Training epoch: 91
+[05.22.26|21:56:13] 	Iter 3300 Done. | loss: 1.4625 | lr: 0.010000
+[05.22.26|21:56:14] 	mean_loss: 1.5469633705086179
+[05.22.26|21:56:14] Time consumption:
+[05.22.26|21:56:14] Done.
+[05.22.26|21:56:14] Training epoch: 92
+[05.22.26|21:56:18] 	mean_loss: 1.5419840580887265
+[05.22.26|21:56:18] Time consumption:
+[05.22.26|21:56:18] Done.
+[05.22.26|21:56:18] Training epoch: 93
+[05.22.26|21:56:22] 	mean_loss: 1.5473056965404086
+[05.22.26|21:56:22] Time consumption:
+[05.22.26|21:56:22] Done.
+[05.22.26|21:56:22] Training epoch: 94
+[05.22.26|21:56:24] 	Iter 3400 Done. | loss: 1.5644 | lr: 0.010000
+[05.22.26|21:56:26] 	mean_loss: 1.5546180208524067
+[05.22.26|21:56:26] Time consumption:
+[05.22.26|21:56:26] Done.
+[05.22.26|21:56:26] Eval epoch: 94
+[05.22.26|21:56:27] 	mean_loss: 1.5546180208524067
+[05.22.26|21:56:27] 	Top1: 93.74%
+[05.22.26|21:56:27] 	Top5: 99.83%
+[05.22.26|21:56:27] 	Best Top1: 93.74%
+[05.22.26|21:56:27] current 93.74%, best 93.74%
+[05.22.26|21:56:27] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch095_acc93.74_model.pt.
+[05.22.26|21:56:27] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:56:27] Training epoch: 95
+[05.22.26|21:56:31] 	mean_loss: 1.5465619564056396
+[05.22.26|21:56:31] Time consumption:
+[05.22.26|21:56:31] Done.
+[05.22.26|21:56:31] Training epoch: 96
+[05.22.26|21:56:35] 	mean_loss: 1.5287723508146074
+[05.22.26|21:56:35] Time consumption:
+[05.22.26|21:56:35] Done.
+[05.22.26|21:56:35] Training epoch: 97
+[05.22.26|21:56:36] 	Iter 3500 Done. | loss: 1.5329 | lr: 0.010000
+[05.22.26|21:56:39] 	mean_loss: 1.5414122872882419
+[05.22.26|21:56:39] Time consumption:
+[05.22.26|21:56:39] Done.
+[05.22.26|21:56:39] Training epoch: 98
+[05.22.26|21:56:43] 	mean_loss: 1.5474729935328166
+[05.22.26|21:56:43] Time consumption:
+[05.22.26|21:56:43] Done.
+[05.22.26|21:56:43] Training epoch: 99
+[05.22.26|21:56:47] 	mean_loss: 1.54196278585328
+[05.22.26|21:56:47] Time consumption:
+[05.22.26|21:56:47] Done.
+[05.22.26|21:56:47] Eval epoch: 99
+[05.22.26|21:56:48] 	mean_loss: 1.54196278585328
+[05.22.26|21:56:48] 	Top1: 94.76%
+[05.22.26|21:56:48] 	Top5: 99.83%
+[05.22.26|21:56:48] 	Best Top1: 94.76%
+[05.22.26|21:56:48] current 94.76%, best 94.76%
+[05.22.26|21:56:48] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch100_acc94.76_model.pt.
+[05.22.26|21:56:48] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:56:48] Training epoch: 100
+[05.22.26|21:56:49] 	Iter 3600 Done. | loss: 1.4996 | lr: 0.010000
+[05.22.26|21:56:52] 	mean_loss: 1.5324842896726396
+[05.22.26|21:56:52] Time consumption:
+[05.22.26|21:56:52] Done.
+[05.22.26|21:56:52] Training epoch: 101
+[05.22.26|21:56:56] 	mean_loss: 1.5277268820338779
+[05.22.26|21:56:56] Time consumption:
+[05.22.26|21:56:56] Done.
+[05.22.26|21:56:56] Training epoch: 102
+[05.22.26|21:56:59] 	Iter 3700 Done. | loss: 1.6371 | lr: 0.010000
+[05.22.26|21:57:00] 	mean_loss: 1.5312756333086226
+[05.22.26|21:57:00] Time consumption:
+[05.22.26|21:57:00] Done.
+[05.22.26|21:57:00] Training epoch: 103
+[05.22.26|21:57:04] 	mean_loss: 1.5231696433491178
+[05.22.26|21:57:04] Time consumption:
+[05.22.26|21:57:04] Done.
+[05.22.26|21:57:04] Training epoch: 104
+[05.22.26|21:57:08] 	mean_loss: 1.5337612761391535
+[05.22.26|21:57:08] Time consumption:
+[05.22.26|21:57:08] Done.
+[05.22.26|21:57:08] Eval epoch: 104
+[05.22.26|21:57:08] 	mean_loss: 1.5337612761391535
+[05.22.26|21:57:08] 	Top1: 94.42%
+[05.22.26|21:57:08] 	Top5: 99.75%
+[05.22.26|21:57:08] 	Best Top1: 94.76%
+[05.22.26|21:57:08] current 94.42%, best 94.76%
+[05.22.26|21:57:09] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch105_acc94.42_model.pt.
+[05.22.26|21:57:09] Training epoch: 105
+[05.22.26|21:57:11] 	Iter 3800 Done. | loss: 1.6087 | lr: 0.010000
+[05.22.26|21:57:13] 	mean_loss: 1.5264980991681416
+[05.22.26|21:57:13] Time consumption:
+[05.22.26|21:57:13] Done.
+[05.22.26|21:57:13] Training epoch: 106
+[05.22.26|21:57:17] 	mean_loss: 1.5307653778129153
+[05.22.26|21:57:17] Time consumption:
+[05.22.26|21:57:17] Done.
+[05.22.26|21:57:17] Training epoch: 107
+[05.22.26|21:57:21] 	mean_loss: 1.5261560910277896
+[05.22.26|21:57:21] Time consumption:
+[05.22.26|21:57:21] Done.
+[05.22.26|21:57:21] Training epoch: 108
+[05.22.26|21:57:22] 	Iter 3900 Done. | loss: 1.6929 | lr: 0.010000
+[05.22.26|21:57:25] 	mean_loss: 1.5274957683351305
+[05.22.26|21:57:25] Time consumption:
+[05.22.26|21:57:25] Done.
+[05.22.26|21:57:25] Training epoch: 109
+[05.22.26|21:57:29] 	mean_loss: 1.5360744761096106
+[05.22.26|21:57:29] Time consumption:
+[05.22.26|21:57:29] Done.
+[05.22.26|21:57:29] Eval epoch: 109
+[05.22.26|21:57:29] 	mean_loss: 1.5360744761096106
+[05.22.26|21:57:29] 	Top1: 91.89%
+[05.22.26|21:57:29] 	Top5: 100.00%
+[05.22.26|21:57:29] 	Best Top1: 94.76%
+[05.22.26|21:57:29] current 91.89%, best 94.76%
+[05.22.26|21:57:29] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch110_acc91.89_model.pt.
+[05.22.26|21:57:29] Training epoch: 110
+[05.22.26|21:57:33] 	mean_loss: 1.5205637613932292
+[05.22.26|21:57:33] Time consumption:
+[05.22.26|21:57:33] Done.
+[05.22.26|21:57:33] Training epoch: 111
+[05.22.26|21:57:34] 	Iter 4000 Done. | loss: 1.5845 | lr: 0.010000
+[05.22.26|21:57:38] 	mean_loss: 1.5281604031721752
+[05.22.26|21:57:38] Time consumption:
+[05.22.26|21:57:38] Done.
+[05.22.26|21:57:38] Training epoch: 112
+[05.22.26|21:57:42] 	mean_loss: 1.5128510461913214
+[05.22.26|21:57:42] Time consumption:
+[05.22.26|21:57:42] Done.
+[05.22.26|21:57:42] Training epoch: 113
+[05.22.26|21:57:45] 	Iter 4100 Done. | loss: 1.5294 | lr: 0.010000
+[05.22.26|21:57:45] 	mean_loss: 1.5203790863355
+[05.22.26|21:57:45] Time consumption:
+[05.22.26|21:57:45] Done.
+[05.22.26|21:57:45] Training epoch: 114
+[05.22.26|21:57:49] 	mean_loss: 1.513797812991672
+[05.22.26|21:57:49] Time consumption:
+[05.22.26|21:57:49] Done.
+[05.22.26|21:57:49] Eval epoch: 114
+[05.22.26|21:57:50] 	mean_loss: 1.513797812991672
+[05.22.26|21:57:50] 	Top1: 95.10%
+[05.22.26|21:57:50] 	Top5: 99.92%
+[05.22.26|21:57:50] 	Best Top1: 95.10%
+[05.22.26|21:57:50] current 95.10%, best 95.10%
+[05.22.26|21:57:50] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch115_acc95.10_model.pt.
+[05.22.26|21:57:50] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:57:50] Training epoch: 115
+[05.22.26|21:57:54] 	mean_loss: 1.5046046045091417
+[05.22.26|21:57:54] Time consumption:
+[05.22.26|21:57:54] Done.
+[05.22.26|21:57:54] Training epoch: 116
+[05.22.26|21:57:56] 	Iter 4200 Done. | loss: 1.5234 | lr: 0.010000
+[05.22.26|21:57:57] 	mean_loss: 1.5156127611796062
+[05.22.26|21:57:57] Time consumption:
+[05.22.26|21:57:57] Done.
+[05.22.26|21:57:57] Training epoch: 117
+[05.22.26|21:58:01] 	mean_loss: 1.5202846659554377
+[05.22.26|21:58:01] Time consumption:
+[05.22.26|21:58:01] Done.
+[05.22.26|21:58:01] Training epoch: 118
+[05.22.26|21:58:05] 	mean_loss: 1.5314492417706385
+[05.22.26|21:58:05] Time consumption:
+[05.22.26|21:58:05] Done.
+[05.22.26|21:58:05] Training epoch: 119
+[05.22.26|21:58:07] 	Iter 4300 Done. | loss: 1.5289 | lr: 0.010000
+[05.22.26|21:58:09] 	mean_loss: 1.520857612291972
+[05.22.26|21:58:09] Time consumption:
+[05.22.26|21:58:09] Done.
+[05.22.26|21:58:09] Eval epoch: 119
+[05.22.26|21:58:09] 	mean_loss: 1.520857612291972
+[05.22.26|21:58:09] 	Top1: 94.76%
+[05.22.26|21:58:10] 	Top5: 99.92%
+[05.22.26|21:58:10] 	Best Top1: 95.10%
+[05.22.26|21:58:10] current 94.76%, best 95.10%
+[05.22.26|21:58:10] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch120_acc94.76_model.pt.
+[05.22.26|21:58:10] Training epoch: 120
+[05.22.26|21:58:13] 	mean_loss: 1.5274857580661774
+[05.22.26|21:58:13] Time consumption:
+[05.22.26|21:58:13] Done.
+[05.22.26|21:58:13] Training epoch: 121
+[05.22.26|21:58:17] 	mean_loss: 1.543837742673026
+[05.22.26|21:58:17] Time consumption:
+[05.22.26|21:58:17] Done.
+[05.22.26|21:58:17] Training epoch: 122
+[05.22.26|21:58:18] 	Iter 4400 Done. | loss: 1.4307 | lr: 0.010000
+[05.22.26|21:58:21] 	mean_loss: 1.5150078468852572
+[05.22.26|21:58:21] Time consumption:
+[05.22.26|21:58:21] Done.
+[05.22.26|21:58:21] Training epoch: 123
+[05.22.26|21:58:25] 	mean_loss: 1.5256833798355527
+[05.22.26|21:58:25] Time consumption:
+[05.22.26|21:58:25] Done.
+[05.22.26|21:58:25] Training epoch: 124
+[05.22.26|21:58:29] 	mean_loss: 1.5344415770636664
+[05.22.26|21:58:29] Time consumption:
+[05.22.26|21:58:29] Done.
+[05.22.26|21:58:29] Eval epoch: 124
+[05.22.26|21:58:30] 	mean_loss: 1.5344415770636664
+[05.22.26|21:58:30] 	Top1: 92.81%
+[05.22.26|21:58:30] 	Top5: 99.92%
+[05.22.26|21:58:30] 	Best Top1: 95.10%
+[05.22.26|21:58:30] current 92.81%, best 95.10%
+[05.22.26|21:58:30] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch125_acc92.81_model.pt.
+[05.22.26|21:58:30] Training epoch: 125
+[05.22.26|21:58:30] 	Iter 4500 Done. | loss: 1.7139 | lr: 0.010000
+[05.22.26|21:58:34] 	mean_loss: 1.535340941614575
+[05.22.26|21:58:34] Time consumption:
+[05.22.26|21:58:34] Done.
+[05.22.26|21:58:34] Training epoch: 126
+[05.22.26|21:58:38] 	mean_loss: 1.516971184147729
+[05.22.26|21:58:38] Time consumption:
+[05.22.26|21:58:38] Done.
+[05.22.26|21:58:38] Training epoch: 127
+[05.22.26|21:58:41] 	Iter 4600 Done. | loss: 1.4943 | lr: 0.001000
+[05.22.26|21:58:42] 	mean_loss: 1.5094026525815327
+[05.22.26|21:58:42] Time consumption:
+[05.22.26|21:58:42] Done.
+[05.22.26|21:58:42] Training epoch: 128
+[05.22.26|21:58:46] 	mean_loss: 1.50652304953999
+[05.22.26|21:58:46] Time consumption:
+[05.22.26|21:58:46] Done.
+[05.22.26|21:58:46] Training epoch: 129
+[05.22.26|21:58:50] 	mean_loss: 1.5076120032204523
+[05.22.26|21:58:50] Time consumption:
+[05.22.26|21:58:50] Done.
+[05.22.26|21:58:50] Eval epoch: 129
+[05.22.26|21:58:51] 	mean_loss: 1.5076120032204523
+[05.22.26|21:58:51] 	Top1: 96.70%
+[05.22.26|21:58:51] 	Top5: 99.92%
+[05.22.26|21:58:51] 	Best Top1: 96.70%
+[05.22.26|21:58:51] current 96.70%, best 96.70%
+[05.22.26|21:58:51] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch130_acc96.70_model.pt.
+[05.22.26|21:58:51] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:58:51] Training epoch: 130
+[05.22.26|21:58:54] 	Iter 4700 Done. | loss: 1.4710 | lr: 0.001000
+[05.22.26|21:58:55] 	mean_loss: 1.501632074515025
+[05.22.26|21:58:55] Time consumption:
+[05.22.26|21:58:55] Done.
+[05.22.26|21:58:55] Training epoch: 131
+[05.22.26|21:58:59] 	mean_loss: 1.5161134368843503
+[05.22.26|21:58:59] Time consumption:
+[05.22.26|21:58:59] Done.
+[05.22.26|21:58:59] Training epoch: 132
+[05.22.26|21:59:03] 	mean_loss: 1.5104999111758337
+[05.22.26|21:59:03] Time consumption:
+[05.22.26|21:59:03] Done.
+[05.22.26|21:59:03] Training epoch: 133
+[05.22.26|21:59:05] 	Iter 4800 Done. | loss: 1.4877 | lr: 0.001000
+[05.22.26|21:59:08] 	mean_loss: 1.5082966420385573
+[05.22.26|21:59:08] Time consumption:
+[05.22.26|21:59:08] Done.
+[05.22.26|21:59:08] Training epoch: 134
+[05.22.26|21:59:12] 	mean_loss: 1.5012850761413574
+[05.22.26|21:59:12] Time consumption:
+[05.22.26|21:59:12] Done.
+[05.22.26|21:59:12] Eval epoch: 134
+[05.22.26|21:59:13] 	mean_loss: 1.5012850761413574
+[05.22.26|21:59:13] 	Top1: 96.96%
+[05.22.26|21:59:13] 	Top5: 100.00%
+[05.22.26|21:59:13] 	Best Top1: 96.96%
+[05.22.26|21:59:13] current 96.96%, best 96.96%
+[05.22.26|21:59:13] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch135_acc96.96_model.pt.
+[05.22.26|21:59:13] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:59:13] Training epoch: 135
+[05.22.26|21:59:17] 	mean_loss: 1.5011072390609317
+[05.22.26|21:59:17] Time consumption:
+[05.22.26|21:59:17] Done.
+[05.22.26|21:59:17] Training epoch: 136
+[05.22.26|21:59:18] 	Iter 4900 Done. | loss: 1.5159 | lr: 0.001000
+[05.22.26|21:59:21] 	mean_loss: 1.498742077085707
+[05.22.26|21:59:21] Time consumption:
+[05.22.26|21:59:21] Done.
+[05.22.26|21:59:21] Training epoch: 137
+[05.22.26|21:59:25] 	mean_loss: 1.5054624213112726
+[05.22.26|21:59:25] Time consumption:
+[05.22.26|21:59:25] Done.
+[05.22.26|21:59:25] Training epoch: 138
+[05.22.26|21:59:28] 	Iter 5000 Done. | loss: 1.4989 | lr: 0.001000
+[05.22.26|21:59:29] 	mean_loss: 1.5060386657714844
+[05.22.26|21:59:29] Time consumption:
+[05.22.26|21:59:29] Done.
+[05.22.26|21:59:29] Training epoch: 139
+[05.22.26|21:59:33] 	mean_loss: 1.496125837167104
+[05.22.26|21:59:33] Time consumption:
+[05.22.26|21:59:33] Done.
+[05.22.26|21:59:33] Eval epoch: 139
+[05.22.26|21:59:34] 	mean_loss: 1.496125837167104
+[05.22.26|21:59:34] 	Top1: 96.96%
+[05.22.26|21:59:34] 	Top5: 100.00%
+[05.22.26|21:59:34] 	Best Top1: 96.96%
+[05.22.26|21:59:34] current 96.96%, best 96.96%
+[05.22.26|21:59:34] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch140_acc96.96_model.pt.
+[05.22.26|21:59:34] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|21:59:34] Training epoch: 140
+[05.22.26|21:59:38] 	mean_loss: 1.5063434541225433
+[05.22.26|21:59:38] Time consumption:
+[05.22.26|21:59:38] Done.
+[05.22.26|21:59:38] Training epoch: 141
+[05.22.26|21:59:41] 	Iter 5100 Done. | loss: 1.4899 | lr: 0.001000
+[05.22.26|21:59:42] 	mean_loss: 1.5012762678994074
+[05.22.26|21:59:42] Time consumption:
+[05.22.26|21:59:42] Done.
+[05.22.26|21:59:42] Training epoch: 142
+[05.22.26|21:59:46] 	mean_loss: 1.5031428171528711
+[05.22.26|21:59:46] Time consumption:
+[05.22.26|21:59:46] Done.
+[05.22.26|21:59:46] Training epoch: 143
+[05.22.26|21:59:50] 	mean_loss: 1.5055635472138722
+[05.22.26|21:59:50] Time consumption:
+[05.22.26|21:59:50] Done.
+[05.22.26|21:59:50] Training epoch: 144
+[05.22.26|21:59:52] 	Iter 5200 Done. | loss: 1.5806 | lr: 0.001000
+[05.22.26|21:59:54] 	mean_loss: 1.5096840759118397
+[05.22.26|21:59:54] Time consumption:
+[05.22.26|21:59:54] Done.
+[05.22.26|21:59:54] Eval epoch: 144
+[05.22.26|21:59:55] 	mean_loss: 1.5096840759118397
+[05.22.26|21:59:55] 	Top1: 96.62%
+[05.22.26|21:59:55] 	Top5: 99.92%
+[05.22.26|21:59:55] 	Best Top1: 96.96%
+[05.22.26|21:59:55] current 96.62%, best 96.96%
+[05.22.26|21:59:55] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch145_acc96.62_model.pt.
+[05.22.26|21:59:55] Training epoch: 145
+[05.22.26|21:59:59] 	mean_loss: 1.5110671354664698
+[05.22.26|21:59:59] Time consumption:
+[05.22.26|21:59:59] Done.
+[05.22.26|21:59:59] Training epoch: 146
+[05.22.26|22:00:03] 	mean_loss: 1.4978711439503565
+[05.22.26|22:00:03] Time consumption:
+[05.22.26|22:00:03] Done.
+[05.22.26|22:00:03] Training epoch: 147
+[05.22.26|22:00:04] 	Iter 5300 Done. | loss: 1.4464 | lr: 0.001000
+[05.22.26|22:00:07] 	mean_loss: 1.50099006957478
+[05.22.26|22:00:07] Time consumption:
+[05.22.26|22:00:07] Done.
+[05.22.26|22:00:07] Training epoch: 148
+[05.22.26|22:00:11] 	mean_loss: 1.5062821341885462
+[05.22.26|22:00:11] Time consumption:
+[05.22.26|22:00:11] Done.
+[05.22.26|22:00:11] Training epoch: 149
+[05.22.26|22:00:15] 	mean_loss: 1.5081128908528223
+[05.22.26|22:00:15] Time consumption:
+[05.22.26|22:00:15] Done.
+[05.22.26|22:00:15] Eval epoch: 149
+[05.22.26|22:00:16] 	mean_loss: 1.5081128908528223
+[05.22.26|22:00:16] 	Top1: 96.53%
+[05.22.26|22:00:16] 	Top5: 99.92%
+[05.22.26|22:00:16] 	Best Top1: 96.96%
+[05.22.26|22:00:16] current 96.53%, best 96.96%
+[05.22.26|22:00:16] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch150_acc96.53_model.pt.
+[05.22.26|22:00:16] Training epoch: 150
+[05.22.26|22:00:17] 	Iter 5400 Done. | loss: 1.5033 | lr: 0.001000
+[05.22.26|22:00:20] 	mean_loss: 1.503991358810001
+[05.22.26|22:00:20] Time consumption:
+[05.22.26|22:00:20] Done.
+[05.22.26|22:00:20] Training epoch: 151
+[05.22.26|22:00:24] 	mean_loss: 1.4975190858046215
+[05.22.26|22:00:24] Time consumption:
+[05.22.26|22:00:24] Done.
+[05.22.26|22:00:24] Training epoch: 152
+[05.22.26|22:00:27] 	Iter 5500 Done. | loss: 1.4876 | lr: 0.000100
+[05.22.26|22:00:28] 	mean_loss: 1.507364468442069
+[05.22.26|22:00:28] Time consumption:
+[05.22.26|22:00:28] Done.
+[05.22.26|22:00:28] Training epoch: 153
+[05.22.26|22:00:32] 	mean_loss: 1.5008571015463934
+[05.22.26|22:00:32] Time consumption:
+[05.22.26|22:00:32] Done.
+[05.22.26|22:00:32] Training epoch: 154
+[05.22.26|22:00:36] 	mean_loss: 1.500933097468482
+[05.22.26|22:00:36] Time consumption:
+[05.22.26|22:00:36] Done.
+[05.22.26|22:00:36] Eval epoch: 154
+[05.22.26|22:00:37] 	mean_loss: 1.500933097468482
+[05.22.26|22:00:37] 	Top1: 96.79%
+[05.22.26|22:00:37] 	Top5: 99.92%
+[05.22.26|22:00:37] 	Best Top1: 96.96%
+[05.22.26|22:00:37] current 96.79%, best 96.96%
+[05.22.26|22:00:37] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch155_acc96.79_model.pt.
+[05.22.26|22:00:37] Training epoch: 155
+[05.22.26|22:00:40] 	Iter 5600 Done. | loss: 1.4544 | lr: 0.000100
+[05.22.26|22:00:41] 	mean_loss: 1.5019222233030531
+[05.22.26|22:00:41] Time consumption:
+[05.22.26|22:00:41] Done.
+[05.22.26|22:00:41] Training epoch: 156
+[05.22.26|22:00:45] 	mean_loss: 1.4988862011167738
+[05.22.26|22:00:45] Time consumption:
+[05.22.26|22:00:45] Done.
+[05.22.26|22:00:45] Training epoch: 157
+[05.22.26|22:00:49] 	mean_loss: 1.497213257683648
+[05.22.26|22:00:49] Time consumption:
+[05.22.26|22:00:49] Done.
+[05.22.26|22:00:49] Training epoch: 158
+[05.22.26|22:00:51] 	Iter 5700 Done. | loss: 1.4630 | lr: 0.000100
+[05.22.26|22:00:53] 	mean_loss: 1.508950995074378
+[05.22.26|22:00:53] Time consumption:
+[05.22.26|22:00:53] Done.
+[05.22.26|22:00:53] Training epoch: 159
+[05.22.26|22:00:57] 	mean_loss: 1.4957920809586842
+[05.22.26|22:00:57] Time consumption:
+[05.22.26|22:00:57] Done.
+[05.22.26|22:00:57] Eval epoch: 159
+[05.22.26|22:00:58] 	mean_loss: 1.4957920809586842
+[05.22.26|22:00:58] 	Top1: 96.79%
+[05.22.26|22:00:58] 	Top5: 99.92%
+[05.22.26|22:00:58] 	Best Top1: 96.96%
+[05.22.26|22:00:58] current 96.79%, best 96.96%
+[05.22.26|22:00:58] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch160_acc96.79_model.pt.
+[05.22.26|22:00:58] Training epoch: 160
+[05.22.26|22:01:02] 	mean_loss: 1.5009915398226843
+[05.22.26|22:01:02] Time consumption:
+[05.22.26|22:01:02] Done.
+[05.22.26|22:01:02] Training epoch: 161
+[05.22.26|22:01:03] 	Iter 5800 Done. | loss: 1.5023 | lr: 0.000100
+[05.22.26|22:01:06] 	mean_loss: 1.49935777982076
+[05.22.26|22:01:06] Time consumption:
+[05.22.26|22:01:06] Done.
+[05.22.26|22:01:06] Training epoch: 162
+[05.22.26|22:01:11] 	mean_loss: 1.496354040172365
+[05.22.26|22:01:11] Time consumption:
+[05.22.26|22:01:11] Done.
+[05.22.26|22:01:11] Training epoch: 163
+[05.22.26|22:01:14] 	Iter 5900 Done. | loss: 1.5549 | lr: 0.000100
+[05.22.26|22:01:15] 	mean_loss: 1.4997131890720792
+[05.22.26|22:01:15] Time consumption:
+[05.22.26|22:01:15] Done.
+[05.22.26|22:01:15] Training epoch: 164
+[05.22.26|22:01:19] 	mean_loss: 1.5120656026734247
+[05.22.26|22:01:19] Time consumption:
+[05.22.26|22:01:19] Done.
+[05.22.26|22:01:19] Eval epoch: 164
+[05.22.26|22:01:20] 	mean_loss: 1.5120656026734247
+[05.22.26|22:01:20] 	Top1: 96.79%
+[05.22.26|22:01:20] 	Top5: 99.92%
+[05.22.26|22:01:20] 	Best Top1: 96.96%
+[05.22.26|22:01:20] current 96.79%, best 96.96%
+[05.22.26|22:01:20] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch165_acc96.79_model.pt.
+[05.22.26|22:01:20] Training epoch: 165
+[05.22.26|22:01:24] 	mean_loss: 1.5079361067877874
+[05.22.26|22:01:24] Time consumption:
+[05.22.26|22:01:24] Done.
+[05.22.26|22:01:24] Training epoch: 166
+[05.22.26|22:01:27] 	Iter 6000 Done. | loss: 1.3982 | lr: 0.000100
+[05.22.26|22:01:28] 	mean_loss: 1.4997290935781267
+[05.22.26|22:01:28] Time consumption:
+[05.22.26|22:01:28] Done.
+[05.22.26|22:01:28] Training epoch: 167
+[05.22.26|22:01:32] 	mean_loss: 1.5050035152170393
+[05.22.26|22:01:32] Time consumption:
+[05.22.26|22:01:32] Done.
+[05.22.26|22:01:32] Training epoch: 168
+[05.22.26|22:01:36] 	mean_loss: 1.511762900484933
+[05.22.26|22:01:36] Time consumption:
+[05.22.26|22:01:36] Done.
+[05.22.26|22:01:36] Training epoch: 169
+[05.22.26|22:01:38] 	Iter 6100 Done. | loss: 1.4667 | lr: 0.000100
+[05.22.26|22:01:40] 	mean_loss: 1.4941876629988353
+[05.22.26|22:01:40] Time consumption:
+[05.22.26|22:01:40] Done.
+[05.22.26|22:01:40] Eval epoch: 169
+[05.22.26|22:01:41] 	mean_loss: 1.4941876629988353
+[05.22.26|22:01:41] 	Top1: 96.87%
+[05.22.26|22:01:41] 	Top5: 99.92%
+[05.22.26|22:01:41] 	Best Top1: 96.96%
+[05.22.26|22:01:41] current 96.87%, best 96.96%
+[05.22.26|22:01:41] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch170_acc96.87_model.pt.
+[05.22.26|22:01:41] Training epoch: 170
+[05.22.26|22:01:45] 	mean_loss: 1.510956757598453
+[05.22.26|22:01:45] Time consumption:
+[05.22.26|22:01:45] Done.
+[05.22.26|22:01:45] Training epoch: 171
+[05.22.26|22:01:49] 	mean_loss: 1.5043859448697832
+[05.22.26|22:01:49] Time consumption:
+[05.22.26|22:01:49] Done.
+[05.22.26|22:01:49] Training epoch: 172
+[05.22.26|22:01:50] 	Iter 6200 Done. | loss: 1.5191 | lr: 0.000100
+[05.22.26|22:01:53] 	mean_loss: 1.5082891715897455
+[05.22.26|22:01:53] Time consumption:
+[05.22.26|22:01:53] Done.
+[05.22.26|22:01:53] Training epoch: 173
+[05.22.26|22:01:57] 	mean_loss: 1.4963380263911352
+[05.22.26|22:01:57] Time consumption:
+[05.22.26|22:01:57] Done.
+[05.22.26|22:01:57] Training epoch: 174
+[05.22.26|22:02:01] 	mean_loss: 1.4994080132908292
+[05.22.26|22:02:01] Time consumption:
+[05.22.26|22:02:01] Done.
+[05.22.26|22:02:01] Eval epoch: 174
+[05.22.26|22:02:02] 	mean_loss: 1.4994080132908292
+[05.22.26|22:02:02] 	Top1: 96.96%
+[05.22.26|22:02:02] 	Top5: 99.92%
+[05.22.26|22:02:02] 	Best Top1: 96.96%
+[05.22.26|22:02:02] current 96.96%, best 96.96%
+[05.22.26|22:02:02] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch175_acc96.96_model.pt.
+[05.22.26|22:02:02] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|22:02:02] Training epoch: 175
+[05.22.26|22:02:03] 	Iter 6300 Done. | loss: 1.4321 | lr: 0.000100
+[05.22.26|22:02:06] 	mean_loss: 1.4925196667512257
+[05.22.26|22:02:06] Time consumption:
+[05.22.26|22:02:06] Done.
+[05.22.26|22:02:06] Training epoch: 176
+[05.22.26|22:02:10] 	mean_loss: 1.5085963937971327
+[05.22.26|22:02:10] Time consumption:
+[05.22.26|22:02:10] Done.
+[05.22.26|22:02:10] Training epoch: 177
+[05.22.26|22:02:14] 	Iter 6400 Done. | loss: 1.4461 | lr: 0.000100
+[05.22.26|22:02:14] 	mean_loss: 1.502303570508957
+[05.22.26|22:02:14] Time consumption:
+[05.22.26|22:02:14] Done.
+[05.22.26|22:02:14] Training epoch: 178
+[05.22.26|22:02:19] 	mean_loss: 1.510398245520062
+[05.22.26|22:02:19] Time consumption:
+[05.22.26|22:02:19] Done.
+[05.22.26|22:02:19] Training epoch: 179
+[05.22.26|22:02:23] 	mean_loss: 1.5043985744317372
+[05.22.26|22:02:23] Time consumption:
+[05.22.26|22:02:23] Done.
+[05.22.26|22:02:23] Eval epoch: 179
+[05.22.26|22:02:24] 	mean_loss: 1.5043985744317372
+[05.22.26|22:02:24] 	Top1: 96.96%
+[05.22.26|22:02:24] 	Top5: 99.92%
+[05.22.26|22:02:24] 	Best Top1: 96.96%
+[05.22.26|22:02:24] current 96.96%, best 96.96%
+[05.22.26|22:02:24] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch180_acc96.96_model.pt.
+[05.22.26|22:02:24] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|22:02:24] Training epoch: 180
+[05.22.26|22:02:27] 	Iter 6500 Done. | loss: 1.4529 | lr: 0.000100
+[05.22.26|22:02:28] 	mean_loss: 1.5040143198437161
+[05.22.26|22:02:28] Time consumption:
+[05.22.26|22:02:28] Done.
+[05.22.26|22:02:28] Training epoch: 181
+[05.22.26|22:02:32] 	mean_loss: 1.4928819967640772
+[05.22.26|22:02:32] Time consumption:
+[05.22.26|22:02:32] Done.
+[05.22.26|22:02:32] Training epoch: 182
+[05.22.26|22:02:37] 	mean_loss: 1.496378481388092
+[05.22.26|22:02:37] Time consumption:
+[05.22.26|22:02:37] Done.
+[05.22.26|22:02:37] Training epoch: 183
+[05.22.26|22:02:38] 	Iter 6600 Done. | loss: 1.5118 | lr: 0.000100
+[05.22.26|22:02:41] 	mean_loss: 1.5062313377857208
+[05.22.26|22:02:41] Time consumption:
+[05.22.26|22:02:41] Done.
+[05.22.26|22:02:41] Training epoch: 184
+[05.22.26|22:02:45] 	mean_loss: 1.4974147644307878
+[05.22.26|22:02:45] Time consumption:
+[05.22.26|22:02:45] Done.
+[05.22.26|22:02:45] Eval epoch: 184
+[05.22.26|22:02:46] 	mean_loss: 1.4974147644307878
+[05.22.26|22:02:46] 	Top1: 97.04%
+[05.22.26|22:02:46] 	Top5: 99.92%
+[05.22.26|22:02:46] 	Best Top1: 97.04%
+[05.22.26|22:02:46] current 97.04%, best 97.04%
+[05.22.26|22:02:46] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch185_acc97.04_model.pt.
+[05.22.26|22:02:46] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|22:02:46] Training epoch: 185
+[05.22.26|22:02:50] 	mean_loss: 1.505013257265091
+[05.22.26|22:02:50] Time consumption:
+[05.22.26|22:02:50] Done.
+[05.22.26|22:02:50] Training epoch: 186
+[05.22.26|22:02:51] 	Iter 6700 Done. | loss: 1.4576 | lr: 0.000100
+[05.22.26|22:02:54] 	mean_loss: 1.4978119830290477
+[05.22.26|22:02:54] Time consumption:
+[05.22.26|22:02:54] Done.
+[05.22.26|22:02:54] Training epoch: 187
+[05.22.26|22:02:59] 	mean_loss: 1.5002610915237002
+[05.22.26|22:02:59] Time consumption:
+[05.22.26|22:02:59] Done.
+[05.22.26|22:02:59] Training epoch: 188
+[05.22.26|22:03:02] 	Iter 6800 Done. | loss: 1.4928 | lr: 0.000010
+[05.22.26|22:03:03] 	mean_loss: 1.492241985268063
+[05.22.26|22:03:03] Time consumption:
+[05.22.26|22:03:03] Done.
+[05.22.26|22:03:03] Training epoch: 189
+[05.22.26|22:03:07] 	mean_loss: 1.5060814122358959
+[05.22.26|22:03:07] Time consumption:
+[05.22.26|22:03:07] Done.
+[05.22.26|22:03:07] Eval epoch: 189
+[05.22.26|22:03:08] 	mean_loss: 1.5060814122358959
+[05.22.26|22:03:08] 	Top1: 97.13%
+[05.22.26|22:03:08] 	Top5: 99.92%
+[05.22.26|22:03:08] 	Best Top1: 97.13%
+[05.22.26|22:03:08] current 97.13%, best 97.13%
+[05.22.26|22:03:08] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch190_acc97.13_model.pt.
+[05.22.26|22:03:08] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/best_model.pt.
+[05.22.26|22:03:08] Training epoch: 190
+[05.22.26|22:03:12] 	mean_loss: 1.5135322080718145
+[05.22.26|22:03:12] Time consumption:
+[05.22.26|22:03:12] Done.
+[05.22.26|22:03:12] Training epoch: 191
+[05.22.26|22:03:15] 	Iter 6900 Done. | loss: 1.4867 | lr: 0.000010
+[05.22.26|22:03:16] 	mean_loss: 1.49921272860633
+[05.22.26|22:03:16] Time consumption:
+[05.22.26|22:03:16] Done.
+[05.22.26|22:03:16] Training epoch: 192
+[05.22.26|22:03:21] 	mean_loss: 1.5003501673539479
+[05.22.26|22:03:21] Time consumption:
+[05.22.26|22:03:21] Done.
+[05.22.26|22:03:21] Training epoch: 193
+[05.22.26|22:03:25] 	mean_loss: 1.507558673620224
+[05.22.26|22:03:25] Time consumption:
+[05.22.26|22:03:25] Done.
+[05.22.26|22:03:25] Training epoch: 194
+[05.22.26|22:03:27] 	Iter 7000 Done. | loss: 1.4534 | lr: 0.000010
+[05.22.26|22:03:29] 	mean_loss: 1.5017130540476904
+[05.22.26|22:03:29] Time consumption:
+[05.22.26|22:03:29] Done.
+[05.22.26|22:03:29] Eval epoch: 194
+[05.22.26|22:03:30] 	mean_loss: 1.5017130540476904
+[05.22.26|22:03:30] 	Top1: 96.79%
+[05.22.26|22:03:30] 	Top5: 99.92%
+[05.22.26|22:03:30] 	Best Top1: 97.13%
+[05.22.26|22:03:30] current 96.79%, best 97.13%
+[05.22.26|22:03:30] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch195_acc96.79_model.pt.
+[05.22.26|22:03:30] Training epoch: 195
+[05.22.26|22:03:34] 	mean_loss: 1.4970490336418152
+[05.22.26|22:03:34] Time consumption:
+[05.22.26|22:03:34] Done.
+[05.22.26|22:03:34] Training epoch: 196
+[05.22.26|22:03:39] 	mean_loss: 1.488371084133784
+[05.22.26|22:03:39] Time consumption:
+[05.22.26|22:03:39] Done.
+[05.22.26|22:03:39] Training epoch: 197
+[05.22.26|22:03:40] 	Iter 7100 Done. | loss: 1.5902 | lr: 0.000010
+[05.22.26|22:03:43] 	mean_loss: 1.490163654088974
+[05.22.26|22:03:43] Time consumption:
+[05.22.26|22:03:43] Done.
+[05.22.26|22:03:43] Training epoch: 198
+[05.22.26|22:03:47] 	mean_loss: 1.5037969251473744
+[05.22.26|22:03:47] Time consumption:
+[05.22.26|22:03:47] Done.
+[05.22.26|22:03:47] Training epoch: 199
+[05.22.26|22:03:51] 	mean_loss: 1.5057131482495203
+[05.22.26|22:03:51] Time consumption:
+[05.22.26|22:03:51] Done.
+[05.22.26|22:03:51] Eval epoch: 199
+[05.22.26|22:03:52] 	mean_loss: 1.5057131482495203
+[05.22.26|22:03:52] 	Top1: 97.04%
+[05.22.26|22:03:52] 	Top5: 99.92%
+[05.22.26|22:03:52] 	Best Top1: 97.13%
+[05.22.26|22:03:52] current 97.04%, best 97.13%
+[05.22.26|22:03:52] The model has been saved as ./work_dir/student2/new_best_teacher_noAdapter/epoch200_acc97.04_model.pt.
