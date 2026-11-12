@@ -1,60 +1,68 @@
-weights: ./work_dir/student/new_best_teacher_noAdapter/best_model.pt
+# T=1 Student evaluation configuration
+work_dir: ./work_dir/student/hypersa_fcce_cd_T1_r80
 
-# feeder
+# Evaluation data: set obs_ratio to the ratio of the checkpoint being tested.
+# For r20/r40/r60/r80/r100, use 0.2/0.4/0.6/0.8/1.0 respectively.
 feeder: feeder.feeder_clr.Feeder
 test_feeder_args:
   data_path: ./datacobot_v2_full_gcn/xsub/val_position.npy
   label_path: ./datacobot_v2_full_gcn/xsub/val_label.pkl
   text_path: text_prompts.json
+  data_ratio: 1.0
   bone: False
+  obs_ratio: 0.8
 
-# teacher model
-#model: net.teacher.TeacherModel
-#model_args:
-  #base_encoder: net.ctr_gcn.Model
-  #num_class: 16 
-  #num_point: 48
-  #num_person: 1
-  #drop_out: 0.5
-  #graph: graph.cobot.Graph
-  #graph_args:
-    #labeling_mode: 'distance'
-    
-teacher_weights: ./work_dir/teacher/bestconfig_ctrgcnv2_pool2time_noAdapter/best_model.pt
+# Frozen T=1 Teacher: required by Student_Processor.load_model()
+teacher_weights: ./work_dir/teacher/hypersa_fcce_dstcl_T1_v1/best_model.pt
 teacher_model: net.teacher.TeacherModel
 teacher_model_args:
-  base_encoder: net.ctr_gcn.Model
-  num_class: 16 
+  base_encoder: net.hypersa_ae.HyperSAEncoder
+  num_class: 16
   num_point: 48
   num_person: 1
   drop_out: 0.5
   graph: graph.cobot.Graph
   graph_args:
     labeling_mode: 'distance'
-    
-    
+  channels: [64, 128, 256]
+  strides: [1, 2, 2]
+  heads: 8
+  num_hyperedges: 5
+  root_joint: 0
+  sta_stride: 2
+  tau: 0.125
+  rho: 0.9
+  ctx_ch: 384
+  context_t_len: 1
+  disentangle_t_len: 24
+
+# Student architecture: MUST match the T=1 student training YAML
 model: net.student.StudentModel
 model_args:
-  base_encoder: net.ddnet.DDNet_Original
-  frame_l: 96
-  joint_n: 48
-  joint_d: 3
-  feat_d: 1128
-  class_num: 16
-  filters: 16
-  
-# clip
-text_encoder: net.text.TextEncoder
-text_args:
-  run_name: 'RN50x4'
-  temperature: 0.1
+  base_encoder: net.hypersa_ae.HyperSAEncoder
+  num_class: 16
+  num_point: 48
+  num_person: 1
+  drop_out: 0.5
+  graph: graph.cobot.Graph
+  graph_args:
+    labeling_mode: 'distance'
+  enc_channels: [128, 256]
+  enc_strides: [2, 2]
+  heads: 8
+  num_hyperedges: 5
+  context_t_len: 1
 
-# test 
+# Student test checkpoint (change for each observation ratio)
+weights: ./work_dir/student/hypersa_fcce_cd_T1_r80/best_model.pt
+
+# Required by Student_Processor when constructing its distillation manager.
+# These losses are not evaluated during phase=test, but the config is required.
+feature_distillation:
+  context_distill: 50.0
+  recon: 1.0
+
+# Evaluation
 phase: test
-device: 3
+device: [0]
 test_batch_size: 32
-
-# KD
-feature_distillation:    
-  spatial: 1   
- 

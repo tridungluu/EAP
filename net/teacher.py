@@ -19,7 +19,7 @@ class TeacherModel(nn.Module):
 
     def __init__(self, base_encoder, num_class, num_point, num_person, graph, graph_args,
                  drop_out, root_joint=0, sta_stride=2, tau=0.125, rho=0.9,
-                 ctx_ch=384, t_len=24, **kwargs):
+                 ctx_ch=384, context_t_len=1, disentangle_t_len=24, **kwargs):
         super().__init__()
         base_encoder = import_class(base_encoder)
         # kwargs co the chua channels / strides cho CTREncoder
@@ -35,9 +35,10 @@ class TeacherModel(nn.Module):
         nn.init.normal_(self.classifier.weight, 0, math.sqrt(2.0 / num_class))
 
         self.num_point = num_point
-        self.t_len = t_len
+        self.context_t_len = context_t_len
+        self.disentangle_t_len = disentangle_t_len
         self.decoder = self.skel_encoder.build_decoder()
-        self.disentangle = SpatialTemporalDisentanglement(feat_ch, num_point, ch=ctx_ch, t_len=t_len)
+        self.disentangle = SpatialTemporalDisentanglement(feat_ch, num_point, ch=ctx_ch, t_len=disentangle_t_len)
         self.dstcl_loss = DSTCLoss(num_class, ctx_ch, temperature=tau, momentum=rho)
         self.sta_loss = STALoss(anchor_joint=root_joint, stride=sta_stride)
 
@@ -45,7 +46,7 @@ class TeacherModel(nn.Module):
         """
         Tra ve (output, context, recon_skel, (C_s, C_t)).
           output: (N, num_class) logits tu FC tren Context (pool trung binh theo T, V)
-          context: (N, 256, t_len, V)
+          context: (N, 256, context_t_len, V)
           recon_skel, C_s, C_t chi co khi model.train(); o eval la None.
         """
         N = x.shape[0]
@@ -53,10 +54,10 @@ class TeacherModel(nn.Module):
 
         _, feat, _ = self.skel_encoder(x)                    # Latent Vector (N*M, 256, T/4, V)
         _, C, T, V = feat.shape
-        latent = feat if M == 1 else feat.view(N, M, C, T, V).mean(dim=1)
+        prepool_context = feat if M == 1 else feat.view(N, M, C, T, V).mean(dim=1)
 
-        # Fig. 2b: Latent Vector -> 2D Avg Pooling -> Context
-        context = F.adaptive_avg_pool2d(latent, (self.t_len, V))
+        # Nhanh classifier/decoder: pre-pooling feature -> 2D Avg Pooling -> context (T=1).
+        context = F.adaptive_avg_pool2d(prepool_context, (self.context_t_len, V))
 
         # Fig. 2d: Context -> FC
         output = self.classifier(self.drop(context.mean(dim=(2, 3))))
@@ -64,7 +65,7 @@ class TeacherModel(nn.Module):
         if self.training:
             target_shape = x.shape[:4] if x.dim() == 5 else x.shape
             recon_skel = self.decoder(context, target_shape)         # Fig. 2e
-            C_s, C_t = self.disentangle(latent)                      # Fig. 2c / Fig. 1
+            C_s, C_t = self.disentangle(prepool_context)          # DCL branch uses feature BEFORE 2D Avg Pooling
         else:
             recon_skel, C_s, C_t = None, None, None
 

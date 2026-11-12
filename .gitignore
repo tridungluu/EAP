@@ -204,6 +204,12 @@ logs/
 data/
 datasets/
 dataset/
+
+# Local Python runtime and generated experiment outputs
+Python-3.12.16/
+visualization_results/
+work_dir/
+
 # Dataset files
 datacobot_v2_full_gcn/
 ntu60_3d.pkl

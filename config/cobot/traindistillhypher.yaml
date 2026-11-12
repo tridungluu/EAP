@@ -1,4 +1,4 @@
-work_dir: ./work_dir/student/hypersa_fcce_cd_v1
+work_dir: ./work_dir/student/hypersa_fcce_cd_T1_r20
 
 # feeder (student sees a truncated sequence: obs_ratio = 0.2 / 0.4 / 0.6 / 0.8 / 1.0)
 feeder: feeder.feeder_clr.Feeder
@@ -7,7 +7,7 @@ train_feeder_args:
   label_path: ./datacobot_v2_full_gcn/xsub/train_label.pkl
   text_path: text_prompts.json     # still required by Feeder.__init__, not used for training
   data_ratio: 1.0
-  obs_ratio: 0.2
+  obs_ratio: 1.0
 
 test_feeder_args:
   data_path: ./datacobot_v2_full_gcn/xsub/val_position.npy
@@ -16,7 +16,7 @@ test_feeder_args:
   obs_ratio: 0.2
 
 # teacher model (model_args MUST match train_clr.yaml, weights = the NEW FC+CE teacher)
-teacher_weights: ./work_dir/teacher/hypersa_fcce_dstcl_v1/best_model.pt
+teacher_weights: ./work_dir/teacher/hypersa_fcce_dstcl_T1_v1/best_model.pt
 teacher_model: net.teacher.TeacherModel
 teacher_model_args:
   base_encoder: net.hypersa_ae.HyperSAEncoder
@@ -38,7 +38,8 @@ teacher_model_args:
   tau: 0.125
   rho: 0.9
   ctx_ch: 384
-  t_len: 24
+  context_t_len: 1
+  disentangle_t_len: 24
 
 # student model: 2-block HyperSA encoder, 2-block HyperSA decoder, FC classifier (CE)
 model: net.student.StudentModel
@@ -57,7 +58,7 @@ model_args:
   num_hyperedges: 5     # learned partition (Eq. 8-9); paper Fig. 3 uses ~5 body-part groups on NTU
   # partition_groups: [0,0,1,...]   # optional: fixed empirical partition, one group id per joint (len = num_point)
   # hop_edges: [[0,1],[1,2]]        # optional: bone list (0-indexed) if the graph has no A_binary/neighbor_link
-  t_len: 24            # must equal teacher t_len
+  context_t_len: 1    # must equal teacher context_t_len
 
 # optim
 weight_decay: 0.0001

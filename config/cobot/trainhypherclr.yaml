@@ -1,4 +1,4 @@
-work_dir: ./work_dir/teacher/hypersa_fcce_dstcl_v1
+work_dir: ./work_dir/teacher/hypersa_fcce_dstcl_T1_v1
 
 # feeder (teacher sees the full sequence, do NOT set obs_ratio)
 feeder: feeder.feeder_clr.Feeder
@@ -36,7 +36,8 @@ model_args:
   tau: 0.125           # temperature in Eq. 8
   rho: 0.9             # EMA momentum in Eq. 2
   ctx_ch: 384          # C_h, must be divisible by num_point (48)
-  t_len: 24            # T/4 when T = 96
+  context_t_len: 1    # 2D Avg Pooling output: T=1 for classifier/decoder
+  disentangle_t_len: 24 # temporal length used by the DCL disentanglement branch
 
 # loss weights, Eq. 13
 w_sta: 1.0

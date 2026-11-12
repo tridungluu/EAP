@@ -16,7 +16,7 @@ class StudentModel(nn.Module):
 
     def __init__(self, base_encoder, num_class, num_point, num_person, graph, graph_args,
                  drop_out, feature_distillation=None,
-                 enc_channels=(128, 256), enc_strides=(2, 2), t_len=24, **kwargs):
+                 enc_channels=(128, 256), enc_strides=(2, 2), context_t_len=1, **kwargs):
         super().__init__()
         enc = import_class(base_encoder)
         self.skel_encoder = enc(num_class=num_class, num_point=num_point, num_person=num_person,
@@ -29,7 +29,7 @@ class StudentModel(nn.Module):
         self.classifier = nn.Linear(self.skel_encoder.out_channels, num_class)
         nn.init.normal_(self.classifier.weight, 0, math.sqrt(2.0 / num_class))
 
-        self.t_len = t_len                          # phai bang t_len cua teacher
+        self.context_t_len = context_t_len        # phai bang context_t_len cua teacher
         self.decoder = self.skel_encoder.build_decoder()
 
     def init_decoder_from_teacher(self, teacher):
@@ -52,8 +52,9 @@ class StudentModel(nn.Module):
         if M > 1:
             feat = feat.view(N, M, *feat.shape[1:]).mean(1)
 
-        context = F.adaptive_avg_pool2d(feat, (self.t_len, V))   # Fig. 2b: ra kich thuoc co dinh
-        output = self.classifier(self.drop(context.mean(dim=(2, 3))))   # Fig. 2d
+        # Classifier/decoder branch: encoder feature -> 2D Avg Pooling -> context (T=1).
+        context = F.adaptive_avg_pool2d(feat, (self.context_t_len, V))
+        output = self.classifier(self.drop(context.mean(dim=(2, 3))))
 
         recon = None
         if self.training or target_shape is not None:

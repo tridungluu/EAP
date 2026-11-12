@@ -93,14 +93,30 @@ class IO():
         self.model = self.io.load_model(self.arg.model,
                                         **(self.arg.model_args))
 
+    
     def load_weights(self):
         if self.arg.weights:
-#            self.model = self.io.load_weights(self.model, self.arg.weights,
-#                                              self.arg.ignore_weights)
-            checkpoint = torch.load(self.arg.weights, map_location=self.dev)
+            checkpoint = torch.load(
+                self.arg.weights,
+                map_location=self.dev
+            )
+
+            # Load model weights
             self.model.load_state_dict(checkpoint['model'])
-            if self.text_encoder is not None:
-                self.text_encoder.adapter.load_state_dict(checkpoint['adapter'])
+
+            # Load adapter only if the processor has a text encoder
+            # and the checkpoint contains adapter weights.
+            text_encoder = getattr(self, 'text_encoder', None)
+
+            if text_encoder is not None and 'adapter' in checkpoint:
+                text_encoder.adapter.load_state_dict(checkpoint['adapter'])
+
+            self.io.print_log(
+                'Successfully loaded model weights from {}'.format(
+                    self.arg.weights
+                )
+            )
+
 
     def gpu(self):
         # move modules to gpu
